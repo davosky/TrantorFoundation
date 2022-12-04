@@ -1,0 +1,183 @@
+// Darkly 5.2.2
+// Bootswatch
+
+// Variables
+
+$web-font-path: "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" !default;
+@if $web-font-path {
+  @import url($web-font-path);
+}
+
+:root {
+  color-scheme: dark;
+}
+
+// DOM
+
+body {
+  overflow: hidden;
+  padding-top: 8rem;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+// Typography
+
+.blockquote {
+  &-footer {
+    color: $gray-600;
+  }
+}
+
+// Forms
+
+.input-group-addon {
+  color: $white;
+}
+
+.form-floating > label {
+  color: $gray-700;
+}
+
+.form-control {
+  background-color: $gray-500;
+}
+
+.input-group-text {
+  min-width: 8rem;
+}
+
+// Navs
+.nav-tabs,
+.nav-pills {
+  .nav-link,
+  .nav-link.active,
+  .nav-link.active:focus,
+  .nav-link.active:hover,
+  .nav-item.open .nav-link,
+  .nav-item.open .nav-link:focus,
+  .nav-item.open .nav-link:hover {
+    color: $white;
+  }
+}
+
+.breadcrumb a {
+  color: $white;
+}
+
+.pagination {
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+// Indicators
+
+.alert {
+  color: $white;
+  border: none;
+
+  a,
+  .alert-link {
+    color: $white;
+    text-decoration: none;
+  }
+
+  @each $color, $value in $theme-colors {
+    &-#{$color} {
+      @if $enable-gradients {
+        background: $value
+          linear-gradient(180deg, mix($white, $value, 15%), $value)
+          repeat-x;
+      } @else {
+        background-color: $value;
+      }
+    }
+  }
+}
+
+// Buttons
+
+.btn {
+  border-radius: 0.24rem;
+}
+
+// Forms
+
+.form-control {
+  border-radius: 0.24rem;
+  background-color: lighten($body-bg, 6%);
+  color: $body-color;
+}
+
+.form-select {
+  border-radius: 0.24rem;
+  background-color: lighten($body-bg, 6%);
+  color: $body-color;
+}
+
+.input-group {
+  border: 0.1rem solid $primary !important;
+  border-radius: 0.26rem;
+}
+
+.input-group-text {
+  min-width: 12rem;
+  border: none;
+  background-color: $primary !important;
+  color: $white !important;
+}
+
+// Custom
+
+.p-justify {
+  text-align: justify;
+}
+
+// Table
+
+tr {
+  a {
+    color: darken($link-color, 10%);
+  }
+
+  &:hover {
+    background-color: lighten($body-bg, 20%);
+
+    a {
+      &:hover {
+        color: darken($red, 10%);
+      }
+    }
+  }
+}
+
+// Modals
+
+.modal-lg {
+  min-width: 1200px;
+}
+
+.modal-content {
+  border: 0.1rem solid $medium-gray;
+  padding: 1.4rem;
+  background-color: lighten($body-bg, 6%);
+  color: $body-color;
+}
+
+.modal-header {
+  border: none;
+  border-bottom: 0.1rem solid $primary !important;
+}
+
+.modal-header-link {
+  padding: 1rem;
+  color: primary !important;
+
+  &:hover {
+    color: $red !important;
+    cursor: pointer;
+  }
+}
