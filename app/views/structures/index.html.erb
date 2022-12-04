@@ -1,0 +1,53 @@
+<div class="col-3">
+  <div class="d-grid mx-3">
+    <%= image_tag("structures_logo.svg", class: "img-fluid") %>
+    <br/>
+    &emsp;
+    <br/>
+    <%= link_to new_structure_path, "data-controller": "turbo", class: "btn btn-outline-primary btn-sm shadow" do %>
+      <i class="fa-solid fa-plus"></i>
+      &nbsp;
+      <i class="fa-solid fa-building"></i>
+      &nbsp;
+      Nuova Struttura
+    <% end %>
+  </div>
+</div>
+<div class="col-9">
+  <table class="table table-hover">
+    <thead>
+      <th><i class="fa-solid fa-building"></i></th>
+      <th><i class="fa-solid fa-arrow-up-9-1"></i></th>
+      <th colspan=2></th>
+    </thead>
+    <tbody>
+      <% @structures.each do |structure| %>
+        <tr>
+          <td>
+            <%= link_to structure_path(structure), "data-controller": "turbo" do %>
+              <%= structure.name %>
+            <% end %>
+          </td>
+          <td><%= structure.position %></td>
+          <td>
+            <%= link_to edit_structure_path(structure), "data-controller": "turbo" , 
+            "data-bs-toggle": "tooltip", 
+            "title": "Modifica il Record Corrente" do %>
+              <i class="fa-solid fa-pen-to-square"></i>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to structure_path(structure),
+            "data-turbo-method": :delete,
+            "data-turbo-confirm": "Sicuri di voler ELIMINARE il record corrente?" , 
+            "data-bs-toggle": "tooltip", 
+            "title": "Elimina il Record Corrente" do%>
+              <i class="fa-solid fa-trash"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+</div>

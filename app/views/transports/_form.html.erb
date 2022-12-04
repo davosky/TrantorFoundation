@@ -1,7 +1,9 @@
 <%= form_with(model: transport) do |form| %>
   <% if transport.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(transport.errors.count, "error") %> prohibited this transport from being saved:</h2>
+      <h4>
+        Errore!&emsp;Non posso salvare per i seguenti motivi:
+      </h4>
       <ul>
         <% transport.errors.each do |error| %>
           <li><%= error.full_message %></li>

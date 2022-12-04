@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :roads
   has_many :transports
+  has_many :places
+  has_many :structures
 
   before_create :set_id
 

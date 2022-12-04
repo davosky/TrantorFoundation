@@ -10,14 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 3) do
+ActiveRecord::Schema[7.0].define(version: 5) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "places", force: :cascade do |t|
+    t.string "name"
+    t.integer "position"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "roads", force: :cascade do |t|
     t.string "name"
     t.decimal "road_lenght", precision: 8, scale: 2, default: "0.0"
     t.decimal "highway_cost", precision: 8, scale: 2, default: "0.0"
+    t.integer "position"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "structures", force: :cascade do |t|
+    t.string "name"
     t.integer "position"
     t.integer "user_id", null: false
     t.datetime "created_at", null: false

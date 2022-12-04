@@ -2,7 +2,8 @@
   <% if road.errors.any? %>
     <div style="color: red">
       <h4>
-        Errore!&emsp;Non posso salvare per i seguenti motivi:</h4>
+        Errore!&emsp;Non posso salvare per i seguenti motivi:
+      </h4>
       <ul>
         <% road.errors.each do |error| %>
           <li><%= error.full_message %></li>

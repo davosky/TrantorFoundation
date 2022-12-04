@@ -10,6 +10,9 @@ it:
     models:
       user: Utente
       road: Percorso
+      transport: Trasporto
+      place: Luogo
+      structure: Struttura
     attributes:
       user:
         username: Nome Utente
@@ -34,6 +37,8 @@ it:
         updated_at: Aggiornato il
         roads: Percorsi
         transports: Trasporti
+        places: Luoghi
+        structures: Strutture
       road:
         name: Percorso
         road_lenght: Lunghezza
@@ -45,6 +50,20 @@ it:
         user_id: Utente
       transport:
         name: Trasporto
+        position: Posizione
+        created_at: Creato il
+        updated_at: Aggiornato il
+        user: Utente
+        user_id: Utente
+      place:
+        name: Luogo
+        position: Posizione
+        created_at: Creato il
+        updated_at: Aggiornato il
+        user: Utente
+        user_id: Utente
+      structure:
+        name: Struttura
         position: Posizione
         created_at: Creato il
         updated_at: Aggiornato il
