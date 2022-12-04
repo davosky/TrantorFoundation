@@ -1,0 +1,57 @@
+<div class="col-3">
+  <div class="d-grid mx-3">
+    <%= image_tag("roads_logo.svg", class: "img-fluid") %>
+    <br/>
+    &emsp;
+    <br/>
+    <%= link_to new_road_path, "data-controller": "turbo", class: "btn btn-outline-primary btn-sm shadow" do %>
+      <i class="fa-solid fa-plus"></i>
+      &nbsp;
+      <i class="fa-solid fa-route"></i>
+      &nbsp;
+      Nuovo Percorso
+    <% end %>
+  </div>
+</div>
+<div class="col-9">
+  <table class="table table-hover">
+    <thead>
+      <th><i class="fa-solid fa-route"></i></th>
+      <th><i class="fa-solid fa-ruler-horizontal"></i></th>
+      <th><i class="fa-regular fa-credit-card"></i></th>
+      <th><i class="fa-solid fa-arrow-up-9-1"></i></th>
+      <th colspan=2></th>
+    </thead>
+    <tbody>
+      <% @roads.each do |road| %>
+        <tr>
+          <td>
+            <%= link_to road_path(road), "data-controller": "turbo" do %>
+              <%= road.name %>
+            <% end %>
+          </td>
+          <td><%= "#{road.road_lenght} Km" %></td>
+          <td><%= number_to_currency(road.highway_cost) %></td>
+          <td><%= road.position %></td>
+          <td>
+            <%= link_to edit_road_path(road), "data-controller": "turbo", 
+            "data-bs-toggle": "tooltip", 
+            "title": "Modifica il Record Corrente" do %>
+              <i class="fa-solid fa-pen-to-square"></i>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to road_path(road),
+            "data-turbo-method": :delete,
+            "data-turbo-confirm": "Sicuri di voler eliminare il record corrente?" , 
+            "data-bs-toggle": "tooltip", 
+            "title": "Elimina il Record Corrente" do%>
+              <i class="fa-solid fa-trash"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+</div>

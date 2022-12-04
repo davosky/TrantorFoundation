@@ -13,6 +13,18 @@ RailsAdmin.config do |config|
     label_plural "Utenti"
   end
 
+  config.model "Road" do
+    visible true
+    label "Percorso"
+    label_plural "Percorsi"
+  end
+
+  config.model "Transport" do
+    visible true
+    label "Trasporto"
+    label_plural "Trasporti"
+  end
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory

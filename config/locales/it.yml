@@ -9,6 +9,7 @@ it:
         previous: Precedente
     models:
       user: Utente
+      road: Percorso
     attributes:
       user:
         username: Nome Utente
@@ -31,6 +32,24 @@ it:
         sex: Sesso
         created_at: Creato Il
         updated_at: Aggiornato il
+        roads: Percorsi
+        transports: Trasporti
+      road:
+        name: Percorso
+        road_lenght: Lunghezza
+        highway_cost: Costo Autostrada
+        position: Posizione
+        created_at: Creato il
+        updated_at: Aggiornato il
+        user: Utente
+        user_id: Utente
+      transport:
+        name: Trasporto
+        position: Posizione
+        created_at: Creato il
+        updated_at: Aggiornato il
+        user: Utente
+        user_id: Utente
     errors:
       messages:
         record_invalid: "Validazione fallita: %{errors}"

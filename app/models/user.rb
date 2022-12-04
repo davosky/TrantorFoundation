@@ -4,6 +4,9 @@ class User < ApplicationRecord
   # :recoverable, :rememberable, :validatable
   devise :database_authenticatable, :registerable
 
+  has_many :roads
+  has_many :transports
+
   before_create :set_id
 
   def set_id
