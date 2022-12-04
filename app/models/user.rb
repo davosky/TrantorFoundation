@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :transports
   has_many :places
   has_many :structures
+  has_many :reasons
+  has_many :veichles
 
   before_create :set_id
 

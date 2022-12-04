@@ -10,11 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 5) do
+ActiveRecord::Schema[7.0].define(version: 7) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "places", force: :cascade do |t|
+    t.string "name"
+    t.integer "position"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reasons", force: :cascade do |t|
     t.string "name"
     t.integer "position"
     t.integer "user_id", null: false
@@ -75,6 +83,16 @@ ActiveRecord::Schema[7.0].define(version: 5) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
+  create_table "veichles", force: :cascade do |t|
+    t.string "name"
+    t.string "producer"
+    t.string "license_plate"
+    t.integer "position"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

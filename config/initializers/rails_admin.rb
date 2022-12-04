@@ -37,6 +37,18 @@ RailsAdmin.config do |config|
     label_plural "Strutture"
   end
 
+  config.model "Reason" do
+    visible true
+    label "Motivo"
+    label_plural "Motivi"
+  end
+
+  config.model "Veichle" do
+    visible true
+    label "Veicolo"
+    label_plural "Veicoli"
+  end
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory

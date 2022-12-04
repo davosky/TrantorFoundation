@@ -13,6 +13,8 @@ it:
       transport: Trasporto
       place: Luogo
       structure: Struttura
+      reason: Motivo
+      veichle: Veicolo
     attributes:
       user:
         username: Nome Utente
@@ -39,6 +41,7 @@ it:
         transports: Trasporti
         places: Luoghi
         structures: Strutture
+        veichles: Veicoli
       road:
         name: Percorso
         road_lenght: Lunghezza
@@ -64,6 +67,22 @@ it:
         user_id: Utente
       structure:
         name: Struttura
+        position: Posizione
+        created_at: Creato il
+        updated_at: Aggiornato il
+        user: Utente
+        user_id: Utente
+      reason:
+        name: Motivo
+        position: Posizione
+        created_at: Creato il
+        updated_at: Aggiornato il
+        user: Utente
+        user_id: Utente
+      veichle:
+        name: Modello
+        producer: Produttore
+        license_plate: Targa
         position: Posizione
         created_at: Creato il
         updated_at: Aggiornato il
