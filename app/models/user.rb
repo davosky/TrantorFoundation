@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :structures
   has_many :reasons
   has_many :veichles
+  has_many :refunds
 
   before_create :set_id
 

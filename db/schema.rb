@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 7) do
+ActiveRecord::Schema[7.0].define(version: 8) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,6 +26,38 @@ ActiveRecord::Schema[7.0].define(version: 7) do
     t.string "name"
     t.integer "position"
     t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "refunds", force: :cascade do |t|
+    t.integer "refund_number"
+    t.date "departure_date"
+    t.date "return_date"
+    t.date "request_date"
+    t.date "refund_date"
+    t.decimal "parking_cost", precision: 8, scale: 2, default: "0.0"
+    t.decimal "food_cost", precision: 8, scale: 2, default: "0.0"
+    t.decimal "room_cost", precision: 8, scale: 2, default: "0.0"
+    t.decimal "ticket_cost", precision: 8, scale: 2, default: "0.0"
+    t.decimal "generic_cost", precision: 8, scale: 2, default: "0.0"
+    t.decimal "total_amount", precision: 8, scale: 2, default: "0.0"
+    t.integer "user_id"
+    t.integer "reason_id"
+    t.integer "road_id"
+    t.integer "place_id"
+    t.integer "structure_id"
+    t.integer "transport_id"
+    t.integer "veichle_id"
+    t.string "user_fr"
+    t.string "reason_fr"
+    t.string "road_fr"
+    t.string "place_fr"
+    t.string "structure_fr"
+    t.string "transport_fr"
+    t.string "veichle_fr"
+    t.decimal "highway_cost_fr", precision: 8, scale: 2, default: "0.0"
+    t.decimal "road_lenght_fr", precision: 8, scale: 2, default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

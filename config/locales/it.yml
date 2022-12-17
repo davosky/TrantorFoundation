@@ -15,6 +15,7 @@ it:
       structure: Struttura
       reason: Motivo
       veichle: Veicolo
+      refund: Rimborso
     attributes:
       user:
         username: Nome Utente
@@ -42,6 +43,7 @@ it:
         places: Luoghi
         structures: Strutture
         veichles: Veicoli
+        refunds: Rimborsi
       road:
         name: Percorso
         road_lenght: Lunghezza
@@ -88,6 +90,43 @@ it:
         updated_at: Aggiornato il
         user: Utente
         user_id: Utente
+      refund:
+        refund_number: Numero
+        departure_date: Data Partenza
+        return_date: Data Ritorno
+        request_date: Data Richiesta
+        refund_date: Data Rimborso
+        parking_cost: Parcheggio
+        food_cost: Vitto
+        room_cost: Alloggio
+        ticket_cost: Ticket
+        generic_cost: Varie
+        total_amount: Totale
+        user: Utente
+        user_id: Utente
+        user_fr: Utente
+        place: Luogo
+        place_id: Luogo
+        place_fr: Luogo
+        reason: Motivo
+        reason_id: Motivo
+        reason_fr: Motivo
+        road: Percorso
+        road_id: Percorso
+        road_fr: Percorso
+        structure: Struttura
+        structure_id: Struttura
+        structure_fr: Struttura
+        transport: Trasporto
+        transport_id: Trasporto
+        transport_fr: Trasporto
+        highway_cost_fr: Autostrada
+        road_lenght_fr: Lunghezza
+        veichle: Veicolo
+        veichle_id: Veicolo
+        veichle_fr: Veicolo
+        created_at: Creato il
+        updated_at: Aggiornato il
     errors:
       messages:
         record_invalid: "Validazione fallita: %{errors}"

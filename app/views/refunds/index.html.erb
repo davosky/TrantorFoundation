@@ -1,0 +1,74 @@
+<div class="col-3">
+  <div class="d-grid mx-3">
+    <%= image_tag("refunds_logo.svg", class: "img-fluid") %>
+    <%= link_to new_refund_path, "data-controller": "turbo", class: "btn btn-outline-primary btn-sm shadow" do %>
+      <i class="fa-solid fa-plus"></i>
+      &nbsp;
+      <i class="fa-solid fa-money-bill-wave"></i>
+      &nbsp;
+      Nuovo Rimborso
+    <% end %>
+  </div>
+</div>
+<div class="col-9">
+  <table class="table table-hover">
+    <thead class="text-primary">
+      <th></th>
+      <th>
+        <i class="fa-solid fa-calendar-day"></i>
+        &nbsp;Data Partenza
+      </th>
+      <th>
+        <i class="fa-solid fa-location-dot"></i>
+        &nbsp;Luogo
+      </th>
+      <th>
+        <i class="fa-solid fa-building"></i>
+        &nbsp;Struttura
+      </th>
+      <th colspan=2></th>
+    </thead>
+    <tbody>
+      <% @refunds.each do |refund| %>
+        <tr>
+          <td>
+            <%= link_to refund_path(refund), 
+            "data-controller": "turbo", 
+            class: "btn btn-outline-primary btn-sm",
+            "data-bs-toggle": "tooltip", 
+            "title": "Visualizza Dettagli" do %>
+              <%= refund.refund_number %>
+            <% end %>
+          </td>
+          <td>
+            <%= refund.departure_date %>
+          </td>
+          <td>
+            <%= refund.place.name %>
+          </td>
+          <td>
+            <%= refund.structure.name %>
+          </td>
+          <td>
+            <%= link_to edit_refund_path(refund), 
+            "data-controller": "turbo", 
+            "data-bs-toggle": "tooltip", 
+            "title": "Modifica il Record Corrente" do %>
+              <i class="fa-solid fa-pen-to-square"></i>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to refund_path(refund),
+            "data-turbo-method": :delete,
+            "data-turbo-confirm": "Sicuri di voler eliminare il record corrente?", 
+            "data-bs-toggle": "tooltip", 
+            "title": "Elimina il Record Corrente" do %>
+              <i class="fa-solid fa-trash"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+</div>

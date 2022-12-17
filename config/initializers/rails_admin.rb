@@ -49,6 +49,12 @@ RailsAdmin.config do |config|
     label_plural "Veicoli"
   end
 
+  config.model "Refund" do
+    visible true
+    label "Rimborso"
+    label_plural "Rimborsi"
+  end
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory

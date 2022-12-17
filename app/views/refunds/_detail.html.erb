@@ -1,0 +1,55 @@
+<%= turbo_frame_tag :remote_modal, target: :_top do %>
+  <div class="modal fade" data-controller="modal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header mb-5">
+          <div class="modal-title">
+            <%= image_tag("refunds_form_icon.svg", class: "img-fluid") %>
+          </div>
+          <a class="modal-header-link" data-bs-dismiss="modal" aria-label="Close">
+            <i class="fa-solid fa-xmark"></i>
+          </a>
+        </div>
+        <div class="modal-body mb-5">
+          <div class="col-8 offset-2">
+            <div id="<%= dom_id @refund %>" class="scaffold_record">
+              <div class="row">
+                <div class="col">
+                  <h4 class="text-primary">
+                    Missione numero: <strong><%= @refund.refund_number %></strong>
+                  </h4>
+                  <hr class="bg-primary"/>
+                  Ho inoltrato la Richiesta Missione il giorno: <strong><%= l(@refund.request_date) %></strong>.
+                  <br/>
+                  <%= departure_gender(@refund) %> <strong><%= l(@refund.departure_date) %></strong> verso <strong><%= @refund.place.name %></strong> per il seguente motivo: <strong><%= @refund.reason.name %></strong>.
+                  <br/>
+                  Ho utilizzato i seguenti mezzi di trasporto: <strong>
+                    <%= @refund.transport.name %>
+                  </strong>
+                  <br/>
+                  <%= used_veichle(@refund) %>
+                  <br/>
+                  Ho sostenuto le seguenti spese:
+                  <br/>
+                  <ul>
+                    <%= incurred_prking_cost(@refund) %>
+                    <%= incurred_food_cost(@refund) %>
+                    <%= incurred_room_cost(@refund) %>
+                    <%= incurred_ticket_cost(@refund) %>
+                    <%= incurred_generic_cost(@refund) %>
+                    <%= incurred_highway_cost(@refund) %>
+                    <%= incurred_private_veichle_cost(@refund) %>
+                  </ul>
+                  Totale Generale: <strong class="text-primary"><%= number_to_currency(@refund.total_amount) %></strong>
+                  <hr class="bg-primary"/>
+                  <%= return_gender(@refund) %> <strong><%= l(@refund.return_date) %></strong> ed ho fatto richiesta di rimborso spese il giorno <strong><%= l(@refund.request_date) %></strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
