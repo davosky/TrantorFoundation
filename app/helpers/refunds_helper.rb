@@ -32,7 +32,7 @@ module RefundsHelper
   end
 
   def incurred_food_cost(refund)
-    if refund.food_cost != nil
+    if refund.food_cost != nil && refund.food_cost > 0.00
       ("<li>Vitto: #{number_to_currency(refund.food_cost)}</li>").html_safe
     end
   end
