@@ -1,7 +1,7 @@
 <div class="col-3">
   <div class="d-grid mx-3">
     <%= image_tag("refunds_logo.svg", class: "img-fluid") %>
-    <%= link_to new_refund_path, "data-controller": "turbo", class: "btn btn-outline-primary btn-sm shadow" do %>
+    <%= link_to new_refund_path, "data-controller": "turbo", class: "btn btn-primary btn-sm shadow" do %>
       <i class="fa-solid fa-plus"></i>
       &nbsp;
       <i class="fa-solid fa-money-bill-wave"></i>
@@ -44,16 +44,16 @@
             <%= refund.departure_date %>
           </td>
           <td>
-            <%= refund.place.name %>
+            <%= refund.place_fr %>
           </td>
           <td>
-            <%= refund.structure.name %>
+            <%= refund.structure_fr %>
           </td>
           <td>
             <%= link_to edit_refund_path(refund), 
             "data-controller": "turbo", 
             "data-bs-toggle": "tooltip", 
-            "title": "Modifica il Record Corrente" do %>
+            "title": "Modifica il Record Corrente", class: "edit-link" do %>
               <i class="fa-solid fa-pen-to-square"></i>
             <% end %>
           </td>
@@ -62,7 +62,7 @@
             "data-turbo-method": :delete,
             "data-turbo-confirm": "Sicuri di voler eliminare il record corrente?", 
             "data-bs-toggle": "tooltip", 
-            "title": "Elimina il Record Corrente" do %>
+            "title": "Elimina il Record Corrente", class: "delete-link" do %>
               <i class="fa-solid fa-trash"></i>
             <% end %>
           </td>

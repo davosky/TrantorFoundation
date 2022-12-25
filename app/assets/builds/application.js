@@ -5701,6 +5701,31 @@
     }
   };
 
+  // app/javascript/controllers/refund_controller.js
+  var refund_controller_default = class extends Controller {
+    connect() {
+      this.ShowHidePrefilledSection;
+    }
+    ShowHidePrefilledSection() {
+      var roadDiv = document.getElementById("divRoad");
+      roadDiv.style.display = "none";
+      var prefilledCheckbox = document.getElementById("checkboxPrefilled");
+      if (prefilledCheckbox.checked) {
+        prefilledCheckbox.click();
+        var prefilledForm = document.getElementById("formPrefilled");
+        prefilledForm.style.display = "block";
+      }
+      var freeCheckbox = document.getElementById("checkboxFree");
+      if (freeCheckbox.checked) {
+        freeCheckbox.click();
+        var freeForm = document.getElementById("formFree");
+        freeForm.style.display = "block";
+      }
+    }
+    disconnect() {
+    }
+  };
+
   // app/javascript/controllers/turbo_controller.js
   var turbo_controller_default = class extends Controller {
     initialize() {
@@ -5720,6 +5745,7 @@
   // app/javascript/controllers/index.js
   application.register("hello", hello_controller_default);
   application.register("modal", modal_controller_default);
+  application.register("refund", refund_controller_default);
   application.register("turbo", turbo_controller_default);
 
   // node_modules/bootstrap/dist/js/bootstrap.esm.js

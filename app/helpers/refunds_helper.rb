@@ -1,7 +1,7 @@
 module RefundsHelper
   def used_veichle(refund)
     if refund.veichle_id != nil
-      ("Ho usato il seguente veicolo: <strong>#{refund.veichle.producer} #{refund.veichle.name}</strong> con targa <strong>#{refund.veichle.license_plate}</strong>.").html_safe
+      ("Ho usato il seguente veicolo: <strong>#{refund.veichle_fr}</strong>.").html_safe
     end
   end
 
@@ -56,8 +56,8 @@ module RefundsHelper
   end
 
   def incurred_highway_cost(refund)
-    if refund.road.highway_cost != nil && refund.road.highway_cost > 0.00
-      ("<li>Costo Autostrada: #{number_to_currency(refund.road.highway_cost)}</li>").html_safe
+    if refund.highway_cost_fr != nil && refund.highway_cost_fr > 0.00
+      ("<li>Costo Autostrada: #{number_to_currency(refund.highway_cost_fr)}</li>").html_safe
     end
   end
 

@@ -51,12 +51,12 @@
    inkscape:pagecheckerboard="0"
    inkscape:deskcolor="#d1d1d1"
    showgrid="false"
-   inkscape:zoom="2.8367136"
-   inkscape:cx="259.27891"
-   inkscape:cy="159.51558"
-   inkscape:window-width="2534"
-   inkscape:window-height="1404"
-   inkscape:window-x="26"
+   inkscape:zoom="7.61875"
+   inkscape:cx="95.684988"
+   inkscape:cy="80"
+   inkscape:window-width="2527"
+   inkscape:window-height="1408"
+   inkscape:window-x="33"
    inkscape:window-y="0"
    inkscape:window-maximized="1"
    inkscape:current-layer="Layer_1" />
@@ -236,7 +236,7 @@
    d="m 154.17716,124.41855 q 0,0.57422 -0.5013,0.92057 -0.4375,0.3099 -1.03906,0.3099 -0.61068,0 -1.03907,-0.3099 -0.48307,-0.35547 -0.48307,-0.94792 0,-0.59244 0.48307,-0.9388 0.42839,-0.31901 1.03907,-0.31901 0.60156,0 1.04818,0.33724 0.49218,0.36458 0.49218,0.94792 z m -0.3737,10.54559 h -2.46094 v -9.05991 h 2.46094 z"
    id="path1300"
    style="font-size:18.6667px;font-family:Neuropolitical;-inkscape-font-specification:Neuropolitical;letter-spacing:3px;fill:#2c5aa0;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" /><polygon
-   style="fill:#bcdef7"
+   style="fill:#ff9080;fill-opacity:1"
    points="256,272.7 232.626,439.657 378.435,411.27 378.435,272.7 "
    id="polygon1555"
    transform="matrix(0.15722653,0,0,0.15722653,58.373059,11.769159)" /><polygon
@@ -274,7 +274,7 @@
    style="fill:#2db37f;stroke-width:0.157226"
    d="m 88.998117,46.769199 c 0,5.315829 4.309261,9.624936 9.624929,9.624936 V 37.144106 c -5.315825,0 -9.624929,4.309264 -9.624929,9.625093 z"
    id="path1575" /><path
-   style="fill:#ffffff;stroke-width:0.157226"
+   style="fill:#ffb7ad;stroke-width:0.157226;fill-opacity:1"
    d="m 88.998117,58.931614 c 0,-7.61511 0,-15.225031 0,-15.225031 0,-2.657128 -2.155265,-4.812546 -4.812547,-4.812546 -2.657289,0 -4.812547,2.155104 -4.812547,4.812546 v 32.725131 l 25.374937,4.906881 v -6.656816 c 1.6e-4,-8.698713 -7.051289,-15.750165 -15.749843,-15.750165 z"
    id="path1577" /><path
    style="fill:#bcdef7;stroke-width:0.157226"

@@ -4,7 +4,7 @@
     <br/>
     &emsp;
     <br/>
-    <%= link_to new_place_path, "data-controller": "turbo", class: "btn btn-outline-primary btn-sm shadow" do %>
+    <%= link_to new_place_path, "data-controller": "turbo", class: "btn btn-primary btn-sm shadow" do %>
       <i class="fa-solid fa-plus"></i>
       &nbsp;
       <i class="fa-solid fa-city"></i>
@@ -32,7 +32,7 @@
           <td>
             <%= link_to edit_place_path(place), "data-controller": "turbo" , 
             "data-bs-toggle": "tooltip", 
-            "title": "Modifica il Record Corrente" do %>
+            "title": "Modifica il Record Corrente", class: "edit-link" do %>
               <i class="fa-solid fa-pen-to-square"></i>
             <% end %>
           </td>
@@ -41,7 +41,7 @@
             "data-turbo-method": :delete,
             "data-turbo-confirm": "Sicuri di voler eliminare il record corrente?" , 
             "data-bs-toggle": "tooltip", 
-            "title": "Elimina il Record Corrente" do%>
+            "title": "Elimina il Record Corrente", class: "delete-link" do%>
               <i class="fa-solid fa-trash"></i>
             <% end %>
           </td>

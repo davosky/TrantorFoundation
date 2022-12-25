@@ -20,13 +20,10 @@ class Refund < ApplicationRecord
   def fill_free_fields
     if self.user_id != nil
       self.user_fr = "#{self.user.first_name} #{self.user.last_name}"
-    else
-      self.user_fr = "---"
     end
+
     if self.reason_id != nil
       self.reason_fr = self.reason.name
-    else
-      self.reason_fr = "---"
     end
 
     if self.road_id != nil
@@ -38,31 +35,22 @@ class Refund < ApplicationRecord
         self.road_lenght_fr = self.road.road_lenght
       end
     else
-      self.road_fr = "---"
     end
 
     if self.place_id != nil
       self.place_fr = self.place.name
-    else
-      self.place_fr = "---"
     end
 
     if self.structure_id != nil
       self.structure_fr = self.structure.name
-    else
-      self.structure_fr = "---"
     end
 
     if self.transport_id != nil
       self.transport_fr = self.transport.name
-    else
-      self.transport_fr = "---"
     end
 
     if self.veichle_id != nil
-      self.veichle_fr = "#{self.veichle.name} #{self.veichle.producer} con targa: #{self.veichle.license_plate}"
-    else
-      self.veichle_fr = "---"
+      self.veichle_fr = "#{self.veichle.producer} #{self.veichle.name} con targa: #{self.veichle.license_plate}"
     end
   end
 
@@ -98,7 +86,7 @@ class Refund < ApplicationRecord
       generic = 0.00
     end
 
-    if self.road.highway_cost != nil
+    if self.road_id != nil && self.road.highway_cost != nil
       highway = self.road.highway_cost
       self.highway_cost_fr = self.road.highway_cost
     elsif self.highway_cost_fr != nil

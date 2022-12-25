@@ -21,10 +21,10 @@
                   <hr class="bg-primary"/>
                   Ho inoltrato la Richiesta Missione il giorno: <strong><%= l(@refund.request_date) %></strong>.
                   <br/>
-                  <%= departure_gender(@refund) %> <strong><%= l(@refund.departure_date) %></strong> verso <strong><%= @refund.place.name %></strong> per il seguente motivo: <strong><%= @refund.reason.name %></strong>.
+                  <%= departure_gender(@refund) %> <strong><%= l(@refund.departure_date) %></strong> verso <strong><%= @refund.place_fr %></strong> per il seguente motivo: <strong><%= @refund.reason_fr %></strong>.
                   <br/>
                   Ho utilizzato i seguenti mezzi di trasporto: <strong>
-                    <%= @refund.transport.name %>
+                    <%= @refund.transport_fr %>
                   </strong>
                   <br/>
                   <%= used_veichle(@refund) %>

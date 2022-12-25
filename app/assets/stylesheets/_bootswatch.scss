@@ -49,6 +49,10 @@ body {
   min-width: 8rem;
 }
 
+.form-check-input {
+  border: solid 1px $primary;
+}
+
 // Navs
 .nav-tabs,
 .nav-pills {
@@ -101,7 +105,23 @@ body {
 // Buttons
 
 .btn {
-  border-radius: 0.24rem;
+  border-radius: 0.25rem;
+}
+
+.btn-primary {
+  &:hover {
+    color: $primary;
+    background-color: $cyan-light;
+    border-color: $primary;
+  }
+}
+
+.btn-warning {
+  &:hover {
+    color: $white;
+    background-color: darken($warning, 14%);
+    border-color: darken($warning, 14%);
+  }
 }
 
 // Forms
@@ -139,16 +159,24 @@ body {
 // Table
 
 tr {
-  a {
-    color: darken($link-color, 10%);
-  }
-
   &:hover {
     background-color: lighten($body-bg, 20%);
+  }
 
+  td {
     a {
+      color: $primary;
+    }
+
+    .edit-link {
       &:hover {
-        color: darken($red, 10%);
+        color: $orange;
+      }
+    }
+
+    .delete-link {
+      &:hover {
+        color: $red;
       }
     }
   }

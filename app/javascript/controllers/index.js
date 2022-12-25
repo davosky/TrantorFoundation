@@ -10,5 +10,8 @@ application.register("hello", HelloController)
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)
 
+import RefundController from "./refund_controller"
+application.register("refund", RefundController)
+
 import TurboController from "./turbo_controller"
 application.register("turbo", TurboController)
