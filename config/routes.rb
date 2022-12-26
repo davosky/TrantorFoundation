@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   resources :structures
   resources :reasons
   resources :veichles
-  resources :refunds
+  resources :refunds do
+    collection do
+      get :print
+    end
+  end
 
   devise_for :users, skip: [:registrations]
   as :user do

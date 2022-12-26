@@ -9,6 +9,16 @@ class RefundsController < ApplicationController
     @refund = Refund.find(params[:id])
   end
 
+  def print
+    @q = Refund.ransack(params[:q])
+    @refunds = @q.result(distinct: true).order(refund_number: "DESC").where(user_id: current_user.id)
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf { render template: "refunds/print", pdf: "print" }
+    end
+  end
+
   def new
     @refund = Refund.new
   end

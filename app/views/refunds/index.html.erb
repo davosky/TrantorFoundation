@@ -1,12 +1,19 @@
 <div class="col-3">
   <div class="d-grid mx-3">
     <%= image_tag("refunds_logo.svg", class: "img-fluid") %>
-    <%= link_to new_refund_path, "data-controller": "turbo", class: "btn btn-primary btn-sm shadow" do %>
+    <%= link_to new_refund_path, "data-controller": "turbo", class: "btn btn-primary btn-sm shadow mb-3" do %>
       <i class="fa-solid fa-plus"></i>
       &nbsp;
       <i class="fa-solid fa-money-bill-wave"></i>
       &nbsp;
       Nuovo Rimborso
+    <% end %>
+    <%= link_to print_refunds_path, class: "btn btn-primary btn-sm shadow mb-3" do %>
+      <i class="fa-solid fa-print"></i>
+      &nbsp;
+      <i class="fa-solid fa-money-bill-wave"></i>
+      &nbsp;
+      Stampa Rimborsi
     <% end %>
   </div>
 </div>

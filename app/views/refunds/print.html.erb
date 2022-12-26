@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <%= search_form_for @q, id: "search-form", url: print_refunds_path do |form| %>
+        <%= image_tag("refunds_print_logo.svg", class: "img-fluid mb-5") %>
+        <div class="row">
+          <div class="col-4">
+            <div class="input-group mb-2">
+              <div class="input-group-text">
+                <i class="fa-solid fa-calendar-day"></i>
+                &nbsp;<span>Data Inizio</span>
+              </div>
+              <%= form.date_field :departure_date_gteq, class: "form-control" %>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="input-group mb-2">
+              <div class="input-group-text">
+                <i class="fa-solid fa-calendar-day"></i>
+                &nbsp;<span>Data Fine</span>
+              </div>
+              <%= form.date_field :departure_date_lteq, class: "form-control" %>
+            </div>
+          </div>
+          <div class="col-4">
+            <span class="float-end">
+              <%= button_tag(type: "submit", class: "btn btn-primary") do %>
+                <i class="fa-solid fa-magnifying-glass"></i>
+                &emsp;
+                <strong>
+                  Cerca
+                </strong>
+              <% end %>
+              &nbsp;
+              <%= link_to print_refunds_path(request.parameters.merge(format: "pdf")), class: "btn btn-primary", target: :_blank do %>
+                <i class="fa-solid fa-print"></i>
+                &emsp;
+                Stampa
+              <% end %>
+            </span>
+          </div>
+        </div>
+        <br/>
+      <% end %>
+    </div>
+  </div>
+</div>

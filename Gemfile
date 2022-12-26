@@ -14,11 +14,15 @@ gem "rails", "~> 7.0", ">= 7.0.4"
 gem "rails_admin", "~> 3.1"
 gem "rails_admin-i18n", "~> 1.18"
 gem "rails-i18n", "~> 7.0", ">= 7.0.6"
+gem "ransack", "~> 3.2"
 gem "redis", "~> 5.0", ">= 5.0.5"
 gem "sassc-rails", "~> 2.1", ">= 2.1.2"
 gem "sprockets-rails", "~> 3.4", ">= 3.4.2"
 gem "stimulus-rails", "~> 1.2", ">= 1.2.1"
 gem "turbo-rails", "~> 1.3", ">= 1.3.2"
+gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "wicked_pdf", ">= 1.1", "<= 1.4"
+gem "wkhtmltopdf-binary", "= 0.12.3.1"
 
 group :development, :test do
   gem "debug", "~> 1.6", ">= 1.6.3", platforms: %i[ mri mingw x64_mingw ]
