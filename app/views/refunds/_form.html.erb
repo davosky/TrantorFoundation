@@ -83,7 +83,7 @@
       </div>
     </div>
   </div>
-  <div class="row" id="formPrefilled" style="display:none">
+  <div class="row" id="formPrefilled" style="<%= conditional_syle_prefilled_forms(refund) %>">
     <div class="col">
       <div class="card border-primary bg-light mb-1">
         <div class="card-header bg-light">
@@ -130,7 +130,7 @@
       </div>
     </div>
   </div>
-  <div class="row" id="formFree" style="display:none">
+  <div class="row" id="formFree" style="<%= conditional_syle_free_forms(refund) %>">
     <div class="col">
       <div class="card border-primary bg-light mb-1">
         <div class="card-header bg-light">

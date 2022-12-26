@@ -67,4 +67,31 @@ module RefundsHelper
       ("<li>Tabella ACI: <strong>#{number_to_currency(refund.user.cost_per_km)}</strong> al chilometro moltiplicato per <strong>#{refund.road.road_lenght} km</strong> di percorso per un totale di <strong>#{number_to_currency(total_lenght_cost)}</strong></li>").html_safe
     end
   end
+
+  def conditional_syle_prefilled_forms(refund)
+    if refund.reason_id != nil ||
+       refund.road_id != nil ||
+       refund.place_id != nil ||
+       refund.structure_id != nil
+      "display:block"
+    else
+      "display:none"
+    end
+  end
+
+  def conditional_syle_free_forms(refund)
+    if refund.reason_id != nil ||
+       refund.road_id != nil ||
+       refund.place_id != nil ||
+       refund.structure_id != nil
+      "display:none"
+    elsif refund.reason_fr != nil ||
+          refund.road_fr != nil ||
+          refund.place_fr != nil ||
+          refund.structure_fr != nil
+      "display:block"
+    else
+      "display:none"
+    end
+  end
 end

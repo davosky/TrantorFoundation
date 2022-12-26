@@ -118,9 +118,9 @@ body {
 
 .btn-warning {
   &:hover {
-    color: $white;
-    background-color: darken($warning, 14%);
-    border-color: darken($warning, 14%);
+    color: $warning;
+    background-color: $orange-light;
+    border-color: $warning;
   }
 }
 
