@@ -140,6 +140,10 @@
                     <td><strong><%= number_to_currency(refund.highway_cost_fr) %></strong></td>
                   </tr>
                   <tr>
+                    <td>Parcheggio:</td>
+                    <td><strong><%= number_to_currency(refund.parking_cost) %></strong></td>
+                  </tr>
+                  <tr>
                     <td>
                       <h3>
                         Totale:
@@ -166,6 +170,7 @@
                   <tr></tr>
                   <tr>
                     <td>
+                      <%= wicked_pdf_image_tag(refund.user.signature.url, :size => "140x54", :crop => :fill) %>
                       <br>
                       ------------------------------------------
                     </td>

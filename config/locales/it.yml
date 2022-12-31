@@ -44,6 +44,7 @@ it:
         structures: Strutture
         veichles: Veicoli
         refunds: Rimborsi
+        signature: Firma
       road:
         name: Percorso
         road_lenght: Lunghezza

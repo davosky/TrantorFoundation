@@ -1,6 +1,10 @@
 class RefundsController < ApplicationController
   before_action :set_refund, only: %i[ show edit update destroy ]
 
+  before_action do
+    ActiveStorage::Current.host = request.base_url
+  end
+
   def index
     @refunds = Refund.where(user_id: current_user.id).order(created_at: "DESC")
   end

@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :veichles
   has_many :refunds
 
+  has_one_attached :signature
+
   before_create :set_id
 
   def set_id
