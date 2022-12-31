@@ -109,5 +109,5 @@ class Refund < ApplicationRecord
   end
 
   # Validations
-  validates :departure_date, :return_date, :request_date, :refund_date, presence: true
+  validates :departure_date, :return_date, :request_date, :refund_date, :transport_id, presence: true
 end

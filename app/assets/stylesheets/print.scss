@@ -12,12 +12,31 @@ body {
   color: #000000;
   background: #ffffff;
   font-family: Arial, sans-serif;
-  font-size: 11px;
+  font-size: 12px;
+}
+
+span.span-left {
+  float: left;
+}
+
+span.span-right {
+  float: right;
+}
+span.span-left {
+  float: left;
 }
 
 .header {
   padding: 10px 0;
   margin-bottom: 30px;
+}
+
+.blue-header {
+  vertical-align: middle;
+  color: #2c5aa0;
+  border: 2px solid #2c5aa0;
+  border-radius: 5px;
+  padding: 6px;
 }
 
 .title {
@@ -30,13 +49,17 @@ body {
 .hr-big {
   height: 2px;
   background-color: none;
-  border-top: 2px dotted #000000;
+  border-top: 2px dotted #2c5aa0;
 }
 
 .hr-small {
   height: 1px;
   background-color: none;
-  border-top: 1px solid #000000;
+  border-top: 1px solid #2c5aa0;
+}
+
+.pdf-header {
+  margin-bottom: 50mm;
 }
 
 table {

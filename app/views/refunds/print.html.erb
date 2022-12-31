@@ -44,4 +44,49 @@
       <% end %>
     </div>
   </div>
+  <hr>
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-striped">
+        <thead class="text-primary">
+          <th></th>
+          <th>
+            <i class="fa-solid fa-calendar-day"></i>
+            &nbsp;Data Partenza
+          </th>
+          <th>
+            <i class="fa-solid fa-location-dot"></i>
+            &nbsp;Luogo
+          </th>
+          <th>
+            <i class="fa-solid fa-building"></i>
+            &nbsp;Struttura
+          </th>
+          <th colspan=2></th>
+        </thead>
+        <tbody>
+          <% @refunds.each do |refund| %>
+            <tr>
+              <td>
+                <%= refund.refund_number %>
+              </td>
+              <td>
+                <%= refund.departure_date %>
+              </td>
+              <td>
+                <%= refund.place_fr %>
+              </td>
+              <td>
+                <%= refund.structure_fr %>
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

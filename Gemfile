@@ -7,6 +7,7 @@ gem "bootsnap", "~> 1.15", require: false
 gem "cssbundling-rails", "~> 1.1", ">= 1.1.1"
 gem "devise", "~> 4.8"
 gem "devise-i18n", "~> 1.10", ">= 1.10.2"
+gem "inline_svg", "~> 1.8"
 gem "jsbundling-rails", "~> 1.0", ">= 1.0.3"
 gem "pg", "~> 1.4"
 gem "puma", "~> 6.0"
