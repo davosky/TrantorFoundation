@@ -31,6 +31,7 @@ it:
         cost_per_km: Costo al Chilometro
         validator: Firmatario
         validator_presentation: Titolo Firmatario
+        validator_signature: Firma Firmatario
         god: Divinità
         admin: Amministratore
         manager: Direttore

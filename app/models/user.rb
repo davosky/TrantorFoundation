@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :refunds
 
   has_one_attached :signature
+  has_one_attached :validator_signature
 
   before_create :set_id
 

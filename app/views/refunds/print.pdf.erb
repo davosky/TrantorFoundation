@@ -74,6 +74,7 @@
                   <tbody>
                     <tr>
                       <td>
+                        <%= wicked_pdf_image_tag(refund.user.validator_signature.url, :size => "140x54", :crop => :fill) %>
                         <br/>
                         ------------------------------------------
                       </td>
@@ -95,7 +96,7 @@
               </p>
               <br/>
               <p>
-                RIMBORSO SPESE DI:&emsp;
+                Rimborso spese di:&emsp;
                 <strong>
                   <%= "#{refund.user.first_name} #{refund.user.last_name}" %>
                 </strong>
@@ -121,27 +122,27 @@
                 <tbody>
                   <tr>
                     <td>Vitto:</td>
-                    <td><strong><%= number_to_currency(refund.food_cost) %></strong></td>
+                    <td>&emsp;<strong><%= number_to_currency(refund.food_cost) unless refund.food_cost == 0.0 %></strong></td>
                   </tr>
                   <tr>
                     <td>Alloggio:</td>
-                    <td><strong><%= number_to_currency(refund.room_cost) %></strong></td>
+                    <td>&emsp;<strong><%= number_to_currency(refund.room_cost) unless refund.room_cost == 0.0 %></strong></td>
                   </tr>
                   <tr>
                     <td>Ticket:</td>
-                    <td><strong><%= number_to_currency(refund.ticket_cost) %></strong></td>
+                    <td>&emsp;<strong><%= number_to_currency(refund.ticket_cost) unless refund.ticket_cost == 0.0 %></strong></td>
                   </tr>
                   <tr>
                     <td>Varie:</td>
-                    <td><strong><%= number_to_currency(refund.generic_cost) %></strong></td>
+                    <td>&emsp;<strong><%= number_to_currency(refund.generic_cost) unless refund.generic_cost == 0.0 %></strong></td>
                   </tr>
                   <tr>
                     <td>Autostrada:</td>
-                    <td><strong><%= number_to_currency(refund.highway_cost_fr) %></strong></td>
+                    <td>&emsp;<strong><%= number_to_currency(refund.highway_cost_fr) unless refund.highway_cost_fr == 0.0 %></strong></td>
                   </tr>
                   <tr>
                     <td>Parcheggio:</td>
-                    <td><strong><%= number_to_currency(refund.parking_cost) %></strong></td>
+                    <td>&emsp;<strong><%= number_to_currency(refund.parking_cost) unless refund.parking_cost == 0.0 %></strong></td>
                   </tr>
                   <tr>
                     <td>
@@ -151,7 +152,7 @@
                     </td>
                     <td>
                       <h3>
-                        <strong><%= number_to_currency(refund.total_amount) %></strong></td>
+                        &emsp;<strong><%= number_to_currency(refund.total_amount) %></strong></td>
                     </h3>
                   </tr>
                 </tbody>

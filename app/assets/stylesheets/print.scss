@@ -15,15 +15,21 @@ body {
   font-size: 12px;
 }
 
-span.span-left {
-  float: left;
-}
-
 span.span-right {
   float: right;
 }
 span.span-left {
   float: left;
+}
+
+.list-table {
+  table tbody tr td {
+    min-width: 38mm;
+  }
+}
+
+.hr-dotted {
+  border-top: 2px dotted #5d6975;
 }
 
 .header {
@@ -62,72 +68,6 @@ span.span-left {
   margin-bottom: 50mm;
 }
 
-table {
-  background-color: #fff;
-}
-
-td {
-  text-align: left;
-  padding: 5px;
-}
-
-th {
-  text-align: left;
-  padding: 5px;
-}
-
-tr {
-  text-align: center;
-}
-
-table.center {
-  padding: 10px;
-  width: 70%;
-  margin-left: 15%;
-  margin-right: 15%;
-}
-
-table.smallfont {
-  padding: 10px;
-  width: 98%;
-  margin-left: 1%;
-  margin-right: 1%;
-  font-family: Arial, sans-serif;
-  font-size: 9px;
-}
-
-table.center-border {
-  padding: 10px;
-  width: 98%;
-  margin-left: 1%;
-  margin-right: 1%;
-}
-
-tr.red {
-  text-align: center;
-  border: 1px;
-  border-style: solid;
-  border-color: #990000;
-}
-
-th.red {
-  font-size: 12px;
-  font-family: Tahoma, Helvetica, sans-serif;
-  text-align: center;
-  border: 1px;
-  border-style: solid;
-  border-color: #990000;
-}
-
-td.red {
-  font-size: 12px;
-  font-family: Tahoma, Helvetica, sans-serif;
-  text-align: center;
-  border: 1px;
-  border-style: solid;
-  border-color: #990000;
-}
-
 .logo {
   display: inline-block;
 }
@@ -156,7 +96,7 @@ td.red {
 
 @page {
   size: A4;
-  orientation: landscape;
+  orientation: protrait;
   margin: 0;
 }
 

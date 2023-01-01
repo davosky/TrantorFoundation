@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8'/>
+    <%= stylesheet_link_tag wicked_pdf_asset_base64('print_list.scss') %>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <span class="span-right">
+            <%= inline_svg('pdf/refunds_logo_riepilogo.svg', preserve_aspect_ratio: 'xMaxYMax meet') %>
+          </span>
+          <br/>
+          <br/>
+          <br/>
+          <%= inline_svg('pdf/cgil_logo.svg', preserve_aspect_ratio: 'xMaxYMax meet') %>
+          <hr/>
+          <br/>
+          <table align="center">
+            <thead>
+              <tr>
+                <th class="td-institute"><strong>Utente</strong></th>
+                <th class="td-institute"><strong>Istituto</strong></th>
+                <th class="td-date"><strong>Data</strong></th>
+                <th class="td-date"><strong>Ammontare</strong></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @total = 0 %>
+              <% @refunds.each do |refund| %>
+                <tr>
+                  <td class="td-institute"><%= "#{refund.user.first_name} #{refund.user.last_name}" %></td>
+                  <td class="td-institute"><%= refund.user.institute %></td>
+                  <td class="td-date"><%= l(refund.departure_date) %></td>
+                  <td class="td-date"><%= number_to_currency(refund.total_amount) %></td>
+                </tr>
+                <% @total = @total + refund.total_amount %>
+              <% end %>
+            </tbody>
+          </table>
+          <br/>
+          <hr/>
+          <br/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <span class="span-right">
+            <h3>
+              Totale:
+              &emsp;
+              <strong>
+                <%= number_to_currency(@total) %>
+              </strong>
+              &emsp;
+            </h3>
+          </span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

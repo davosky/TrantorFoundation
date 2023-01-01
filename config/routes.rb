@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :refunds do
     collection do
       get :print
+      get :print_list
     end
   end
 
