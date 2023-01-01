@@ -99,7 +99,11 @@ class Refund < ApplicationRecord
     if self.transport.name == "Veicolo Aziendale" # company veichle
       sum_value = food + parking + room + ticket + generic + highway
     elsif self.transport.name == "Veicolo Privato" # private veichle
-      partial_cost = self.road.road_lenght * self.user.cost_per_km
+      if self.road_id != nil
+        partial_cost = self.road.road_lenght * self.user.cost_per_km
+      else
+        partial_cost = self.road_lenght_fr * self.user.cost_per_km
+      end
       sum_value = food + parking + room + ticket + generic + highway + partial_cost
     else
       sum_value = food + parking + room + ticket + generic
@@ -109,5 +113,5 @@ class Refund < ApplicationRecord
   end
 
   # Validations
-  validates :departure_date, :return_date, :request_date, :refund_date, :transport_id, :road_fr, presence: true
+  validates :departure_date, :return_date, :request_date, :refund_date, :transport_id, presence: true
 end

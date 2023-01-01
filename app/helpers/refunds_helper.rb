@@ -63,8 +63,7 @@ module RefundsHelper
 
   def incurred_private_veichle_cost(refund)
     if refund.transport.name == "Veicolo Privato"
-      total_lenght_cost = refund.user.cost_per_km * refund.road.road_lenght
-      ("<li>Tabella ACI: <strong>#{number_to_currency(refund.user.cost_per_km)}</strong> al chilometro moltiplicato per <strong>#{refund.road.road_lenght} km</strong> di percorso per un totale di <strong>#{number_to_currency(total_lenght_cost)}</strong></li>").html_safe
+      ("<li> Tabella ACI: #{number_to_currency(refund.user.cost_per_km * refund.road_lenght_fr)}</li>").html_safe
     end
   end
 

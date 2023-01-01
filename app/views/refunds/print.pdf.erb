@@ -74,7 +74,9 @@
                   <tbody>
                     <tr>
                       <td>
-                        <%= wicked_pdf_image_tag(refund.user.validator_signature.url, :size => "140x54", :crop => :fill) %>
+                        <% unless refund.user.validator_signature != nil %>
+                          <%= wicked_pdf_image_tag(refund.user.validator_signature.url, :size => "140x54", :crop => :fill) %>
+                        <% end %>
                         <br/>
                         ------------------------------------------
                       </td>
@@ -102,18 +104,30 @@
                 </strong>
               </p>
               <p>
-                Percorso:&emsp;
+                Percorso:&nbsp;
                 <strong>
                   <%= refund.road_fr %>
                 </strong>
-                &emsp;
-                Lunghezza percorso:
-                &emsp;
+                <br/>
+                Lunghezza:
+                &nbsp;
                 <strong>
                   <%= refund.road_lenght_fr %>
                   &nbsp;
                   Km
                 </strong>
+                <% unless refund.transport_fr != "Veicolo Privato" %>
+                  &nbsp;
+                  Tabella ACI:
+                  &nbsp;
+                  <strong>
+                    <%= number_to_currency(refund.road_lenght_fr * refund.user.cost_per_km) %>
+                  </strong>
+                  &nbsp;
+                  <small>
+                    (<%= "#{number_to_currency(refund.user.cost_per_km)} per #{refund.road_lenght_fr} Km" %> )
+                  </small>
+                <% end %>
               </p>
               <table>
                 <thead>
@@ -171,7 +185,9 @@
                   <tr></tr>
                   <tr>
                     <td>
-                      <%= wicked_pdf_image_tag(refund.user.signature.url, :size => "140x54", :crop => :fill) %>
+                      <% unless refund.user.signature != nil %>
+                        <%= wicked_pdf_image_tag(refund.user.signature.url, :size => "140x54", :crop => :fill) %>
+                      <% end %>
                       <br>
                       ------------------------------------------
                     </td>
