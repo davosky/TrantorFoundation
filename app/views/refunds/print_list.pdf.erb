@@ -23,6 +23,7 @@
                 <th class="td-institute"><strong>Utente</strong></th>
                 <th class="td-institute"><strong>Istituto</strong></th>
                 <th class="td-date"><strong>Data</strong></th>
+                <th class="td-date"><strong>Luogo</strong></th>
                 <th class="td-date"><strong>Ammontare</strong></th>
               </tr>
             </thead>
@@ -33,6 +34,7 @@
                   <td class="td-institute"><%= "#{refund.user.first_name} #{refund.user.last_name}" %></td>
                   <td class="td-institute"><%= refund.user.institute %></td>
                   <td class="td-date"><%= l(refund.departure_date) %></td>
+                  <td><%= refund.place_fr %></td>
                   <td class="td-date"><%= number_to_currency(refund.total_amount) %></td>
                 </tr>
                 <% @total = @total + refund.total_amount %>

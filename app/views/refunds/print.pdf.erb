@@ -74,7 +74,7 @@
                   <tbody>
                     <tr>
                       <td>
-                        <% unless refund.user.validator_signature != nil %>
+                        <% unless refund.user.validator_signature == nil %>
                           <%= wicked_pdf_image_tag(refund.user.validator_signature.url, :size => "140x54", :crop => :fill) %>
                         <% end %>
                         <br/>
@@ -109,6 +109,7 @@
                   <%= refund.road_fr %>
                 </strong>
                 <br/>
+                <br/>
                 Lunghezza:
                 &nbsp;
                 <strong>
@@ -116,19 +117,22 @@
                   &nbsp;
                   Km
                 </strong>
-                <% unless refund.transport_fr != "Veicolo Privato" %>
+                <% if refund.transport_fr == "Veicolo Privato" %>
                   &nbsp;
                   Tabella ACI:
                   &nbsp;
                   <strong>
-                    <%= number_to_currency(refund.road_lenght_fr * refund.user.cost_per_km) %>
+                    <%= number_to_currency(refund.user.cost_per_km) %>
                   </strong>
                   &nbsp;
-                  <small>
-                    (<%= "#{number_to_currency(refund.user.cost_per_km)} per #{refund.road_lenght_fr} Km" %> )
-                  </small>
+                  Totale:
+                  &nbsp;
+                  <strong>
+                    <%= "#{number_to_currency(refund.user.cost_per_km * refund.road_lenght_fr)}"%>
+                  </strong>
                 <% end %>
               </p>
+              ---------------------------------------------------------------------------------------------------------
               <table>
                 <thead>
                   <th></th>
@@ -159,6 +163,14 @@
                     <td>&emsp;<strong><%= number_to_currency(refund.parking_cost) unless refund.parking_cost == 0.0 %></strong></td>
                   </tr>
                   <tr>
+                    <td>Costo ACI:</td>
+                    <td>&emsp;<strong>
+                        <% if refund.transport_fr == "Veicolo Privato" %>
+                          <%= "#{number_to_currency(refund.user.cost_per_km * refund.road_lenght_fr)}"%>
+                        <% end %>
+                      </strong></td>
+                  </tr>
+                  <tr>
                     <td>
                       <h3>
                         Totale:
@@ -171,6 +183,8 @@
                   </tr>
                 </tbody>
               </table>
+              ---------------------------------------------------------------------------------------------------------
+              <br/>
               <br/>
               <table>
                 <thead>
@@ -185,7 +199,7 @@
                   <tr></tr>
                   <tr>
                     <td>
-                      <% unless refund.user.signature != nil %>
+                      <% unless refund.user.signature == nil %>
                         <%= wicked_pdf_image_tag(refund.user.signature.url, :size => "140x54", :crop => :fill) %>
                       <% end %>
                       <br>

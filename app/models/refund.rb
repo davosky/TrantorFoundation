@@ -34,7 +34,6 @@ class Refund < ApplicationRecord
       if self.road.road_lenght != nil
         self.road_lenght_fr = self.road.road_lenght
       end
-    else
     end
 
     if self.place_id != nil

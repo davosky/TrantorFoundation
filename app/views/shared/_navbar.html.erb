@@ -6,12 +6,36 @@
     &emsp;
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <%= link_to refunds_path, class: "nav-link my-navbar-link" do %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown nav-link-main-navbar" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
             <i class="fa-solid fa-wallet"></i>
             &nbsp;
             Rimborsi
-          <% end %>
+          </a>
+          <div class="dropdown-menu">
+            <%= link_to refunds_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-wallet"></i>
+              <i class="fa-solid fa-list"></i>
+              &nbsp;
+              Elenco Rimborsi
+            <% end %>
+            <%= link_to print_refunds_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-wallet"></i>
+              &nbsp;
+              <i class="fa-solid fa-print"></i>
+              &nbsp;
+              Stampa Rimborsi
+            <% end %>
+            <%= link_to print_list_refunds_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-wallet"></i>
+              &nbsp;
+              <i class="fa-solid fa-print"></i>
+              &nbsp;
+              <i class="fa-solid fa-list"></i>
+              &nbsp;
+              Stampa Riepiloghi
+            <% end %>
+          </div>
         </li>
       </ul>
       <ul class="navbar-nav ms-auto">
