@@ -1,0 +1,8 @@
+<%= render @refund_closure %>
+<div>
+  <%= link_to "Edit", edit_refund_closure_path(@refund_closure) %> |
+  <%= link_to "Destroy", refund_closure_path(@refund_closure),
+    "data-turbo-method": :delete,
+    "data-turbo-confirm": "Are you sure?" %> |
+  <%= link_to "Back to refund closures", refund_closures_path %>
+</div>

@@ -1,0 +1,56 @@
+class RefundClosuresController < ApplicationController
+  before_action :set_refund_closure, only: %i[ show edit update destroy ]
+
+  before_action do
+    ActiveStorage::Current.host = request.base_url
+  end
+
+  def index
+    @q = RefundClosure.ransack(params[:q])
+    @refund_closures = @q.result(distinct: true).order(created_at: "DESC").where(user_id: current_user.id)
+  end
+
+  def show
+    @refund_closure = RefundClosure.find(params[:id])
+  end
+
+  def new
+    @refund_closure = RefundClosure.new
+  end
+
+  def edit
+  end
+
+  def create
+    @refund_closure = current_user.refund_closures.build(refund_closure_params)
+
+    if @refund_closure.save
+      redirect_to refund_closures_path, notice: "refund_closure was successfully created."
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @refund_closure.update(refund_closure_params)
+      redirect_to refund_closures_path, notice: "refund_closure was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @refund_closure.destroy
+    redirect_to refund_closures_url, notice: "refund_closure was successfully destroyed."
+  end
+
+  private
+
+  def set_refund_closure
+    @refund_closure = RefundClosure.find(params[:id])
+  end
+
+  def refund_closure_params
+    params.require(:refund_closure).permit(:year_refrence, :month_refrence, :period_reference, :user_id, :refund_print, :refund_summary, :refund_receipt_1, :refund_receipt_2, :refund_receipt_3, :refund_receipt_4, :refund_receipt_5)
+  end
+end

@@ -1,0 +1,81 @@
+<div class="col-3">
+  <div class="d-grid mx-3">
+    <%= image_tag("refunds_logo.svg", class: "img-fluid") %>
+    <%= link_to new_refund_closure_path, "data-controller": "turbo", class: "btn btn-primary btn-sm shadow mb-3" do %>
+      <i class="fa-solid fa-file-pen"></i>
+      &nbsp;
+      <i class="fa-solid fa-wallet"></i>
+      &nbsp;
+      Nuova Chiusura Rimborsi
+    <% end %>
+  </div>
+</div>
+<div class="col-9">
+  <table class="table table-hover table-striped">
+    <thead class="text-primary">
+      <th></th>
+      <th>
+        <i class="fa-solid fa-calendar-day"></i>
+        &nbsp;Anno di Riferimento
+      </th>
+      <th>
+        <i class="fa-solid fa-location-dot"></i>
+        &nbsp;Mese di Riferimento
+      </th>
+      <th>
+        <i class="fa-solid fa-building"></i>
+        &nbsp;Periodo di Riferimento
+      </th>
+      <th>
+        <i class="fa-solid fa-building"></i>
+        &nbsp;Utente
+      </th>
+      <th colspan=2></th>
+    </thead>
+    <tbody>
+      <% @refund_closures.each do |refund_closure| %>
+        <tr>
+          <td>
+            <%= link_to refund_closure_path(refund_closure), 
+            "data-controller": "turbo", 
+            class: "btn btn-outline-primary btn-sm",
+            "data-bs-toggle": "tooltip", 
+            "title": "Visualizza Dettagli" do %>
+              <i class="fa-solid fa-computer-mouse"></i>
+            <% end %>
+          </td>
+          <td>
+            <%= refund_closure.year_reference %>
+          </td>
+          <td>
+            <%= refund_closure.month_reference %>
+          </td>
+          <td>
+            <%= refund_closure.period_reference %>
+          </td>
+          <td>
+            <%= "#{refund_closure.user.first_name} #{refund_closure.user.last_name}" %>
+          </td>
+          <td>
+            <%= link_to edit_refund_closure_path(refund_closure), 
+            "data-controller": "turbo", 
+            "data-bs-toggle": "tooltip", 
+            "title": "Modifica il Record Corrente", class: "edit-link" do %>
+              <i class="fa-solid fa-pen-to-square"></i>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to refund_closure_path(refund_closure),
+            "data-turbo-method": :delete,
+            "data-turbo-confirm": "Sicuri di voler eliminare il record corrente?", 
+            "data-bs-toggle": "tooltip", 
+            "title": "Elimina il Record Corrente", class: "delete-link" do %>
+              <i class="fa-solid fa-trash"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+</div>

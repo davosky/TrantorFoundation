@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_31_171208) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_04_162636) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,6 +56,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_31_171208) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "refund_closures", force: :cascade do |t|
+    t.string "year_reference"
+    t.string "month_reference"
+    t.string "period_reference"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_refund_closures_on_user_id"
   end
 
   create_table "refunds", force: :cascade do |t|
@@ -157,4 +167,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_31_171208) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "refund_closures", "users"
 end

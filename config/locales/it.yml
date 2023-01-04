@@ -16,6 +16,7 @@ it:
       reason: Motivo
       veichle: Veicolo
       refund: Rimborso
+      refund_closures: Chiusure Rimborsi
     attributes:
       user:
         username: Nome Utente
@@ -37,6 +38,7 @@ it:
         manager: Direttore
         regular: Operatore
         sex: Sesso
+        signature: Firma
         created_at: Creato Il
         updated_at: Aggiornato il
         roads: Percorsi
@@ -45,7 +47,7 @@ it:
         structures: Strutture
         veichles: Veicoli
         refunds: Rimborsi
-        signature: Firma
+        refund_closures: Chiusure Rimborsi
       road:
         name: Percorso
         road_lenght: Lunghezza
@@ -127,6 +129,21 @@ it:
         veichle: Veicolo
         veichle_id: Veicolo
         veichle_fr: Veicolo
+        created_at: Creato il
+        updated_at: Aggiornato il
+      refund_closure:
+        year_reference: Anno Riferimento
+        month_reference: Mese Riferimento
+        period_reference: Periodo Riferimento
+        user: Utente
+        user_id: Utente
+        refund_print: Allegato Rimborsi
+        refund_summary: Allegato Riepiloghi
+        refund_receipt_1: Allegato Ricevute (1)
+        refund_receipt_2: Allegato Ricevute (2)
+        refund_receipt_3: Allegato Ricevute (3)
+        refund_receipt_4: Allegato Ricevute (4)
+        refund_receipt_5: Allegato Ricevute (5)
         created_at: Creato il
         updated_at: Aggiornato il
     errors:

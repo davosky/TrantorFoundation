@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :reasons
   has_many :veichles
   has_many :refunds
+  has_many :refund_closures
 
   has_one_attached :signature
   has_one_attached :validator_signature

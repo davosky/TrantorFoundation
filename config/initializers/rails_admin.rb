@@ -55,6 +55,12 @@ RailsAdmin.config do |config|
     label_plural "Rimborsi"
   end
 
+  config.model "RefundClosure" do
+    visible true
+    label "Chiusura Rimborso"
+    label_plural "Chiusura Rimborsi"
+  end
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory

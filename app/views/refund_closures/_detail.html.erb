@@ -1,0 +1,67 @@
+<%= turbo_frame_tag :remote_modal, target: :_top do %>
+  <div class="modal fade" data-controller="modal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header mb-5">
+          <div class="modal-title">
+            <%= image_tag("refunds_form_icon.svg", class: "img-fluid") %>
+          </div>
+          <a class="modal-header-link" data-bs-dismiss="modal" aria-label="Close">
+            <i class="fa-solid fa-xmark"></i>
+          </a>
+        </div>
+        <div class="modal-body mb-5">
+          <div class="col-8 offset-2">
+            <div id="<%= dom_id @refund_closure %>" class="scaffold_record">
+              <div class="row">
+                <div class="col">
+                  <span class="text-primary">
+                    <strong>
+                      Chiusura Rimborsi rirerita a:
+                    </strong>
+                    <br/>
+                    Anno:
+                    &nbsp;
+                    <strong>
+                      <%= @refund_closure.year_reference %>
+                    </strong>
+                    &emsp;
+                    <% if @refund_closure.month_reference.present? %>
+                      Mese:
+                      &nbsp;
+                      <strong>
+                        <%= @refund_closure.month_reference %>
+                      </strong>
+                      &emsp;
+                    <% end %>
+                    <% if @refund_closure.period_reference.present? %>
+                      Periodo:
+                      &nbsp;
+                      <strong>
+                        <%= @refund_closure.period_reference %>
+                      </strong>
+                    <% end %>
+                  </span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <hr/>
+                  <br/>
+                  <% if @refund_closure.refund_print.attached? %>
+                    <iframe src=<%= url_for(@refund_closure.refund_print) %> width="360" height="500"></iframe>
+                  <% end %>
+                  <% if @refund_closure.refund_summary.attached? %>
+                    <iframe src=<%= url_for(@refund_closure.refund_summary) %> width="360" height="500"></iframe>
+                    <%# iframe_tag @refund_closure.refund_print.preview(:thumb) %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
