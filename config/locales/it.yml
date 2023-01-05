@@ -139,7 +139,7 @@ it:
         user_id: Utente
         refund_print: Allegato Rimborsi
         refund_summary: Allegato Riepiloghi
-        highway_movements: Telepass
+        highway_movements: Allegato Telepass
         refund_receipt_1: Allegato Ricevute (1)
         refund_receipt_2: Allegato Ricevute (2)
         refund_receipt_3: Allegato Ricevute (3)

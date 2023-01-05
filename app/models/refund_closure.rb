@@ -10,4 +10,8 @@ class RefundClosure < ApplicationRecord
   has_one_attached :refund_receipt_4
   has_one_attached :refund_receipt_5
   has_one_attached :refund_receipt_6
+
+  validates :year_reference, presence: true
+  validates_presence_of :month_reference, :unless => :period_reference?
+  validates_presence_of :period_reference, :unless => :month_reference?
 end
