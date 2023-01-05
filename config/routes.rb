@@ -16,7 +16,11 @@ Rails.application.routes.draw do
       get :print_list
     end
   end
-  resources :refund_closures
+  resources :refund_closures do
+    collection do
+      get :search
+    end
+  end
 
   devise_for :users, skip: [:registrations]
   as :user do

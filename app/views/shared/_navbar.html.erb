@@ -44,6 +44,17 @@
               &nbsp;
               Chiusure Rimborsi
             <% end %>
+            <% if can? :search, RefundClosure %>
+              <%= link_to search_refund_closures_path, class: "dropdown-item" do %>
+                <i class="fa-solid fa-wallet"></i>
+                &nbsp;
+                <i class="fa-solid fa-print"></i>
+                &nbsp;
+                <i class="fa-solid fa-gear"></i>
+                &nbsp;
+                Amministrazione Rimborsi
+              <% end %>
+            <% end %>
           </div>
         </li>
       </ul>

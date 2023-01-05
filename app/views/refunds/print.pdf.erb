@@ -74,7 +74,7 @@
                   <tbody>
                     <tr>
                       <td>
-                        <% unless refund.user.validator_signature == nil %>
+                        <% if refund.user.validator_signature.attached? %>
                           <%= wicked_pdf_image_tag(refund.user.validator_signature.url, :size => "140x54", :crop => :fill) %>
                         <% end %>
                         <br/>
@@ -199,7 +199,7 @@
                   <tr></tr>
                   <tr>
                     <td>
-                      <% unless refund.user.signature == nil %>
+                      <% if refund.user.signature.attached? %>
                         <%= wicked_pdf_image_tag(refund.user.signature.url, :size => "140x54", :crop => :fill) %>
                       <% end %>
                       <br>

@@ -1,4 +1,6 @@
 class RefundClosuresController < ApplicationController
+  load_and_authorize_resource
+
   before_action :set_refund_closure, only: %i[ show edit update destroy ]
 
   before_action do
@@ -8,6 +10,11 @@ class RefundClosuresController < ApplicationController
   def index
     @q = RefundClosure.ransack(params[:q])
     @refund_closures = @q.result(distinct: true).order(created_at: "DESC").where(user_id: current_user.id)
+  end
+
+  def search
+    @q = RefundClosure.ransack(params[:q])
+    @refund_closures = @q.result(distinct: true).order(created_at: "DESC").where(user_id: User.where(province: current_user.province, region: current_user.region))
   end
 
   def show
