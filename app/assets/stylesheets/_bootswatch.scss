@@ -217,3 +217,10 @@ tr {
     cursor: pointer;
   }
 }
+
+// Navbar
+
+.navbar .dropdown-menu {
+  border: 2px solid;
+  border-color: $white;
+}

@@ -4,7 +4,7 @@
       <div class="modal-content">
         <div class="modal-header mb-5">
           <div class="modal-title">
-            <%= image_tag("refunds_form_icon.svg", class: "img-fluid") %>
+            <%= image_tag("refund_closures_form_icon.svg", class: "img-fluid") %>
           </div>
           <a class="modal-header-link" data-bs-dismiss="modal" aria-label="Close">
             <i class="fa-solid fa-xmark"></i>
@@ -16,46 +16,179 @@
               <div class="row">
                 <div class="col">
                   <span class="text-primary">
-                    <strong>
-                      Chiusura Rimborsi rirerita a:
-                    </strong>
+                    Chiusura Rimborsi rirerita a:
                     <br/>
-                    Anno:
-                    &nbsp;
-                    <strong>
-                      <%= @refund_closure.year_reference %>
-                    </strong>
-                    &emsp;
-                    <% if @refund_closure.month_reference.present? %>
-                      Mese:
+                    <br/>
+                    <h5>
+                      <strong>
+                        <i class="fa-solid fa-user-circle"></i>
+                        &nbsp;
+                        <%= "#{@refund_closure.user.first_name} #{@refund_closure.user.last_name}" %>
+                      </strong>
+                      <br/>
+                      <br/>
+                      <i class="fa-regular fa-calendar-days"></i>
+                      &nbsp;
+                      Anno:
                       &nbsp;
                       <strong>
-                        <%= @refund_closure.month_reference %>
+                        <%= @refund_closure.year_reference %>
                       </strong>
                       &emsp;
-                    <% end %>
-                    <% if @refund_closure.period_reference.present? %>
-                      Periodo:
-                      &nbsp;
-                      <strong>
-                        <%= @refund_closure.period_reference %>
-                      </strong>
-                    <% end %>
+                      <% if @refund_closure.month_reference.present? %>
+                        <i class="fa-solid fa-calendar-days"></i>
+                        &nbsp;
+                        Mese:
+                        &nbsp;
+                        <strong>
+                          <%= @refund_closure.month_reference %>
+                        </strong>
+                        &emsp;
+                      <% end %>
+                      <% if @refund_closure.period_reference.present? %>
+                        <i class="fa-solid fa-calendar-week"></i>
+                        &nbsp;
+                        Periodo:
+                        &nbsp;
+                        <strong>
+                          <%= @refund_closure.period_reference %>
+                        </strong>
+                      <% end %>
+                    </h5>
                   </span>
+                  <br/>
                 </div>
               </div>
               <div class="row">
-                <div class="col">
-                  <hr/>
-                  <br/>
-                  <% if @refund_closure.refund_print.attached? %>
-                    <iframe src=<%= url_for(@refund_closure.refund_print) %> width="360" height="500"></iframe>
-                  <% end %>
-                  <% if @refund_closure.refund_summary.attached? %>
-                    <iframe src=<%= url_for(@refund_closure.refund_summary) %> width="360" height="500"></iframe>
-                    <%# iframe_tag @refund_closure.refund_print.preview(:thumb) %>
+                <hr/>
+                <div class="col-4">
+                  <% unless !@refund_closure.refund_print.attached? %>
+                    <div class="d-grid gap-2">
+                      <%= link_to @refund_closure.refund_print, class: 'btn btn-primary mb-3', target: '_blank'  do %>
+                        <i class="fa-solid fa-download"></i>
+                        &nbsp;
+                        <i class='far fa-file-pdf'></i>
+                        &emsp;
+                        Rimborsi
+                      <% end %>
+                    </div>
                   <% end %>
                 </div>
+                <div class="col-4">
+                  <% unless !@refund_closure.refund_summary.attached? %>
+                    <div class="d-grid gap-2">
+                      <%= link_to @refund_closure.refund_summary, class: 'btn btn-primary mb-3', target: '_blank'  do %>
+                        <i class="fa-solid fa-download"></i>
+                        &nbsp;
+                        <i class='far fa-file-pdf'></i>
+                        &emsp;
+                        Riepilogo
+                      <% end %>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="col-4">
+                  <% unless !@refund_closure.highway_movements.attached? %>
+                    <div class="d-grid gap-2">
+                      <%= link_to @refund_closure.highway_movements, class: 'btn btn-primary mb-3', target: '_blank'  do %>
+                        <i class="fa-solid fa-download"></i>
+                        &nbsp;
+                        <i class='far fa-file-pdf'></i>
+                        &emsp;
+                        Telepass
+                      <% end %>
+                    </div>
+                  <% end %>
+                </div>
+                <br/>
+                <hr/>
+              </div>
+              <!--
+                <div class="col">
+                  <% if @refund_closure.refund_print.attached? %>
+                    <iframe src=<%= url_for(@refund_closure.refund_print) %> width="190" height="260"></iframe>
+                  <% end %>
+                  <% if @refund_closure.refund_summary.attached? %>
+                    <iframe src=<%= url_for(@refund_closure.refund_summary) %> width="190" height="260"></iframe>
+                  <% end %>
+                </div>
+              </div>
+              -->
+              <div class="row">
+                <div class="col-4">
+                  <% unless !@refund_closure.refund_receipt_1.attached? %>
+                    <div class="d-grid gap-2">
+                      <%= link_to @refund_closure.refund_receipt_1, class: 'btn btn-primary mb-3', target: '_blank'  do %>
+                        <i class="fa-solid fa-download"></i>
+                        &nbsp;
+                        <i class='far fa-file-pdf'></i>
+                        &emsp;
+                        Ricevute (1)
+                      <% end %>
+                    </div>
+                  <% end %>
+                  <% unless !@refund_closure.refund_receipt_4.attached? %>
+                    <div class="d-grid gap-2">
+                      <%= link_to @refund_closure.refund_receipt_4, class: 'btn btn-primary mb-3', target: '_blank'  do %>
+                        <i class="fa-solid fa-download"></i>
+                        &nbsp;
+                        <i class='far fa-file-pdf'></i>
+                        &emsp;
+                        Ricevute (4)
+                      <% end %>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="col-4">
+                  <% unless !@refund_closure.refund_receipt_2.attached? %>
+                    <div class="d-grid gap-2">
+                      <%= link_to @refund_closure.refund_receipt_2, class: 'btn btn-primary mb-3', target: '_blank'  do %>
+                        <i class="fa-solid fa-download"></i>
+                        &nbsp;
+                        <i class='far fa-file-pdf'></i>
+                        &emsp;
+                        Ricevute (2)
+                      <% end %>
+                    </div>
+                  <% end %>
+                  <% unless !@refund_closure.refund_receipt_5.attached? %>
+                    <div class="d-grid gap-2">
+                      <%= link_to @refund_closure.refund_receipt_5, class: 'btn btn-primary mb-3', target: '_blank'  do %>
+                        <i class="fa-solid fa-download"></i>
+                        &nbsp;
+                        <i class='far fa-file-pdf'></i>
+                        &emsp;
+                        Ricevute (4)
+                      <% end %>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="col-4">
+                  <% unless !@refund_closure.refund_receipt_3.attached? %>
+                    <div class="d-grid gap-2">
+                      <%= link_to @refund_closure.refund_receipt_3, class: 'btn btn-primary mb-3', target: '_blank'  do %>
+                        <i class="fa-solid fa-download"></i>
+                        &nbsp;
+                        <i class='far fa-file-pdf'></i>
+                        &emsp;
+                        Ricevute (3)
+                      <% end %>
+                    </div>
+                  <% end %>
+                  <% unless !@refund_closure.refund_receipt_6.attached? %>
+                    <div class="d-grid gap-2">
+                      <%= link_to @refund_closure.refund_receipt_6, class: 'btn btn-primary mb-3', target: '_blank'  do %>
+                        <i class="fa-solid fa-download"></i>
+                        &nbsp;
+                        <i class='far fa-file-pdf'></i>
+                        &emsp;
+                        Ricevute (4)
+                      <% end %>
+                    </div>
+                  <% end %>
+                </div>
+                <br/>
+                <hr/>
               </div>
             </div>
           </div>

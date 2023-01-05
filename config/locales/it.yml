@@ -16,7 +16,7 @@ it:
       reason: Motivo
       veichle: Veicolo
       refund: Rimborso
-      refund_closures: Chiusure Rimborsi
+      refund_closure: Chiusura Rimborsi
     attributes:
       user:
         username: Nome Utente
@@ -139,11 +139,13 @@ it:
         user_id: Utente
         refund_print: Allegato Rimborsi
         refund_summary: Allegato Riepiloghi
+        highway_movements: Telepass
         refund_receipt_1: Allegato Ricevute (1)
         refund_receipt_2: Allegato Ricevute (2)
         refund_receipt_3: Allegato Ricevute (3)
         refund_receipt_4: Allegato Ricevute (4)
         refund_receipt_5: Allegato Ricevute (5)
+        refund_receipt_6: Allegato Ricevute (6)
         created_at: Creato il
         updated_at: Aggiornato il
     errors:

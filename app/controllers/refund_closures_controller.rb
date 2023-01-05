@@ -51,6 +51,6 @@ class RefundClosuresController < ApplicationController
   end
 
   def refund_closure_params
-    params.require(:refund_closure).permit(:year_refrence, :month_refrence, :period_reference, :user_id, :refund_print, :refund_summary, :refund_receipt_1, :refund_receipt_2, :refund_receipt_3, :refund_receipt_4, :refund_receipt_5)
+    params.require(:refund_closure).permit(:year_reference, :month_reference, :period_reference, :user_id, :refund_print, :refund_summary, :highway_movements, :refund_receipt_1, :refund_receipt_2, :refund_receipt_3, :refund_receipt_4, :refund_receipt_5, :refund_receipt_6)
   end
 end

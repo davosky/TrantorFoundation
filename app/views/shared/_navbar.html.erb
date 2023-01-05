@@ -12,7 +12,7 @@
             &nbsp;
             Rimborsi
           </a>
-          <div class="dropdown-menu">
+          <div class="dropdown-menu shadow">
             <%= link_to refunds_path, class: "dropdown-item" do %>
               <i class="fa-solid fa-wallet"></i>
               <i class="fa-solid fa-list"></i>
@@ -35,13 +35,12 @@
               &nbsp;
               Stampa Riepiloghi
             <% end %>
-            <br/>
             <%= link_to refund_closures_path, class: "dropdown-item" do %>
               <i class="fa-solid fa-wallet"></i>
               &nbsp;
               <i class="fa-solid fa-print"></i>
               &nbsp;
-              <i class="fa-solid fa-list"></i>
+              <i class="fa-solid fa-file-pen"></i>
               &nbsp;
               Chiusure Rimborsi
             <% end %>
@@ -55,7 +54,7 @@
             &nbsp;
             Moduli
           </a>
-          <div class="dropdown-menu">
+          <div class="dropdown-menu shadow">
             <%= link_to roads_path, class: "dropdown-item" do %>
               <i class="fa-solid fa-route"></i>
               &nbsp;

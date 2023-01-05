@@ -19314,3 +19314,8 @@ tr td .delete-link:hover {
   color: #ff0000 !important;
   cursor: pointer;
 }
+
+.navbar .dropdown-menu {
+  border: 2px solid;
+  border-color: #fff;
+}
