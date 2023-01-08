@@ -1,56 +1,120 @@
-<div class="col-3">
-  <div class="d-grid mx-3">
-    <%= image_tag("search_refund_closures_logo.svg", class: "img-fluid") %>
+<div class="row">
+  <div class="col-12">
+    <%= search_form_for @q, id: "search-form", url: search_refund_closures_path do |form| %>
+      <%= image_tag("search_refund_closures_logo.svg", class: "img-fluid mb-3") %>
+      <div class="row">
+        <div class="col-4">
+          <div class="input-group mb-2">
+            <div class="input-group-text">
+              <i class="fa-regular fa-calendar-days"></i>
+              &nbsp;<span>Anno</span>
+            </div>
+            <%= form.text_field :year_reference_i_cont, class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="input-group mb-2">
+            <div class="input-group-text">
+              <i class="fa-solid fa-calendar-days"></i>
+              &nbsp;<span>Mese</span>
+            </div>
+            <%= form.text_field :month_reference_i_cont, class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-4">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <div class="input-group mb-2">
+            <div class="input-group-text">
+              <i class="fa-solid fa-user"></i>
+              &nbsp;<span> Cognome Utente</span>
+            </div>
+            <%= form.text_field :user_last_name_i_cont, class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="input-group mb-2">
+            <div class="input-group-text">
+              <i class="fa-solid fa-user"></i>
+              &nbsp;<span> Nome Utente</span>
+            </div>
+            <%= form.text_field :user_first_name_i_cont, class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="d-grid">
+            <%= button_tag(type: "submit", class: "btn btn-primary") do %>
+              <i class="fa-solid fa-magnifying-glass"></i>
+              &emsp;
+              <strong>
+                Cerca
+              </strong>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <br/>
+    <% end %>
   </div>
 </div>
-<div class="col-9">
-  <table class="table table-hover table-striped">
-    <thead class="text-primary">
-      <th colspan=1></th>
-      <th>
-        <i class="fa-regular fa-calendar-days"></i>
-        &nbsp;Anno di Riferimento
-      </th>
-      <th>
-        <i class="fa-solid fa-calendar-days"></i>
-        &nbsp;Mese di Riferimento
-      </th>
-      <th>
-        <i class="fa-solid fa-calendar-week"></i>
-        &nbsp;Periodo di Riferimento
-      </th>
-      <th>
-        <i class="fa-solid fa-user"></i>
-        &nbsp;Utente
-      </th>
-    </thead>
-    <tbody>
-      <% @refund_closures.each do |refund_closure| %>
-        <tr>
-          <td>
-            <%= link_to refund_closure_path(refund_closure), 
+<hr>
+<table class="table table-hover table-striped">
+  <thead class="text-primary">
+    <th colspan=1></th>
+    <th>
+      <i class="fa-regular fa-calendar-days"></i>
+      &nbsp;Anno di Riferimento
+    </th>
+    <th>
+      <i class="fa-solid fa-calendar-days"></i>
+      &nbsp;Mese di Riferimento
+    </th>
+    <th>
+      <i class="fa-solid fa-calendar-week"></i>
+      &nbsp;Periodo di Riferimento
+    </th>
+    <th>
+      <i class="fa-solid fa-user"></i>
+      &nbsp;Utente
+    </th>
+    <th colspan="2"></th>
+  </thead>
+  <tbody>
+    <% @refund_closures.each do |refund_closure| %>
+      <tr>
+        <td>
+          <%= link_to refund_closure_path(refund_closure), 
             "data-controller": "turbo", 
             class: "btn btn-outline-primary btn-sm",
             "data-bs-toggle": "tooltip", 
             "title": "Visualizza Dettagli" do %>
-              <i class="fa-solid fa-computer-mouse"></i>
-            <% end %>
-          </td>
-          <td>
-            <%= refund_closure.year_reference %>
-          </td>
-          <td>
-            <%= refund_closure.month_reference %>
-          </td>
-          <td>
-            <%= refund_closure.period_reference %>
-          </td>
-          <td>
-            <%= "#{refund_closure.user.first_name} #{refund_closure.user.last_name}" %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <br>
-</div>
+            <i class="fa-solid fa-computer-mouse"></i>
+          <% end %>
+        </td>
+        <td class="<%= payed_fg?(refund_closure) %>">
+          <%= refund_closure.year_reference %>
+        </td>
+        <td class="<%= payed_fg?(refund_closure) %>">
+          <%= refund_closure.month_reference %>
+        </td>
+        <td class="<%= payed_fg?(refund_closure) %>">
+          <%= refund_closure.period_reference %>
+        </td>
+        <td class="<%= payed_fg?(refund_closure) %>">
+          <%= "#{refund_closure.user.first_name} #{refund_closure.user.last_name}" %>
+        </td>
+        <td>
+          <%= link_to edit_refund_closure_path(refund_closure), 
+            "data-controller": "turbo", 
+            "data-bs-toggle": "tooltip", 
+            "title": "Modifica il Record Corrente", class: "edit-link" do %>
+            <i class="fa-solid fa-pen-to-square"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>

@@ -12,7 +12,15 @@
         </div>
         <div class="modal-body mb-1">
           <div class="col">
-            <%= render "refund_closures/form", refund_closure: refund_closure %>
+            <% if @refund_closure.refund_print.attached? %>
+              <% if current_user.regular == true %>
+                <%= render "refund_closures/payed" %>
+              <% elsif current_user.god == true || current_user.manager == true && current_user.province == @refund_closure.user.province && current_user.region == @refund_closure.user.region %>
+                <%= render "refund_closures/form_payer", refund_closure: refund_closure %>
+              <% end %>
+            <% else %>
+              <%= render "refund_closures/form", refund_closure: refund_closure %>
+            <% end %>
           </div>
         </div>
       </div>

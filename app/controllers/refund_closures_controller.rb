@@ -40,7 +40,7 @@ class RefundClosuresController < ApplicationController
 
   def update
     if @refund_closure.update(refund_closure_params)
-      redirect_to refund_closures_path, notice: "refund_closure was successfully updated."
+      redirect_to search_refund_closures_path, notice: "refund_closure was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -58,6 +58,10 @@ class RefundClosuresController < ApplicationController
   end
 
   def refund_closure_params
-    params.require(:refund_closure).permit(:year_reference, :month_reference, :period_reference, :user_id, :refund_print, :refund_summary, :highway_movements, :refund_receipt_1, :refund_receipt_2, :refund_receipt_3, :refund_receipt_4, :refund_receipt_5, :refund_receipt_6)
+    if current_user.god == true || current_user.admin == true || current_user.manager == true
+      params.require(:refund_closure).permit(:year_reference, :month_reference, :period_reference, :user_id, :refund_print, :refund_summary, :highway_movements, :refund_receipt_1, :refund_receipt_2, :refund_receipt_3, :refund_receipt_4, :refund_receipt_5, :refund_receipt_6, :payed)
+    else
+      params.require(:refund_closure).permit(:year_reference, :month_reference, :period_reference, :user_id, :refund_print, :refund_summary, :highway_movements, :refund_receipt_1, :refund_receipt_2, :refund_receipt_3, :refund_receipt_4, :refund_receipt_5, :refund_receipt_6)
+    end
   end
 end

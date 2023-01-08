@@ -38,7 +38,7 @@ class Ability
       # Can manage all owned records on RefundClosure module
       can :create, RefundClosure
       can :update, RefundClosure do |refund_closure|
-        refund_closure.user == user
+        refund_closure.user.province == user.province && refund_closure.user.region == user.region
       end
       can :destroy, RefundClosure do |refund_closure|
         refund_closure.user == user
@@ -48,7 +48,7 @@ class Ability
       end
 
       can :search, RefundClosure do |refund_closure|
-        refund_closure.user == user
+        refund_closure.user.province == user.province && refund_closure.user.region == user.region
       end
     end
     # ==================================================================

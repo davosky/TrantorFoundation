@@ -41,25 +41,25 @@ hr {
 
 // Forms
 
-.input-group-addon {
-  color: $white;
-}
+//.input-group-addon {
+//   color: $white;
+// }
+//
+// .form-floating > label {
+//   color: $gray-700;
+// }
 
-.form-floating > label {
-  color: $gray-700;
-}
+// .form-control {
+//   background-color: $gray-500;
+// }
 
-.form-control {
-  background-color: $gray-500;
-}
+// .input-group-text {
+//   min-width: 8rem;
+// }
 
-.input-group-text {
-  min-width: 8rem;
-}
-
-.form-check-input {
-  border: solid 1px $primary;
-}
+// .form-check-input {
+//   border: solid 1px $primary;
+// }
 
 // Navs
 .nav-tabs,
@@ -158,6 +158,10 @@ hr {
   color: $white !important;
 }
 
+.form-check-input {
+  border: solid 1px $primary;
+}
+
 // Custom
 
 .p-justify {
@@ -223,4 +227,12 @@ tr {
 .navbar .dropdown-menu {
   border: 2px solid;
   border-color: $white;
+}
+
+.fg-payed {
+  color: $success !important;
+}
+
+.fg-unpayed {
+  color: $danger !important;
 }

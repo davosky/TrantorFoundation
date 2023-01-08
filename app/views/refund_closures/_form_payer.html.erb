@@ -1,0 +1,41 @@
+<%= form_with(model: refund_closure) do |form| %>
+  <% if refund_closure.errors.any? %>
+    <div class="row mb-2">
+      <div class="card border-danger bg-white">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6 text-center">
+              <%= image_tag("error.svg", class: "img-fluid") %>
+            </div>
+            <div class="col-6">
+              <h4 class="text-danger">Non posso salvare il record per i seguenti motivi:</h4>
+              <ul>
+                <% refund_closure.errors.each do |error| %>
+                  <li class="text-danger"><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-6 offset-3">
+      <br/>
+      <div class="form-check">
+        <strong>
+          <%= form.label :payed, class: "form-check-label text-primary" %>
+          <i class="fa-solid fa-receipt text-primary"></i>
+          <i class="fa-solid fa-cash-register text-primary"></i>
+          &nbsp;
+          <%= form.check_box :payed, class: "form-check-input text-primary" %>
+        </strong>
+      </div>
+      <br/>
+      <div class="d-grid">
+        <%= form.submit class: 'btn btn-primary btn-sm' %>
+      </div>
+    </div>
+  </div>
+<% end %>

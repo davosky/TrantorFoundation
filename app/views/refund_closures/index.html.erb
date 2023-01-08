@@ -34,7 +34,7 @@
     </thead>
     <tbody>
       <% @refund_closures.each do |refund_closure| %>
-        <tr>
+        <tr >
           <td>
             <%= link_to refund_closure_path(refund_closure), 
             "data-controller": "turbo", 
@@ -44,16 +44,16 @@
               <i class="fa-solid fa-computer-mouse"></i>
             <% end %>
           </td>
-          <td>
+          <td class="<%= payed_fg?(refund_closure) %>">
             <%= refund_closure.year_reference %>
           </td>
-          <td>
+          <td class="<%= payed_fg?(refund_closure) %>">
             <%= refund_closure.month_reference %>
           </td>
-          <td>
+          <td class="<%= payed_fg?(refund_closure) %>">
             <%= refund_closure.period_reference %>
           </td>
-          <td>
+          <td class="<%= payed_fg?(refund_closure) %>">
             <%= "#{refund_closure.user.first_name} #{refund_closure.user.last_name}" %>
           </td>
           <td>

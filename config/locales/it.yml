@@ -146,6 +146,7 @@ it:
         refund_receipt_4: Allegato Ricevute (4)
         refund_receipt_5: Allegato Ricevute (5)
         refund_receipt_6: Allegato Ricevute (6)
+        payed: Pagato
         created_at: Creato il
         updated_at: Aggiornato il
     errors:
