@@ -16,7 +16,7 @@ class Ability
     # ==================================================================
     # *** Manager ***
     # ==================================================================
-    if user.manager == true
+    if user.manager == true || user.admin == true
       # Can manage all owned records on Refund module
       # Can manage all owned records on Refund module
       can :create, Refund
@@ -41,7 +41,7 @@ class Ability
         refund_closure.user.province == user.province && refund_closure.user.region == user.region
       end
       can :destroy, RefundClosure do |refund_closure|
-        refund_closure.user == user
+        refund_closure.user == user if refund_closure.payed == false
       end
       can :read, RefundClosure do |refund_closure|
         refund_closure.user.province == user.province && refund_closure.user.region == user.region
@@ -82,7 +82,7 @@ class Ability
         refund_closure.user == user
       end
       can :destroy, RefundClosure do |refund_closure|
-        refund_closure.user == user
+        refund_closure.user == user if refund_closure.payed == false
       end
       can :read, RefundClosure do |refund_closure|
         refund_closure.user == user
