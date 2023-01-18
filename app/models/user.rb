@@ -13,8 +13,10 @@ class User < ApplicationRecord
   has_many :refunds
   has_many :refund_closures
 
-  has_one_attached :signature
-  has_one_attached :validator_signature
+  mount_uploader :signature, SignatureUploader
+
+  # has_one_attached :signature
+  # has_one_attached :validator_signature
 
   before_create :set_id
 
@@ -24,4 +26,14 @@ class User < ApplicationRecord
   end
 
   validates :first_name, :last_name, :category, :region, :province, :institute, :office, :validator, :validator_presentation, :sex, presence: true
+
+  validates_integrity_of :signature
+
+  validates_processing_of :signature
+
+  private
+
+  def signature_size_validation
+    errors[:signature] << "should be less than 1000KB" if signature.size > 1.0.megabytes
+  end
 end

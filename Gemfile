@@ -5,6 +5,7 @@ ruby "3.1.2"
 
 gem "bootsnap", "~> 1.15", require: false
 gem "cancancan", "~> 3.4"
+gem "carrierwave", "~> 2.2", ">= 2.2.3"
 gem "cssbundling-rails", "~> 1.1", ">= 1.1.1"
 gem "devise", "~> 4.8"
 gem "devise-i18n", "~> 1.10", ">= 1.10.2"
