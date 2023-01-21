@@ -17,6 +17,16 @@ it:
       veichle: Veicolo
       refund: Rimborso
       refund_closure: Chiusura Rimborsi
+      holiday: Ferie
+    simple_calendar:
+      previous: "<<"
+      next: ">>"
+      first: Inizio
+      last: Fine
+      day: Giorno
+      week: Settimana
+      mouth: Mese
+      year: Anno
     attributes:
       user:
         username: Nome Utente
@@ -149,6 +159,16 @@ it:
         payed: Pagato
         created_at: Creato il
         updated_at: Aggiornato il
+      holiday:
+        start_date: Data Inizio
+        end_date: Data Fine
+        note: Note
+        updater: Aggiornato da
+        update_date: Aggiornato il
+        created_at: Creato il
+        updated_at: Aggiornato il
+        user: Utente
+        user_id: Utente
     errors:
       messages:
         record_invalid: "Validazione fallita: %{errors}"

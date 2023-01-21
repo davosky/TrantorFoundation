@@ -1,0 +1,8 @@
+<%= render @holiday %>
+<div>
+  <%= link_to "Edit", edit_holiday_path(@holiday) %> |
+  <%= link_to "Destroy", holiday_path(@holiday),
+    "data-turbo-method": :delete,
+    "data-turbo-confirm": "Are you sure?" %> |
+  <%= link_to "Back to holidays", holidays_path %>
+</div>

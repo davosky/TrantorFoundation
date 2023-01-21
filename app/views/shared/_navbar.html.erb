@@ -62,6 +62,22 @@
             <% end %>
           </div>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown nav-link-main-navbar" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-calendar"></i>
+            &nbsp;
+            Assenze
+          </a>
+          <div class="dropdown-menu shadow">
+            <%= link_to holidays_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-calendar-days"></i>
+              &nbsp;
+              <i class="fa-solid fa-list"></i>
+              &nbsp;
+              Ferie
+            <% end %>
+          </div>
+        </li>
       </ul>
       <ul class="navbar-nav ms-auto">
         <li class="nav-item dropdown">

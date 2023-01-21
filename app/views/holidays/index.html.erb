@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-8">
+    <h3 class='text-primary'>
+      <%= image_tag("holidays_logo.svg", class: "img-fluid") %>
+      &emsp;
+      Calendario FERIE
+    </h3>
+  </div>
+  <div class="col-4">
+    <div class="d-grid">
+      <%= link_to new_holiday_path, "data-controller": "turbo", class: "btn btn-primary btn-sm shadow" do %>
+        <i class="fa-solid fa-plus"></i>
+        &nbsp;
+        <i class="fa-solid fa-car"></i>
+        &nbsp;
+        Aggiungi Ferie
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <%= month_calendar(events: @holidays) do |date, holidays| %>
+      <% if date.wday == 0 || date.wday == 6 %>
+      <% else %>
+        <div class='card bg-light mb-1 shadow'>
+          <div class='card-header card-header-calendar text-center'>
+            <i class='fas fa-calendar-day'></i>
+            &nbsp;
+            <%= l(date, format: '%a %d') %>
+            &emsp;
+            <span class='text-secondary'>
+              <%= l(date, format: '%b') %>
+            </span>
+          </div>
+          <div class='card-body card-body-calendar'>
+            <% holidays.each do |holiday| %>
+              <%= link_to holiday_path(holiday), "data-controller": "turbo", title: "#{holiday.note}", 'data-toggle' => 'tooltip', 'data-placement' => 'bottom'  do %>
+                <span>
+                  <i class='far fa-user'></i>
+                  &nbsp;
+                  <%= "#{holiday.user.last_name} #{holiday.user.first_name}".truncate(19) %>
+                </span>
+              <% end %>
+              <br/>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

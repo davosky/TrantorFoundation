@@ -19311,3 +19311,15 @@ tr td .delete-link:hover {
 .fg-unpayed {
   color: #ff0000 !important;
 }
+
+.card-header-calendar {
+  background-color: #ebebeb;
+  color: #8a35bb;
+}
+
+.card-body-calendar {
+  background-color: #f8f9fa;
+}
+.card-body-calendar a:hover {
+  color: #ff5e00;
+}

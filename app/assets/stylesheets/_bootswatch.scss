@@ -39,28 +39,6 @@ hr {
   }
 }
 
-// Forms
-
-//.input-group-addon {
-//   color: $white;
-// }
-//
-// .form-floating > label {
-//   color: $gray-700;
-// }
-
-// .form-control {
-//   background-color: $gray-500;
-// }
-
-// .input-group-text {
-//   min-width: 8rem;
-// }
-
-// .form-check-input {
-//   border: solid 1px $primary;
-// }
-
 // Navs
 .nav-tabs,
 .nav-pills {
@@ -235,4 +213,21 @@ tr {
 
 .fg-unpayed {
   color: $danger !important;
+}
+
+// Card
+
+.card-header-calendar {
+  background-color: $gray-200;
+  color: $info;
+}
+
+.card-body-calendar {
+  background-color: $gray-100;
+
+  a {
+    &:hover {
+      color: $warning;
+    }
+  }
 }

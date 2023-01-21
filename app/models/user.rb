@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :veichles
   has_many :refunds
   has_many :refund_closures
+  has_many :holidays
 
   mount_uploader :signature, SignatureUploader
 
@@ -30,6 +31,10 @@ class User < ApplicationRecord
   validates_integrity_of :signature
 
   validates_processing_of :signature
+
+  def user_name_full
+    "#{self.last_name} #{self.first_name}"
+  end
 
   private
 

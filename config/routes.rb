@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       get :search
     end
   end
+  resources :holidays
 
   devise_for :users, skip: [:registrations]
   as :user do

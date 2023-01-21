@@ -61,6 +61,12 @@ RailsAdmin.config do |config|
     label_plural "Chiusura Rimborsi"
   end
 
+  config.model "Holiday" do
+    visible true
+    label "Ferie"
+    label_plural "Ferie"
+  end
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory

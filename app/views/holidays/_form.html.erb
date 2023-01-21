@@ -1,0 +1,61 @@
+<%= form_with(model: holiday) do |form| %>
+  <% if holiday.errors.any? %>
+    <div style="color: red">
+      <h4>
+        Errore!&emsp;Non posso salvare per i seguenti motivi:
+      </h4>
+      <ul>
+        <% holiday.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% unless current_user.regular == true %>
+    <div class="input-group mb-1">
+      <span class="input-group-text">
+        <i class="fa-solid fa-user"></i>
+        &nbsp;&nbsp;
+        <%= form.label :user %>
+      </span>
+      <%= form.collection_select :user_id, User.order('last_name ASC'), :id, :user_name_full, {:include_blank => false}, {:class => 'form-control'} %>
+    </div>
+  <% end %>
+  <div class="input-group mb-1">
+    <span class="input-group-text">
+      <i class="fa-solid fa-calendar-day"></i>
+      &nbsp;&nbsp;
+      <%= form.label :start_date %>
+    </span>
+    <%= form.date_field :start_time, class: 'form-control' %>
+  </div>
+  <div class="input-group mb-1">
+    <span class="input-group-text">
+      <i class="fa-solid fa-calendar-day"></i>
+      &nbsp;&nbsp;
+      <%= form.label :end_date %>
+    </span>
+    <%= form.date_field :end_time, class: 'form-control' %>
+  </div>
+  <div class="input-group mb-2">
+    <span class="input-group-text">
+      <i class="fa-solid fa-pencil"></i>
+      &nbsp;&nbsp;
+      <%= form.label :note %>
+    </span>
+    <%= form.text_area :note, class: 'form-control' %>
+  </div>
+  <% unless current_user.regular == true %>
+    <div class="form-check form-check-inline">
+      <label class="form-check-label text-primary" for="checkboxPrefilled">
+        Processato
+        &nbsp;&nbsp;
+        <i class="fa-solid fa-cog"></i>
+      </label>
+      <%= form.check_box :processed, class: 'form-check-input' %>
+    </div>
+  <% end %>
+  <div class="d-grid">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
