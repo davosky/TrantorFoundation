@@ -4,7 +4,7 @@
       <div class="modal-content">
         <div class="modal-header mb-5">
           <div class="modal-title">
-            <%= image_tag("veichles_form_icon.svg", class: "img-fluid") %>
+            <%= image_tag("holidays_form_icon.svg", class: "img-fluid") %>
           </div>
           <a class="modal-header-link" data-bs-dismiss="modal" aria-label="Close">
             <i class="fa-solid fa-xmark"></i>
@@ -15,35 +15,46 @@
             <div id="<%= dom_id @holiday %>" class="scaffold_record">
               <div class="row">
                 <div class="col">
-                  <%= holiday_full_user(@holiday) %>
+                  <h3 class="text-primary">
+                    <%= holiday_full_user(@holiday) %>
+                  </h3>
+                  <hr class="bg-primary"/>
+                  <h5 class="text-primary">
+                    Dal giorno:
+                    &emsp;
+                    <strong>
+                      <%= l(@holiday.start_time, format: "%A %d %B %Y") %>
+                    </strong>
+                    &emsp;
+                    al giorno:
+                    &emsp;
+                    <strong>
+                      <%= l(@holiday.end_time, format: "%A %d %B %Y") %>
+                    </strong>
+                    <hr/>
+                    Note:
+                    <br/>
+                    <br/>
+                    <span class="text-dark">
+                      <%= @holiday.note %>
+                    </span>
+                  </h5>
                   <hr class="bg-primary"/>
                   <br/>
-                  <span class="text-primary">
-                    <i class="fa-solid fa-calendar-day"></i>
-                    Data Inizio:
-                    &emsp;
-                    <%= l(@holiday.start_time) %>
+                  <span class="float-end">
+                    <small class="text-secondary">
+                      aggiornato da:
+                      &nbsp;
+                      <%= @holiday.updater %>
+                      &emsp;
+                      data Ultimo Aggiornamento:
+                      &nbsp;
+                      <%= l(@holiday.update_date) if @holiday.update_date.present? %>
+                    </small>
                   </span>
-                  <br/>
-                  <span class="text-primary">
-                    <%= l(@holiday.end_time) %>
-                    <i class="fa-solid fa-calendar-day"></i>
-                    Data Fine:
-                    &emsp;
-                    <hr class="bg-primary"/>
-                  </span>
-                  <br/>
-                  Aggiornato da:
-                  &nbsp;
-                  <%= @holiday.updater %>
-                  <br/>
-                  Data Ultimo Aggiornamento:
-                  &nbsp;
-                  <%= @holiday.update_date %>
                 </div>
               </div>
             </div>
-            <hr class="bg-primary"/>
           </div>
         </div>
       </div>

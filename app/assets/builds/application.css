@@ -19312,14 +19312,26 @@ tr td .delete-link:hover {
   color: #ff0000 !important;
 }
 
+.card-calendar {
+  border: 1px solid #888;
+}
+
 .card-header-calendar {
   background-color: #ebebeb;
-  color: #8a35bb;
+  color: #666;
 }
 
 .card-body-calendar {
   background-color: #f8f9fa;
 }
 .card-body-calendar a:hover {
-  color: #ff5e00;
+  color: #8a35bb;
+}
+
+.badge {
+  border: 1px solid #2c5aa0;
+}
+.badge:hover {
+  background-color: #ebebeb;
+  border: 1px solid #8a35bb;
 }

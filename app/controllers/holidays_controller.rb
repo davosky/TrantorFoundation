@@ -1,4 +1,6 @@
 class HolidaysController < ApplicationController
+  load_and_authorize_resource
+
   before_action :set_holiday, only: %i[ show edit update destroy ]
 
   def index
@@ -59,6 +61,6 @@ class HolidaysController < ApplicationController
   end
 
   def holiday_params
-    params.require(:holiday).permit(:user_id, :start_time, :end_time, :note, :updater, :update_date)
+    params.require(:holiday).permit(:user_id, :start_time, :end_time, :note, :updater, :update_date, :processed)
   end
 end

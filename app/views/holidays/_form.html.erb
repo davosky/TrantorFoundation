@@ -46,14 +46,17 @@
     <%= form.text_area :note, class: 'form-control' %>
   </div>
   <% unless current_user.regular == true %>
+    <br/>
     <div class="form-check form-check-inline">
       <label class="form-check-label text-primary" for="checkboxPrefilled">
-        Processato
+        Presa visione
         &nbsp;&nbsp;
-        <i class="fa-solid fa-cog"></i>
+        <i class="fa-solid fa-eye"></i>
       </label>
       <%= form.check_box :processed, class: 'form-check-input' %>
     </div>
+    <br/>
+    <br/>
   <% end %>
   <div class="d-grid">
     <%= form.submit class: 'btn btn-primary' %>

@@ -217,9 +217,13 @@ tr {
 
 // Card
 
+.card-calendar {
+  border: 1px solid $gray-600;
+}
+
 .card-header-calendar {
   background-color: $gray-200;
-  color: $info;
+  color: $gray-650;
 }
 
 .card-body-calendar {
@@ -227,7 +231,18 @@ tr {
 
   a {
     &:hover {
-      color: $warning;
+      color: $info;
     }
+  }
+}
+
+// Badges
+
+.badge {
+  border: 1px solid $primary;
+
+  &:hover {
+    background-color: $gray-200;
+    border: 1px solid $info;
   }
 }
