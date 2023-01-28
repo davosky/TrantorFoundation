@@ -18,7 +18,11 @@
         &nbsp;&nbsp;
         <%= form.label :user %>
       </span>
-      <%= form.collection_select :user_id, User.order('last_name ASC'), :id, :user_name_full, {:include_blank => false}, {:class => 'form-control'} %>
+      <% unless current_user.god == true %>
+        <%= form.collection_select :user_id, User.order('last_name ASC').where(province: current_user.province, region: current_user.region), :id, :user_name_full, {:include_blank => false}, {:class => 'form-control'} %>
+      <% else %>
+        <%= form.collection_select :user_id, User.order('last_name ASC'), :id, :user_name_full, {:include_blank => false}, {:class => 'form-control'} %>
+      <% end %>
     </div>
   <% end %>
   <div class="input-group mb-1">

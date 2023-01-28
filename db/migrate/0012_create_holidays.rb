@@ -7,6 +7,7 @@ class CreateHolidays < ActiveRecord::Migration[7.0]
       t.text :note
       t.boolean :processed
       t.string :updater
+      y.string :creator
       t.date :update_date
 
       t.timestamps

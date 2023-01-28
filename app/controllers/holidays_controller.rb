@@ -4,12 +4,15 @@ class HolidaysController < ApplicationController
   before_action :set_holiday, only: %i[ show edit update destroy ]
 
   def index
-    unless current_user.god == true || current_user.manager == true
-      @q = Holiday.ransack(params[:q])
-      @holidays = @q.result(distinct: true).where(user_id: current_user)
-    else
+    if current_user.god == true
       @q = Holiday.ransack(params[:q])
       @holidays = @q.result(distinct: true)
+    elsif current_user.manager == true
+      @q = Holiday.ransack(params[:q])
+      @holidays = @q.result(distinct: true).where(user_id: User.where(province: current_user.province, region: current_user.region))
+    else
+      @q = Holiday.ransack(params[:q])
+      @holidays = @q.result(distinct: true).where(user_id: current_user)
     end
   end
 
@@ -30,6 +33,8 @@ class HolidaysController < ApplicationController
     else
       @holiday = Holiday.new(holiday_params)
     end
+
+    @holiday.creator = "#{current_user.last_name} #{current_user.first_name}"
 
     if @holiday.save
       redirect_to holidays_path, notice: "holiday was successfully created."

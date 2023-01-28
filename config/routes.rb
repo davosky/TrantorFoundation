@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   get "home/index"
   get "home/credits"
+  get "dashboard/index"
+  get "dashboard/search"
+  get "dashboard/today"
+  get "dashboard/peruser"
 
   resources :roads
   resources :transports

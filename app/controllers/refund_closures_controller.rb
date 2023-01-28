@@ -13,8 +13,13 @@ class RefundClosuresController < ApplicationController
   end
 
   def search
-    @q = RefundClosure.ransack(params[:q])
-    @refund_closures = @q.result(distinct: true).order(created_at: "DESC").where(user_id: User.where(province: current_user.province, region: current_user.region))
+    if current_user.god == true
+      @q = RefundClosure.ransack(params[:q])
+      @refund_closures = @q.result(distinct: true).order(created_at: "DESC")
+    else
+      @q = RefundClosure.ransack(params[:q])
+      @refund_closures = @q.result(distinct: true).order(created_at: "DESC").where(user_id: User.where(province: current_user.province, region: current_user.region))
+    end
   end
 
   def show
