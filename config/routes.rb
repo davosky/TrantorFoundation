@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "home/credits"
   get "dashboard/index"
   get "dashboard/search"
-  get "dashboard/today"
+  get "dashboard/whatsup"
   get "dashboard/peruser"
 
   resources :roads

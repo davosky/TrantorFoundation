@@ -5,7 +5,8 @@ class DashboardController < ApplicationController
   def search
   end
 
-  def today
+  def whatsup
+    @holidays = Holiday.all
   end
 
   def peruser

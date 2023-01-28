@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="d-flex">
+    <h4 class="text-primary">
+      <%= image_tag("dashboard_logo.svg", class: "img-fluid") %>
+      &emsp;
+      Oggi:
+      &emsp; 
+      <%= l(Date.today, format: "%A %d %B %Y") %>
+    </h4>
+  </div>
+</div>
+<div class="row">
+  <hr/>
+  <br/>
+  <div class="col-4">
+    <div class="card bg-white border-primary shadow">
+      <div class="card-header bg-primary text-white">
+        <%= image_tag("dashboard_holidays_logo.svg", class: "img-fluid") %>
+      </div>
+      <div class="card-body">
+        <% @holidays.each do |holiday| %>
+          <% if Date.today.between?(holiday.start_time, holiday.end_time) %>
+            <h5 class="text-primary">
+              <i class='fas fa-user-circle'></i>
+              &nbsp;
+              <%= link_to holiday.user.last_name, holiday_path(holiday), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" %>
+              &nbsp;
+              <%= holiday.user.first_name %>
+              &emsp;
+              <hr/>
+            </h5>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-4"></div>
+  <div class="col-4"></div>
+</div>
