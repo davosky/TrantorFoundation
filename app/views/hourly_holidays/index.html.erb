@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-8">
+    <h3 class='text-primary'>
+      <%= image_tag("hourly_holidays_logo.svg", class: "img-fluid") %>
+      &emsp;
+      FERIE Orarie
+    </h3>
+  </div>
+  <div class="col-4">
+    <div class="d-grid">
+      <%= link_to new_hourly_holiday_path, "data-controller": "turbo", class: "btn btn-primary btn-sm shadow" do %>
+        <i class="fa-solid fa-plus"></i>
+        &nbsp;
+        <i class="fa-solid fa-bath"></i>
+        &nbsp;
+        Aggiungi Ore Ferie
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <%= month_calendar(events: @hourly_holidays) do |date, hourly_holidays| %>
+      <% if date.wday == 0 || date.wday == 6 %>
+      <% else %>
+        <div class='card card-calendar bg-light mb-1 shadow'>
+          <div class='card-header card-header-calendar text-center'>
+            <i class='fas fa-calendar-day'></i>
+            &nbsp;
+            <%= l(date, format: '%a %d') %>
+            &emsp;
+            <span class='text-secondary'>
+              <%= l(date, format: '%b') %>
+            </span>
+          </div>
+          <div class='card-body card-body-calendar'>
+            <% hourly_holidays.each do |hourly_holiday| %>
+              <span class="badge">
+                <%= link_to hourly_holiday_path(hourly_holiday), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
+                  <i class='fas fa-user'></i>
+                  &nbsp;
+                  <%= "#{hourly_holiday.user.last_name} #{hourly_holiday.user.first_name.split.map{|i| i[0,1].upcase}.join}" %>
+                <% end %>
+                <span class="text-dark">
+                  &nbsp;
+                  |
+                  &nbsp;
+                  <%= link_to edit_hourly_holiday_path(hourly_holiday), "data-controller": "turbo" , "data-bs-toggle": "tooltip", "title": "Modifica il Record Corrente" do %>
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  <% end %>
+                  &nbsp;
+                  &nbsp;
+                  <%= link_to hourly_holiday_path(hourly_holiday), "data-turbo-method": :delete, "data-turbo-confirm": "Sicuri di voler eliminare il record corrente?" , "data-bs-toggle": "tooltip", "title": "Elimina il Record Corrente" do %>
+                    <i class="fa-solid fa-trash"></i>
+                  <% end %>
+                </span>
+              </span>
+              <br/>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

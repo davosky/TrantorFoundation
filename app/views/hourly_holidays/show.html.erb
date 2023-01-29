@@ -1,0 +1,8 @@
+<%= render @hourly_holiday %>
+<div>
+  <%= link_to "Edit", edit_hourly_holiday_path(@hourly_holiday) %> |
+  <%= link_to "Destroy", hourly_holiday_path(@hourly_holiday),
+    "data-turbo-method": :delete,
+    "data-turbo-confirm": "Are you sure?" %> |
+  <%= link_to "Back to hourly_holidays", hourly_holidays_path %>
+</div>

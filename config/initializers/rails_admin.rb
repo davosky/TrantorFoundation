@@ -67,6 +67,12 @@ RailsAdmin.config do |config|
     label_plural "Ferie"
   end
 
+  config.model "HourlyHoliday" do
+    visible true
+    label "Ferie Orarie"
+    label_plural "Ferie Orarie"
+  end
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory

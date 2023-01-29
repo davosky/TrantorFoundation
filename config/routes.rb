@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     end
   end
   resources :holidays
+  resources :hourly_holidays
 
   devise_for :users, skip: [:registrations]
   as :user do

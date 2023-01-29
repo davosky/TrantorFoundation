@@ -60,6 +60,17 @@ class Ability
       can :read, Holiday do |holiday|
         holiday.user.province == user.province && holiday.user.region == user.region
       end
+      # Can manage all owned records on HourlyHoliday model
+      can :create, HourlyHoliday
+      can :update, HourlyHoliday do |hourly_holiday|
+        hourly_holiday.user.province == user.province && hourly_holiday.user.region == user.region
+      end
+      can :destroy, HourlyHoliday do |hourly_holiday|
+        hourly_holiday.user.province == user.province && hourly_holiday.user.region == user.region
+      end
+      can :read, HourlyHoliday do |hourly_holiday|
+        hourly_holiday.user.province == user.province && hourly_holiday.user.region == user.region
+      end
       # Can manage all owned records on Place model
       can :manage, Place do |place|
         place.user == user
@@ -131,6 +142,14 @@ class Ability
       end
       can :read, Holiday do |holiday|
         holiday.user == user
+      end
+      # Can manage all owned records on HourlyHoliday model
+      can :create, HourlyHoliday
+      can :update, HourlyHoliday do |hourly_holiday|
+        hourly_holiday.user == user && hourly_holiday.processed != true
+      end
+      can :destroy, HourlyHoliday do |hourly_holiday|
+        hourly_holiday.user == user && hourly_holiday.processed != true
       end
       # Can manage all owned records on Place model
       can :manage, Place do |place|

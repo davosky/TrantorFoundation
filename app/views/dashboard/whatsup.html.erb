@@ -34,6 +34,25 @@
       </div>
     </div>
   </div>
-  <div class="col-4"></div>
+  <div class="col-4">
+    <div class="card bg-white border-primary shadow">
+      <div class="card-header bg-primary text-white">
+        <%= image_tag("dashboard_hourly_holidays_logo.svg", class: "img-fluid") %>
+      </div>
+      <div class="card-body">
+        <% @hourly_holidays.each do |hourly_holiday| %>
+          <h5 class="text-primary">
+            <i class='fas fa-user-circle'></i>
+            &nbsp;
+            <%= link_to hourly_holiday.user.last_name, hourly_holiday_path(hourly_holiday), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" %>
+            &nbsp;
+            <%= hourly_holiday.user.first_name %>
+            &emsp;
+            <hr/>
+          </h5>
+        <% end %>
+      </div>
+    </div>
+  </div>
   <div class="col-4"></div>
 </div>

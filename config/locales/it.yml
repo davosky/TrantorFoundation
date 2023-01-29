@@ -18,6 +18,7 @@ it:
       refund: Rimborso
       refund_closure: Chiusura Rimborsi
       holiday: Ferie
+      hourly_holiday: Ferie Orarie
     simple_calendar:
       previous: "<<"
       next: ">>"
@@ -162,6 +163,16 @@ it:
       holiday:
         start_date: Data Inizio
         end_date: Data Fine
+        note: Note
+        updater: Aggiornato da
+        update_date: Aggiornato il
+        created_at: Creato il
+        updated_at: Aggiornato il
+        user: Utente
+        user_id: Utente
+      hourly_holiday:
+        start_date: Data-Ora Inizio
+        end_date: Data-Ora Fine
         note: Note
         updater: Aggiornato da
         update_date: Aggiornato il

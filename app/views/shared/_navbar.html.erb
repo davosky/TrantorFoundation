@@ -74,6 +74,11 @@
               &nbsp;
               Ferie
             <% end %>
+            <%= link_to hourly_holidays_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-bath"></i>
+              &nbsp;
+              Ore Ferie
+            <% end %>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -83,10 +88,12 @@
             Cruscotto
           </a>
           <div class="dropdown-menu shadow">
-            <%= link_to dashboard_whatsup_path, class: "dropdown-item" do %>
-              <i class="fa-solid fa-calendar-day"></i>
-              &nbsp;
-              Oggi
+            <% if god? || manager? %>
+              <%= link_to dashboard_whatsup_path, class: "dropdown-item" do %>
+                <i class="fa-solid fa-calendar-day"></i>
+                &nbsp;
+                Oggi
+              <% end %>
             <% end %>
           </div>
         </li>

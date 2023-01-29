@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :refunds
   has_many :refund_closures
   has_many :holidays
+  has_many :hourly_holidays
 
   mount_uploader :signature, SignatureUploader
 
