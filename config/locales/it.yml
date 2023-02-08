@@ -19,6 +19,7 @@ it:
       refund_closure: Chiusura Rimborsi
       holiday: Ferie
       hourly_holiday: Ferie Orarie
+      disease: Malattia
     simple_calendar:
       previous: "<<"
       next: ">>"
@@ -173,6 +174,17 @@ it:
       hourly_holiday:
         start_date: Data-Ora Inizio
         end_date: Data-Ora Fine
+        note: Note
+        updater: Aggiornato da
+        update_date: Aggiornato il
+        created_at: Creato il
+        updated_at: Aggiornato il
+        user: Utente
+        user_id: Utente
+      disease:
+        start_date: Data Inizio
+        end_date: Data Fine
+        certificate: Certificato
         note: Note
         updater: Aggiornato da
         update_date: Aggiornato il

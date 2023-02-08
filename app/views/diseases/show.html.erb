@@ -1,0 +1,8 @@
+<%= render @disease %>
+<div>
+  <%= link_to "Edit", edit_disease_path(@disease) %> |
+  <%= link_to "Destroy", disease_path(@disease),
+    "data-turbo-method": :delete,
+    "data-turbo-confirm": "Are you sure?" %> |
+  <%= link_to "Back to diseases", diseases_path %>
+</div>

@@ -73,6 +73,12 @@ RailsAdmin.config do |config|
     label_plural "Ferie Orarie"
   end
 
+  config.model "Disease" do
+    visible true
+    label "Malattia"
+    label_plural "Malattia"
+  end
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory

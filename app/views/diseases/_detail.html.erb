@@ -1,0 +1,85 @@
+<%= turbo_frame_tag :remote_modal, target: :_top do %>
+  <div class="modal fade" data-controller="modal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header mb-5">
+          <div class="modal-title">
+            <%= image_tag("holidays_form_icon.svg", class: "img-fluid") %>
+          </div>
+          <a class="modal-header-link" data-bs-dismiss="modal" aria-label="Close">
+            <i class="fa-solid fa-xmark"></i>
+          </a>
+        </div>
+        <div class="modal-body mb-5">
+          <div class="col-8 offset-2">
+            <div id="<%= dom_id @disease %>" class="scaffold_record">
+              <div class="row">
+                <div class="col">
+                  <h3 class="text-primary">
+                    <%= disease_full_user(@disease) %>
+                  </h3>
+                  <hr class="bg-primary"/>
+                  <h5 class="text-primary">
+                    Dal giorno:
+                    &emsp;
+                    <strong>
+                      <%= l(@disease.start_time, format: "%A %d %B %Y") %>
+                    </strong>
+                    &emsp;
+                    al giorno:
+                    &emsp;
+                    <strong>
+                      <%= l(@disease.end_time, format: "%A %d %B %Y") %>
+                    </strong>
+                    <br/>
+                    <br/>
+                    Numero Certificato:
+                    &emsp;
+                    <strong>
+                      <%= @disease.certificate %>
+                    </strong>
+                    <hr/>
+                    Note:
+                    <br/>
+                    <br/>
+                    <span class="text-dark">
+                      <%= @disease.note %>
+                    </span>
+                  </h5>
+                  <hr class="bg-primary"/>
+                  <br/>
+                  <span class="float-start">
+                    <small class="text-secondary">
+                      Creato da:
+                      &nbsp;
+                      <%= @disease.creator %>
+                      &emsp;
+                      Data Creazione:
+                      &nbsp;
+                      <%= l(@disease.created_at, format: "%A %d %B %Y") %>
+                    </small>
+                  </span>
+                  <br/>
+                  <% if @disease.update_date.present? %>
+                    <span class="float-start">
+                      <small class="text-secondary">
+                        Aggiornato da:
+                        &nbsp;
+                        <%= @disease.updater %>
+                        &emsp;
+                        Data Ultimo Aggiornamento:
+                        &nbsp;
+                        <%= l(@disease.update_date, format: "%A %d %B %Y") %>
+                      </small>
+                    </span>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

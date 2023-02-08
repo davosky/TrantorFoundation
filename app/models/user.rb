@@ -14,11 +14,9 @@ class User < ApplicationRecord
   has_many :refund_closures
   has_many :holidays
   has_many :hourly_holidays
+  has_many :diseases
 
   mount_uploader :signature, SignatureUploader
-
-  # has_one_attached :signature
-  # has_one_attached :validator_signature
 
   before_create :set_id
 

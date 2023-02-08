@@ -71,6 +71,17 @@ class Ability
       can :read, HourlyHoliday do |hourly_holiday|
         hourly_holiday.user.province == user.province && hourly_holiday.user.region == user.region
       end
+      # Can manage all owned records on Disease model
+      can :create, Disease
+      can :update, Disease do |disease|
+        disease.user.province == user.province && disease.user.region == user.region
+      end
+      can :destroy, Disease do |disease|
+        disease.user.province == user.province && disease.user.region == user.region
+      end
+      can :read, Disease do |disease|
+        disease.user.province == user.province && disease.user.region == user.region
+      end
       # Can manage all owned records on Place model
       can :manage, Place do |place|
         place.user == user
@@ -105,6 +116,9 @@ class Ability
     # ==================================================================
     if user.regular == true
       # Can manage all owned records on Refund model
+      can :read, Refund do |refund|
+        refund.user == user
+      end
       can :create, Refund
       can :update, Refund do |refund|
         refund.user == user
@@ -122,6 +136,9 @@ class Ability
         refund.user == user
       end
       # Can manage all owned records on RefundClosure model
+      can :read, RefundClosure do |refund_closure|
+        refund_closure.user == user
+      end
       can :create, RefundClosure
       can :update, RefundClosure do |refund_closure|
         refund_closure.user == user
@@ -133,6 +150,9 @@ class Ability
         refund_closure.user == user
       end
       # Can manage all owned records on Holiday model
+      can :read, Holiday do |holiday|
+        holiday.user == user
+      end
       can :create, Holiday
       can :update, Holiday do |holiday|
         holiday.user == user && holiday.processed != true
@@ -144,12 +164,29 @@ class Ability
         holiday.user == user
       end
       # Can manage all owned records on HourlyHoliday model
+      can :read, HourlyHoliday do |hourly_holiday|
+        hourly_holiday.user == user
+      end
       can :create, HourlyHoliday
       can :update, HourlyHoliday do |hourly_holiday|
         hourly_holiday.user == user && hourly_holiday.processed != true
       end
       can :destroy, HourlyHoliday do |hourly_holiday|
         hourly_holiday.user == user && hourly_holiday.processed != true
+      end
+      # Can manage all owned records on Disease model
+      can :read, Disease do |disease|
+        disease.user == user
+      end
+      can :create, Disease
+      can :update, Disease do |disease|
+        disease.user == user && disease.processed != true
+      end
+      can :destroy, Disease do |disease|
+        disease.user == user && disease.processed != true
+      end
+      can :read, Disease do |disease|
+        disease.user == user
       end
       # Can manage all owned records on Place model
       can :manage, Place do |place|

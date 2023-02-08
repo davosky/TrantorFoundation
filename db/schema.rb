@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 13) do
+ActiveRecord::Schema[7.0].define(version: 14) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,21 @@ ActiveRecord::Schema[7.0].define(version: 13) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "diseases", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string "certificate"
+    t.text "note"
+    t.boolean "processed"
+    t.string "updater"
+    t.string "creator"
+    t.date "update_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_diseases_on_user_id"
+  end
+
   create_table "holidays", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "start_time"
@@ -49,10 +64,10 @@ ActiveRecord::Schema[7.0].define(version: 13) do
     t.text "note"
     t.boolean "processed"
     t.string "updater"
+    t.string "creator"
     t.date "update_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "creator"
     t.index ["user_id"], name: "index_holidays_on_user_id"
   end
 
@@ -90,10 +105,10 @@ ActiveRecord::Schema[7.0].define(version: 13) do
     t.string "year_reference"
     t.string "month_reference"
     t.string "period_reference"
+    t.boolean "payed"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "payed"
     t.index ["user_id"], name: "index_refund_closures_on_user_id"
   end
 
@@ -197,6 +212,7 @@ ActiveRecord::Schema[7.0].define(version: 13) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "diseases", "users"
   add_foreign_key "holidays", "users"
   add_foreign_key "hourly_holidays", "users"
   add_foreign_key "refund_closures", "users"
