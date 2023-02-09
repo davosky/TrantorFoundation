@@ -59,6 +59,21 @@ class HolidaysController < ApplicationController
     redirect_to holidays_url, notice: "holiday was successfully destroyed."
   end
 
+  def search
+    if current_user.god == true
+      @q = Holiday.ransack(params[:q])
+      @holidays = @q.result(distinct: true).includes(:user).order("users.last_name ASC")
+      @holidays = @holidays.order("start_time DESC")
+    elsif current_user.manager == true
+      @q = Holiday.ransack(params[:q])
+      @holidays = @q.result(distinct: true).where(user_id: User.where(province: current_user.province, region: current_user.region)).includes(:user).order("users.last_name ASC")
+      @holidays = @holidays.order("start_time DESC")
+    else
+      @q = Holiday.ransack(params[:q])
+      @holidays = @q.result(distinct: true).where(user_id: current_user).order("start_time DESC")
+    end
+  end
+
   private
 
   def set_holiday

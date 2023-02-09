@@ -60,6 +60,9 @@ class Ability
       can :read, Holiday do |holiday|
         holiday.user.province == user.province && holiday.user.region == user.region
       end
+      can :search, Holiday do |holiday|
+        holiday.user.province == user.province && holiday.user.region == user.region
+      end
       # Can manage all owned records on HourlyHoliday model
       can :create, HourlyHoliday
       can :update, HourlyHoliday do |hourly_holiday|
@@ -161,6 +164,9 @@ class Ability
         holiday.user == user && holiday.processed != true
       end
       can :read, Holiday do |holiday|
+        holiday.user == user
+      end
+      can :search, Holiday do |holiday|
         holiday.user == user
       end
       # Can manage all owned records on HourlyHoliday model
