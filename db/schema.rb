@@ -44,8 +44,8 @@ ActiveRecord::Schema[7.0].define(version: 14) do
 
   create_table "diseases", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.date "start_time"
+    t.date "end_time"
     t.string "certificate"
     t.text "note"
     t.boolean "processed"
@@ -59,8 +59,8 @@ ActiveRecord::Schema[7.0].define(version: 14) do
 
   create_table "holidays", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.date "start_time"
+    t.date "end_time"
     t.text "note"
     t.boolean "processed"
     t.string "updater"

@@ -61,6 +61,7 @@
         <th><i class="fa-solid fa-calendar-day"></i></th>
       </thead>
       <tbody>
+        <% @total = 0 %>
         <% @holidays.each do |holiday| %>
           <tr>
             <td>
@@ -71,6 +72,17 @@
             </td>
             <td>
               <%= l(holiday.end_time, format: "%A %d %B %Y") %>
+            </td>
+            <td>
+              <strong class='text-primary'>
+                <%= holiday_duration(holiday).round %>
+                &emsp;
+                <% unless holiday_duration(holiday) > 1 %>
+                  giorno
+                <% else %>
+                  giorni
+                <% end %>
+              </strong>
             </td>
           </tr>
         <% end %>

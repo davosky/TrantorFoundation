@@ -24,6 +24,7 @@ gem "sassc-rails", "~> 2.1", ">= 2.1.2"
 gem "simple_calendar", "~> 2.4", ">= 2.4.3"
 gem "sprockets-rails", "~> 3.4", ">= 3.4.2"
 gem "stimulus-rails", "~> 1.2", ">= 1.2.1"
+gem "time_difference"
 gem "turbo-rails", "~> 1.3", ">= 1.3.2"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "wicked_pdf", ">= 1.1", "<= 1.4"
