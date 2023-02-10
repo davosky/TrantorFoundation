@@ -83,12 +83,23 @@
             <%= link_to hourly_holidays_path, class: "dropdown-item" do %>
               <i class="fa-solid fa-bath"></i>
               &nbsp;
-              Ore Ferie
+              Ore Ferie - Calendario
             <% end %>
+            <%= link_to search_hourly_holidays_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-bath"></i>
+              &nbsp;
+              Ore Ferie - Resoconto
+            <% end %>
+            <hr class="text-white" />
             <%= link_to diseases_path, class: "dropdown-item" do %>
               <i class="fa-solid fa-thermometer"></i>
               &nbsp;
-              Malattia
+              Malattia - Calendario
+            <% end %>
+            <%= link_to search_diseases_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-thermometer"></i>
+              &nbsp;
+              Malattia - Resoconto
             <% end %>
           </div>
         </li>

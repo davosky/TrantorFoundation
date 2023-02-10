@@ -1,0 +1,131 @@
+<div class="row mb-4">
+  <div class="col-12">
+    <%= image_tag("diseases_logo.svg", class: "img-fluid") %>
+  </div>
+</div>
+<%= search_form_for @q, id: 'search-form', url: search_diseases_path do |form| %>
+  <div class="row">
+    <div class="col-4">
+      <div class="input-group mb-2">
+        <div class="input-group-text">
+          <i class="fa-solid fa-calendar-day"></i>
+          &nbsp;<span>Data Inizio</span>
+        </div>
+        <%= form.date_field :start_time_gteq, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="input-group mb-2">
+        <div class="input-group-text">
+          <i class="fa-solid fa-calendar-day"></i>
+          &nbsp;<span>Data Fine</span>
+        </div>
+        <%= form.date_field :start_time_lteq, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-4">
+      <span class="float-start">
+        <div class="input-group mb-2">
+          <div class="input-group-text">
+            <i class="fa-solid fa-user-circle"></i>
+            &nbsp;<span>Utente</span>
+          </div>
+          <% if god? %>
+            <%= form.collection_select(:user_id_eq, User.order('last_name ASC'), :id, :user_name_full, {:include_blank => true}, {:class => 'form-control'}) %>
+          <% elsif manager? %>
+            <%= form.collection_select :user_id_eq, User.order('last_name ASC').where(province: current_user.province, region: current_user.region), :id, :user_name_full, {:include_blank => true}, {:class => 'form-control'} %>
+          <% else %>
+          <% end %>
+        </div>
+      </span>
+      <span class="float-end pe-2">
+        <%= button_tag(type: "submit", class: "btn btn-primary") do %>
+          <i class="fa-solid fa-magnifying-glass"></i>
+          &emsp;
+          <strong>
+            Cerca
+          </strong>
+        <% end %>
+        &nbsp;
+      </span>
+    </div>
+  </div>
+<% end %>
+<div class="row">
+  <div class="col-12">
+    <br/>
+    <table class="table table-hover text-primary">
+      <thead>
+        <th>
+          <i class="fa-solid fa-user-circle"></i>
+          &nbsp;
+          Utente
+        </th>
+        <th>
+          <i class="fa-solid fa-calendar-day"></i>
+          &nbsp;
+          Data Inizio
+        </th>
+        <th>
+          <i class="fa-solid fa-calendar-day"></i>
+          &nbsp;
+          Data Fine
+        </th>
+        <th>
+          <i class="fa-solid fa-certificate"></i>
+          &nbsp;
+          N° Certificato
+        </th>
+        <th>
+          <i class="fa-solid fa-calendar-days"></i>
+          &nbsp;
+          Durata
+        </th>
+      </thead>
+      <tbody>
+        <% @total = 0 %>
+        <% @diseases.each do |disease| %>
+          <tr>
+            <td>
+              <%= link_to disease_path(disease), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
+                <%= "#{disease.user.first_name} #{disease.user.last_name}" %>
+              <% end %>
+            </td>
+            <td>
+              <%= l(disease.start_time, format: "%A %d %B %Y") %>
+            </td>
+            <td>
+              <%= l(disease.end_time, format: "%A %d %B %Y") %>
+            </td>
+            <td>
+              <%= disease.certificate %>
+            </td>
+            <td>
+              <%= disease_duration(disease).round %>
+              &emsp;
+              <% unless disease_duration(disease) > 1 %>
+                giorno
+              <% else %>
+                giorni
+              <% end %>
+            </td>
+          </tr>
+          <% @total = @total + disease_duration(disease).round %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <h5>
+      <span class="float-end badge bg-primary text-white p-2">
+        <strong>
+          Totale giorni Malattia:
+          &emsp;
+          <%= @total %>
+        </strong>
+      </span>
+    </h5>
+  </div>
+</div>

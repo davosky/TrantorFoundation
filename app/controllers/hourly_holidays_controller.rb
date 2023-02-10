@@ -59,6 +59,21 @@ class HourlyHolidaysController < ApplicationController
     redirect_to hourly_holidays_url, notice: "hourly_holiday was successfully destroyed."
   end
 
+  def search
+    if current_user.god == true
+      @q = HourlyHoliday.ransack(params[:q])
+      @hourly_holidays = @q.result(distinct: true).includes(:user).order("users.last_name ASC")
+      @hourly_holidays = @hourly_holidays.order("start_time DESC")
+    elsif current_user.manager == true
+      @q = HourlyHoliday.ransack(params[:q])
+      @hourly_holidays = @q.result(distinct: true).where(user_id: User.where(province: current_user.province, region: current_user.region)).includes(:user).order("users.last_name ASC")
+      @hourly_holidays = @hourly_holidays.order("start_time DESC")
+    else
+      @q = HourlyHoliday.ransack(params[:q])
+      @hourly_holidays = @q.result(distinct: true).where(user_id: current_user).order("start_time DESC")
+    end
+  end
+
   private
 
   def set_hourly_holiday

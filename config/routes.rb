@@ -30,8 +30,16 @@ Rails.application.routes.draw do
       get :search
     end
   end
-  resources :hourly_holidays
-  resources :diseases
+  resources :hourly_holidays do
+    collection do
+      get :search
+    end
+  end
+  resources :diseases do
+    collection do
+      get :search
+    end
+  end
 
   devise_for :users, skip: [:registrations]
   as :user do

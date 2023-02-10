@@ -74,6 +74,9 @@ class Ability
       can :read, HourlyHoliday do |hourly_holiday|
         hourly_holiday.user.province == user.province && hourly_holiday.user.region == user.region
       end
+      can :search, HourlyHoliday do |hourly_holiday|
+        hourly_holiday.user.province == user.province && hourly_holiday.user.region == user.region
+      end
       # Can manage all owned records on Disease model
       can :create, Disease
       can :update, Disease do |disease|
@@ -83,6 +86,9 @@ class Ability
         disease.user.province == user.province && disease.user.region == user.region
       end
       can :read, Disease do |disease|
+        disease.user.province == user.province && disease.user.region == user.region
+      end
+      can :search, Disease do |disease|
         disease.user.province == user.province && disease.user.region == user.region
       end
       # Can manage all owned records on Place model
@@ -180,6 +186,9 @@ class Ability
       can :destroy, HourlyHoliday do |hourly_holiday|
         hourly_holiday.user == user && hourly_holiday.processed != true
       end
+      can :search, HourlyHoliday do |hourly_holiday|
+        hourly_holiday.user == user
+      end
       # Can manage all owned records on Disease model
       can :read, Disease do |disease|
         disease.user == user
@@ -192,6 +201,9 @@ class Ability
         disease.user == user && disease.processed != true
       end
       can :read, Disease do |disease|
+        disease.user == user
+      end
+      can :search, Disease do |disease|
         disease.user == user
       end
       # Can manage all owned records on Place model
