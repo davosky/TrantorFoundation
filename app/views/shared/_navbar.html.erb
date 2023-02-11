@@ -103,22 +103,6 @@
             <% end %>
           </div>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown nav-link-main-navbar" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-            <i class="fa-solid fa-gauge"></i>
-            &nbsp;
-            Cruscotto
-          </a>
-          <div class="dropdown-menu shadow">
-            <% if god? || manager? %>
-              <%= link_to dashboard_whatsup_path, class: "dropdown-item" do %>
-                <i class="fa-solid fa-calendar-day"></i>
-                &nbsp;
-                Oggi
-              <% end %>
-            <% end %>
-          </div>
-        </li>
       </ul>
       <ul class="navbar-nav ms-auto">
         <li class="nav-item dropdown">
