@@ -20,4 +20,12 @@ module HolidaysHelper
   def holiday_range(holiday)
     Date.today >= holiday.start_time && Date.today <= holiday.end_time
   end
+
+  def startholiday(holiday)
+    holiday.start_time
+  end
+
+  def endholiday(holiday)
+    holiday.end_time
+  end
 end

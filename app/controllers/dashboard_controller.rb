@@ -1,4 +1,6 @@
 class DashboardController < ApplicationController
+  authorize_resource :class => false
+
   def index
   end
 
@@ -7,34 +9,18 @@ class DashboardController < ApplicationController
 
   def whatsup
     if current_user.god == true
-      # Holidays
       @holidays = Holiday.all
-      # HourlyHoliday
+      @diseases = Disease.all
       dstart = Date.today.to_date.beginning_of_day
       dend = Date.today.to_date.end_of_day
-      @q = HourlyHoliday.ransack(params[:q])
-      @hourly_holidays = @q.result(distinct: true)
-        .where(start_time: dstart..dend)
+      @hourly_holidays = HourlyHoliday.where(start_time: dstart..dend)
     elsif current_user.manager == true
-      # Holidays
       @holidays = Holiday.where(user_id: User.where(province: current_user.province, region: current_user.region))
-      # HourlyHolidays
+      @diseases = Disease.where(user_id: User.where(province: current_user.province, region: current_user.region))
       dstart = Date.today.to_date.beginning_of_day
       dend = Date.today.to_date.end_of_day
-      @q = HourlyHoliday.ransack(params[:q])
-      @hourly_holidays = @q.result(distinct: true)
-        .where(user_id: User.where(province: current_user.province, region: current_user.region))
-        .where(start_time: dstart..dend)
-    else
-      # Holidays
-      @holidays = Holiday.where(user_id: current_user)
-      # HourlyHolidays
-      dstart = Date.today.to_date.beginning_of_day
-      dend = Date.today.to_date.end_of_day
-      @q = HourlyHoliday.ransack(params[:q])
-      @hourly_holidays = @q.result(distinct: true)
-        .where(user_id: current_user)
-        .where(start_time: dstart..dend)
+      @hourly_holidays = HourlyHoliday.where(user_id: User.where(province: current_user.province, region: current_user.region))
+      @hourly_holidays = @hourly_holidays.where(start_time: dstart..dend)
     end
   end
 

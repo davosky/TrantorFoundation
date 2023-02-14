@@ -12,47 +12,76 @@
 <div class="row">
   <hr/>
   <br/>
+</div>
+<div class="row">
   <div class="col-4">
-    <div class="card bg-white border-primary shadow">
-      <div class="card-header bg-primary text-white">
+    <div class="card bg-white border-light shadow">
+      <div class="card-header bg-white test-primary">
         <%= image_tag("dashboard_holidays_logo.svg", class: "img-fluid") %>
       </div>
       <div class="card-body">
-        <% @holidays.each do |holiday| %>
-          <% if Date.today.between?(holiday.start_time, holiday.end_time) %>
-            <h5 class="text-primary">
-              <i class='fas fa-user-circle'></i>
-              &nbsp;
-              <%= link_to holiday.user.last_name, holiday_path(holiday), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" %>
-              &nbsp;
-              <%= holiday.user.first_name %>
-              &emsp;
-              <hr/>
-            </h5>
+        <ul class="list-group bg-white border-white">
+          <% @holidays.each do |holiday| %>
+            <% if Date.today.between?(startholiday(holiday), endholiday(holiday))%>
+              <li class="list-group-item bg-white border-white">
+                <strong>
+                  <%= link_to holiday_path(holiday), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
+                    <i class='fas fa-user-circle'></i>
+                    &nbsp;
+                    <%= "#{holiday.user.last_name} #{holiday.user.first_name}" %>
+                  <% end %>
+                </strong>
+              </li>
+            <% end %>
           <% end %>
-        <% end %>
+        </ul>
       </div>
     </div>
   </div>
   <div class="col-4">
-    <div class="card bg-white border-primary shadow">
-      <div class="card-header bg-primary text-white">
+    <div class="card bg-white border-light shadow">
+      <div class="card-header bg-white test-primary">
         <%= image_tag("dashboard_hourly_holidays_logo.svg", class: "img-fluid") %>
       </div>
       <div class="card-body">
-        <% @hourly_holidays.each do |hourly_holiday| %>
-          <h5 class="text-primary">
-            <i class='fas fa-user-circle'></i>
-            &nbsp;
-            <%= link_to hourly_holiday.user.last_name, hourly_holiday_path(hourly_holiday), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" %>
-            &nbsp;
-            <%= hourly_holiday.user.first_name %>
-            &emsp;
-            <hr/>
-          </h5>
-        <% end %>
+        <ul class="list-group bg-white border-white">
+          <% @hourly_holidays.each do |hourly_holiday| %>
+            <li class="list-group-item bg-white border-white">
+              <strong>
+                <%= link_to hourly_holiday_path(hourly_holiday), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
+                  <i class='fas fa-user-circle'></i>
+                  &nbsp;
+                  <%= "#{hourly_holiday.user.last_name} #{hourly_holiday.user.first_name}" %>
+                <% end %>
+              </strong>
+            </li>
+          <% end %>
+        </ul>
       </div>
     </div>
   </div>
-  <div class="col-4"></div>
+  <div class="col-4">
+    <div class="card bg-white border-light shadow">
+      <div class="card-header bg-white test-primary">
+        <%= image_tag("dashboard_diseases_logo.svg", class: "img-fluid") %>
+      </div>
+      <div class="card-body">
+        <ul class="list-group bg-white border-white">
+          <% @diseases.each do |disease| %>
+            <% if Date.today.between?(startdisease(disease), enddisease(disease))%>
+              <li class="list-group-item bg-white border-white">
+                <strong>
+                  <%= link_to disease_path(disease), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
+                    <i class='fas fa-user-circle'></i>
+                    &nbsp;
+                    <%= "#{disease.user.last_name} #{disease.user.first_name}" %>
+                  <% end %>
+                </strong>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>

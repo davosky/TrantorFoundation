@@ -103,6 +103,8 @@ class Ability
       can :manage, Transport, user_id: user.id
       # Can manage all owned records on Veichle model
       can :manage, Veichle, user_id: user.id
+      # Can view Dashboard Whatsup
+      can :whatsup, :dashboard
     end
     # ==================================================================
     # *** Manager ***

@@ -103,6 +103,24 @@
             <% end %>
           </div>
         </li>
+        <% if can? :whatsup, :dashboard %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown nav-link-main-navbar" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              <i class="fa-solid fa-gauge"></i>
+              &nbsp;
+              Cruscotto
+            </a>
+            <div class="dropdown-menu shadow">
+              <%= link_to dashboard_whatsup_path, class: "dropdown-item" do %>
+                <i class="fa-solid fa-gauge"></i>
+                &nbsp;
+                <i class="fa-solid fa-calendar-day"></i>
+                &nbsp;
+                Situazione Odierna
+              <% end %>
+            </div>
+          </li>
+        <% end %>
       </ul>
       <ul class="navbar-nav ms-auto">
         <li class="nav-item dropdown">

@@ -20,4 +20,12 @@ module DiseasesHelper
   def disease_range(disease)
     Date.today >= disease.start_time && Date.today <= disease.end_time
   end
+
+  def startdisease(disease)
+    disease.start_time
+  end
+
+  def enddisease(disease)
+    disease.end_time
+  end
 end
