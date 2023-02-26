@@ -163,7 +163,7 @@
                     <td>&emsp;<strong><%= number_to_currency(refund.parking_cost) unless refund.parking_cost == 0.0 %></strong></td>
                   </tr>
                   <tr>
-                    <td>Costo ACI:</td>
+                    <td>Costo Km Totali:</td>
                     <td>&emsp;<strong>
                         <% if refund.transport_fr == "Veicolo Privato" %>
                           <%= "#{number_to_currency(refund.user.cost_per_km * refund.road_lenght_fr)}"%>
