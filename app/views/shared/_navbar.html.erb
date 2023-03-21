@@ -182,6 +182,12 @@
               <% end %>
             <% end %>
             <br/>
+            <%= link_to home_credits_path, method: :get, class: "dropdown-item" do %>
+              <i class="fa-solid fa-user-gear"></i>
+              &nbsp;
+              Crediti
+            <% end %>
+            <br/>
             <%= link_to destroy_user_session_path, method: :get, class: "dropdown-item" do %>
               <i class="fa-solid fa-door-open"></i>
               &nbsp;
