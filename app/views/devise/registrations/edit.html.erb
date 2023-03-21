@@ -27,20 +27,11 @@
         <%= f.label :current_password, class: "form-label" %>
         <br/>
         <small class="text-primary">
-          <i>(devi inserire la password corrente per confermare la nuova)</i>
+          <i>(devi inserire la password corrente per confermare qualsiasi modifica)</i>
         </small>
         <div class="form-group">
           <div class="input-group">
             <%= f.password_field :current_password, autocomplete: "nuova-password", class: "form-control" %>
-          </div>
-        </div>
-      </div>
-      <div class="form-group mx-3 mb-2">
-        <%= f.label :signature, class: "form-label" %>
-        <br/>
-        <div class="form-group">
-          <div class="input-group">
-            <%= f.file_field :signature, class: "form-control" %>
           </div>
         </div>
       </div>
