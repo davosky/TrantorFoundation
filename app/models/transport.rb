@@ -1,6 +1,13 @@
 class Transport < ApplicationRecord
   belongs_to :user, optional: true
 
+  before_create :set_transport_id
+
+  def set_transport_id
+    last_id = Transport.maximum(:id)
+    self.id = last_id.to_i + 1
+  end
+
   before_update :check_transport
   before_destroy :check_transport
 
