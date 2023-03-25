@@ -28,4 +28,8 @@ module DiseasesHelper
   def enddisease(disease)
     disease.end_time
   end
+
+  def processed_disease(disease)
+    disease.processed == true
+  end
 end

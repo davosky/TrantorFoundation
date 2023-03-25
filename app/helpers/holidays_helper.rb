@@ -28,4 +28,8 @@ module HolidaysHelper
   def endholiday(holiday)
     holiday.end_time
   end
+
+  def processed_holiday(holiday)
+    holiday.processed == true
+  end
 end

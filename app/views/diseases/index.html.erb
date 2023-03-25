@@ -40,16 +40,19 @@
                   <%= "#{disease.user.last_name} #{disease.user.first_name.split.map{|i| i[0,1].upcase}.join}" %>
                 <% end %>
                 <span class="text-dark">
-                  &nbsp;
-                  |
-                  &nbsp;
-                  <%= link_to edit_disease_path(disease), "data-controller": "turbo" , "data-bs-toggle": "tooltip", "title": "Modifica il Record Corrente" do %>
-                    <i class="fa-solid fa-pen-to-square"></i>
-                  <% end %>
-                  &nbsp;
-                  &nbsp;
-                  <%= link_to disease_path(disease), "data-turbo-method": :delete, "data-turbo-confirm": "Sicuri di voler eliminare il record corrente?" , "data-bs-toggle": "tooltip", "title": "Elimina il Record Corrente" do %>
-                    <i class="fa-solid fa-trash"></i>
+                  <% if processed_disease(disease) %>
+                  <% else %>
+                    &nbsp;
+                    |
+                    &nbsp;
+                    <%= link_to edit_disease_path(disease), "data-controller": "turbo" , "data-bs-toggle": "tooltip", "title": "Modifica il Record Corrente" do %>
+                      <i class="fa-solid fa-pen-to-square"></i>
+                    <% end %>
+                    &nbsp;
+                    &nbsp;
+                    <%= link_to disease_path(disease), "data-turbo-method": :delete, "data-turbo-confirm": "Sicuri di voler eliminare il record corrente?" , "data-bs-toggle": "tooltip", "title": "Elimina il Record Corrente" do %>
+                      <i class="fa-solid fa-trash"></i>
+                    <% end %>
                   <% end %>
                 </span>
               </span>

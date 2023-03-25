@@ -40,16 +40,19 @@
                   <%= "#{hourly_holiday.user.last_name} #{hourly_holiday.user.first_name.split.map{|i| i[0,1].upcase}.join}" %>
                 <% end %>
                 <span class="text-dark">
-                  &nbsp;
-                  |
-                  &nbsp;
-                  <%= link_to edit_hourly_holiday_path(hourly_holiday), "data-controller": "turbo" , "data-bs-toggle": "tooltip", "title": "Modifica il Record Corrente" do %>
-                    <i class="fa-solid fa-pen-to-square"></i>
-                  <% end %>
-                  &nbsp;
-                  &nbsp;
-                  <%= link_to hourly_holiday_path(hourly_holiday), "data-turbo-method": :delete, "data-turbo-confirm": "Sicuri di voler eliminare il record corrente?" , "data-bs-toggle": "tooltip", "title": "Elimina il Record Corrente" do %>
-                    <i class="fa-solid fa-trash"></i>
+                  <% if processed_hourly_holiday(hourly_holiday) %>
+                  <% else %>
+                    &nbsp;
+                    |
+                    &nbsp;
+                    <%= link_to edit_hourly_holiday_path(hourly_holiday), "data-controller": "turbo" , "data-bs-toggle": "tooltip", "title": "Modifica il Record Corrente" do %>
+                      <i class="fa-solid fa-pen-to-square"></i>
+                    <% end %>
+                    &nbsp;
+                    &nbsp;
+                    <%= link_to hourly_holiday_path(hourly_holiday), "data-turbo-method": :delete, "data-turbo-confirm": "Sicuri di voler eliminare il record corrente?" , "data-bs-toggle": "tooltip", "title": "Elimina il Record Corrente" do %>
+                      <i class="fa-solid fa-trash"></i>
+                    <% end %>
                   <% end %>
                 </span>
               </span>

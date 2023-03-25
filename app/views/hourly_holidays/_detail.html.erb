@@ -46,6 +46,19 @@
                   </h5>
                   <hr class="bg-primary"/>
                   <br/>
+                  <span class="float-end">
+                    <% if payer? %>
+                      <%= link_to edit_hourly_holiday_path(hourly_holiday), "data-controller": "turbo" , "data-bs-toggle": "tooltip", "title": "Modifica il Record Corrente" do %>
+                        <i class="fa-solid fa-pen-to-square"></i>
+                      <% end %>
+                      &nbsp;
+                      &nbsp;
+                      <%= link_to hourly_holiday_path(hourly_holiday), "data-turbo-method": :delete, "data-turbo-confirm": "Sicuri di voler eliminare il record corrente?" , "data-bs-toggle": "tooltip", "title": "Elimina il Record Corrente" do %>
+                        <i class="fa-solid fa-trash"></i>
+                      <% end %>
+                    <% end %>
+                  </span>
+                  <br/>
                   <span class="float-start">
                     <small class="text-secondary">
                       Creato da:
