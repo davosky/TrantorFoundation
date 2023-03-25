@@ -31,6 +31,8 @@
 /config/credentials.yml.enc
 /config/database.yml
 /tmp/cache
+/tmp/storage
+/tmp/sockets
 
 /public/packs
 /public/packs-test
