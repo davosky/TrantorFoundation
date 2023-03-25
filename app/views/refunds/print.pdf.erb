@@ -74,9 +74,9 @@
                   <tbody>
                     <tr>
                       <td>
-                        <%# if refund.user.validator_signature? %>
-                        <%# wicked_pdf_image_tag(refund.user.validator_signature.url, :size => "140x54", :crop => :fill) %>
-                        <%# end %>
+                        <% if refund.user.validator_signature? %>
+                          <%= wicked_pdf_image_tag(refund.user.validator_signature.url, :size => "140x54", :crop => :fill) %>
+                        <% end %>
                         <br/>
                         ------------------------------------------
                       </td>
@@ -217,8 +217,9 @@
               <p>
                 Il Segretario Organizzativo autorizza il pagamento:
                 <br/>
-                <br/>
-                <br/>
+                <% if refund.user.organizational_signature? %>
+                  <%= wicked_pdf_image_tag(refund.user.organizational_signature.url, :size => "140x54", :crop => :fill) %>
+                <% end %>
                 <br/>
                 ---------------------------------------------------------------------
               </p>

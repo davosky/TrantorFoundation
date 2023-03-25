@@ -45,6 +45,7 @@ it:
         validator: Firmatario
         validator_presentation: Titolo Firmatario
         validator_signature: Firma Firmatario
+        organizational_signature: Firma Organizzativo
         god: Divinità
         admin: Amministratore
         manager: Direttore
