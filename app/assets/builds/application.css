@@ -4711,7 +4711,7 @@ textarea.form-control-lg {
   display: block;
   color: #fff;
   text-decoration: none;
-  background-color: #005218;
+  background-color: #2c5aa0;
   border: 0 solid transparent;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -4723,7 +4723,7 @@ textarea.form-control-lg {
 .page-link:hover {
   z-index: 2;
   color: #fff;
-  background-color: #008527;
+  background-color: #3771c8;
   border-color: transparent;
 }
 .page-link:focus {
@@ -4740,13 +4740,13 @@ textarea.form-control-lg {
 .page-item.active .page-link {
   z-index: 3;
   color: #fff;
-  background-color: #008527;
+  background-color: #3771c8;
   border-color: transparent;
 }
 .page-item.disabled .page-link {
   color: #fff;
   pointer-events: none;
-  background-color: #000602;
+  background-color: #1c3864;
   border-color: transparent;
 }
 

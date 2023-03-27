@@ -8,7 +8,7 @@ class RefundsController < ApplicationController
   end
 
   def index
-    @refunds = Refund.where(user_id: current_user.id).order(created_at: "DESC")
+    @refunds = Refund.where(user_id: current_user.id).order(created_at: "DESC").page(params[:page])
   end
 
   def show
