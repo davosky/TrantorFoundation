@@ -91,19 +91,33 @@ class Ability
       can :search, Disease do |disease|
         disease.user.province == user.province && disease.user.region == user.region
       end
+      # Can manage all owned records on Permit model
+      can :create, Permit
+      can :update, Permit do |permit|
+        permit.user.province == user.province && permit.user.region == user.region
+      end
+      can :destroy, Permit do |permit|
+        permit.user.province == user.province && permit.user.region == user.region
+      end
+      can :read, Permit do |permit|
+        permit.user.province == user.province && permit.user.region == user.region
+      end
+      can :search, Permit do |permit|
+        permit.user.province == user.province && permit.user.region == user.region
+      end
       # Can manage all owned records on HourlyPermit model
       can :create, HourlyPermit
-      can :update, HourlyPermit do |hourly_permit|
-        hourly_permit.user.province == user.province && hourly_permit.user.region == user.region
+      can :update, HourlyPermit do |fourly_permit|
+        fourly_permit.user.province == user.province && fourly_permit.user.region == user.region
       end
-      can :destroy, HourlyPermit do |hourly_permit|
-        hourly_permit.user.province == user.province && hourly_permit.user.region == user.region
+      can :destroy, HourlyPermit do |fourly_permit|
+        fourly_permit.user.province == user.province && fourly_permit.user.region == user.region
       end
-      can :read, HourlyPermit do |hourly_permit|
-        hourly_permit.user.province == user.province && hourly_permit.user.region == user.region
+      can :read, HourlyPermit do |fourly_permit|
+        fourly_permit.user.province == user.province && fourly_permit.user.region == user.region
       end
-      can :search, HourlyPermit do |hourly_permit|
-        hourly_permit.user.province == user.province && hourly_permit.user.region == user.region
+      can :search, HourlyPermit do |fourly_permit|
+        fourly_permit.user.province == user.province && fourly_permit.user.region == user.region
       end
       # Can manage all owned records on Place model
       can :manage, Place, user_id: user.id
@@ -210,18 +224,26 @@ class Ability
       can :search, Disease do |disease|
         disease.user_id == user.id
       end
-      # Can manage all owned records on HourlyPermit model
+      # Can manage all owned record on Permit model
+      can :read, Permit do |permit|
+        permit.user_id == user.id
+      end
+      can :create, Permit
+      can :update, Permit do |permit|
+        permit.user_id == user.id
+      end
+      can :destroy, Permit do |permit|
+        permit.user_id == user.id
+      end
+      # Can manage all owned record on HourlyPermit model
       can :read, HourlyPermit do |hourly_permit|
         hourly_permit.user_id == user.id
       end
       can :create, HourlyPermit
       can :update, HourlyPermit do |hourly_permit|
-        hourly_permit.user_id == user.id && hourly_permit.processed != true
+        hourly_permit.user_id == user.id
       end
       can :destroy, HourlyPermit do |hourly_permit|
-        hourly_permit.user_id == user.id && hourly_permit.processed != true
-      end
-      can :search, HourlyPermit do |hourly_permit|
         hourly_permit.user_id == user.id
       end
       # Can manage all owned records on Place model

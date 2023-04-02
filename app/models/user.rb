@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :holidays
   has_many :hourly_holidays
   has_many :diseases
+  has_many :permits
   has_many :hourly_permits
 
   mount_uploader :signature, SignatureUploader
