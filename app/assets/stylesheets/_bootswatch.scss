@@ -16,7 +16,7 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0
 
 body {
   // overflow: hidden;
-  padding-top: 6rem;
+  padding-top: 4.2rem;
 
   a {
     text-decoration: none;
@@ -37,6 +37,11 @@ hr {
   &-footer {
     color: $gray-600;
   }
+}
+
+// Navbar
+.navbar {
+  height: 3rem !important;
 }
 
 // Navs
@@ -131,6 +136,13 @@ hr {
 
 .input-group-text {
   min-width: 12rem;
+  border: none;
+  background-color: $primary !important;
+  color: $white !important;
+}
+
+.input-group-search {
+  padding: 0.3rem;
   border: none;
   background-color: $primary !important;
   color: $white !important;

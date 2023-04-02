@@ -11,12 +11,14 @@ class DashboardController < ApplicationController
     if current_user.god == true
       @holidays = Holiday.all
       @diseases = Disease.all
+      @permits = Permit.all
       dstart = Date.today.to_date.beginning_of_day
       dend = Date.today.to_date.end_of_day
       @hourly_holidays = HourlyHoliday.where(start_time: dstart..dend)
     elsif current_user.manager == true
       @holidays = Holiday.where(user_id: User.where(province: current_user.province, region: current_user.region))
       @diseases = Disease.where(user_id: User.where(province: current_user.province, region: current_user.region))
+      @permits = Permit.where(user_id: User.where(province: current_user.province, region: current_user.region))
       dstart = Date.today.to_date.beginning_of_day
       dend = Date.today.to_date.end_of_day
       @hourly_holidays = HourlyHoliday.where(user_id: User.where(province: current_user.province, region: current_user.region))

@@ -85,3 +85,28 @@
     </div>
   </div>
 </div>
+<div class="row mt-3">
+  <div class="col-4">
+    <div class="card bg-white border-light shadow">
+      <div class="card-header bg-white test-primary">
+        <%= image_tag("dashboard_permits_logo.svg", class: "img-fluid") %>
+      </div>
+      <div class="card-body">
+        <ul class="list-group bg-white border-white">
+          <% @permits.each do |permit| %>
+            <% if Date.today.between?(startpermit(permit), endpermit(permit))%>
+              <li class="list-group-item bg-white border-white">
+                <strong>
+                  <%= link_to permit_path(permit), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
+                    <i class='fas fa-user-circle'></i>
+                    &nbsp;
+                    <%= "#{permit.user.last_name} #{permit.user.first_name}" %>
+                  <% end %>
+                </strong>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>

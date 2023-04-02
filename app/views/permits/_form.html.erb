@@ -29,6 +29,14 @@
     <span class="input-group-text">
       <i class="fa-solid fa-calendar-day"></i>
       &nbsp;&nbsp;
+      <%= form.label :permit_type %>
+    </span>
+    <%= form.collection_select :permit_type_id, PermitType.order("position ASC"), :id, :name, { :include_blank => false }, { :class => "form-control" } %>
+  </div>
+  <div class="input-group mb-1">
+    <span class="input-group-text">
+      <i class="fa-solid fa-calendar-day"></i>
+      &nbsp;&nbsp;
       <%= form.label :start_date %>
     </span>
     <%= form.date_field :start_time, class: "form-control" %>

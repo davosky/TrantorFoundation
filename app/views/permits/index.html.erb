@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-8">
     <h3 class='text-primary'>
-      <%= image_tag("holidays_logo.svg", class: "img-fluid") %>
+      <%= image_tag("permits_logo.svg", class: "img-fluid") %>
     </h3>
   </div>
   <div class="col-4">
@@ -9,9 +9,9 @@
       <%= link_to new_permit_path, "data-controller": "turbo", class: "btn btn-primary btn-sm shadow" do %>
         <i class="fa-solid fa-plus"></i>
         &nbsp;
-        <i class="fa-solid fa-umbrella-beach"></i>
+        <i class="fa-solid fa-graduation-cap"></i>
         &nbsp;
-        Aggiungi Ferie
+        Aggiungi Permesso
       <% end %>
     </div>
   </div>
@@ -39,9 +39,9 @@
                   &nbsp;
                   <%= "#{permit.user.last_name} #{permit.user.first_name.split.map { |i| i[0, 1].upcase }.join}" %>
                 <% end %>
-                <span class="text-dark">              
-                    <% if permit.processed == true %>
-                    <% else %>
+                <span class="text-dark">
+                  <% if permit.processed == true %>
+                  <% else %>
                     &emsp;
                     |
                     &emsp;
@@ -53,7 +53,7 @@
                     <%= link_to permit_path(permit), "data-turbo-method": :delete, "data-turbo-confirm": "Sicuri di voler eliminare il record corrente?", "data-bs-toggle": "tooltip", "title": "Elimina il Record Corrente" do %>
                       <i class="fa-solid fa-trash"></i>
                     <% end %>
-                </span>
+                  </span>
                 <% end %>
               </span>
               <br/>
