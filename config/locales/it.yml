@@ -20,6 +20,8 @@ it:
       holiday: Ferie
       hourly_holiday: Ferie Orarie
       disease: Malattia
+      permit: Permesso
+      permit_type: Tipo Permesso
     simple_calendar:
       previous: "<<"
       next: ">>"
@@ -193,6 +195,23 @@ it:
         updated_at: Aggiornato il
         user: Utente
         user_id: Utente
+      permit:
+        start_date: Data Inizio
+        end_date: Data Fine
+        note: Note
+        updater: Aggiornato da
+        update_date: Aggiornato il
+        created_at: Creato il
+        updated_at: Aggiornato il
+        user: Utente
+        user_id: Utente
+        permit_type: Tipo Permesso
+        permit_type_id: Tipo Permesso
+      permit_type:
+        name: Permesso
+        position: Posizione
+        created_at: Creato il
+        updated_at: Aggiornato il
     errors:
       messages:
         record_invalid: "Validazione fallita: %{errors}"

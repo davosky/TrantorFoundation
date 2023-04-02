@@ -41,6 +41,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :permits do
+    collection do
+      get :search
+    end
+  end
+
   devise_for :users, skip: [:registrations]
   as :user do
     get "users/edit" => "devise/registrations#edit", :as => "edit_user_registration"

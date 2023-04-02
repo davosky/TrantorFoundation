@@ -1,0 +1,68 @@
+<%= form_with(model: permit) do |form| %>
+  <% if permit.errors.any? %>
+    <div style="color: red">
+      <h4>
+        Errore!&emsp;Non posso salvare per i seguenti motivi:
+      </h4>
+      <ul>
+        <% permit.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% unless current_user.regular == true %>
+    <div class="input-group mb-1">
+      <span class="input-group-text">
+        <i class="fa-solid fa-user"></i>
+        &nbsp;&nbsp;
+        <%= form.label :user %>
+      </span>
+      <% unless current_user.god == true %>
+        <%= form.collection_select :user_id, User.order("last_name ASC").where(province: current_user.province, region: current_user.region), :id, :user_name_full, { :include_blank => false }, { :class => "form-control" } %>
+      <% else %>
+        <%= form.collection_select :user_id, User.order("last_name ASC"), :id, :user_name_full, { :include_blank => false }, { :class => "form-control" } %>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="input-group mb-1">
+    <span class="input-group-text">
+      <i class="fa-solid fa-calendar-day"></i>
+      &nbsp;&nbsp;
+      <%= form.label :start_date %>
+    </span>
+    <%= form.date_field :start_time, class: "form-control" %>
+  </div>
+  <div class="input-group mb-1">
+    <span class="input-group-text">
+      <i class="fa-solid fa-calendar-day"></i>
+      &nbsp;&nbsp;
+      <%= form.label :end_date %>
+    </span>
+    <%= form.date_field :end_time, class: "form-control" %>
+  </div>
+  <div class="input-group mb-2">
+    <span class="input-group-text">
+      <i class="fa-solid fa-pencil"></i>
+      &nbsp;&nbsp;
+      <%= form.label :note %>
+    </span>
+    <%= form.text_area :note, class: "form-control" %>
+  </div>
+  <% unless current_user.regular == true %>
+    <br/>
+    <div class="form-check form-check-inline">
+      <label class="form-check-label text-primary" for="checkboxPrefilled">
+        Presa visione
+        &nbsp;&nbsp;
+        <i class="fa-solid fa-eye"></i>
+      </label>
+      <%= form.check_box :processed, class: "form-check-input" %>
+    </div>
+    <br/>
+    <br/>
+  <% end %>
+  <div class="d-grid">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

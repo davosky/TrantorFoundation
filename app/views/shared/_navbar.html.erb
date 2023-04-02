@@ -103,6 +103,25 @@
             <% end %>
           </div>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown nav-link-main-navbar" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-calendar"></i>
+            &nbsp;
+            Permessi
+          </a>
+          <div class="dropdown-menu shadow">
+            <%= link_to permits_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-umbrella-beach"></i>
+              &nbsp;
+              Permessi - Calendario
+            <% end %>
+            <%= link_to search_permits_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-umbrella-beach"></i>
+              &nbsp;
+              Permessi - Resoconto
+            <% end %>           
+          </div>
+        </li>
         <% if can? :whatsup, :dashboard %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown nav-link-main-navbar" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
@@ -175,7 +194,7 @@
           </a>
           <div class="dropdown-menu">
             <% if god? %>
-              <%= link_to rails_admin_path, class: 'dropdown-item'  do %>
+              <%= link_to rails_admin_path, class: "dropdown-item" do %>
                 <i class="fa-solid fa-screwdriver-wrench"></i>
                 &nbsp;
                 Amministrazione

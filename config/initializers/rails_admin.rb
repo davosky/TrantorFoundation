@@ -79,6 +79,18 @@ RailsAdmin.config do |config|
     label_plural "Malattia"
   end
 
+  config.model "Permit" do
+    visible true
+    label "Permesso"
+    label_plural "Permessi"
+  end
+
+  config.model "PermitType" do
+    visible true
+    label "Tipo Permesso"
+    label_plural "Tipi Permesso"
+  end
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory

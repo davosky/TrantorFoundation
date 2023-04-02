@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 16) do
+ActiveRecord::Schema[7.0].define(version: 18) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -83,6 +83,29 @@ ActiveRecord::Schema[7.0].define(version: 16) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_hourly_holidays_on_user_id"
+  end
+
+  create_table "permit_types", force: :cascade do |t|
+    t.string "name"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "permits", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "permit_type_id", null: false
+    t.date "start_time"
+    t.date "end_time"
+    t.text "note"
+    t.boolean "processed"
+    t.string "updater"
+    t.string "creator"
+    t.date "update_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["permit_type_id"], name: "index_permits_on_permit_type_id"
+    t.index ["user_id"], name: "index_permits_on_user_id"
   end
 
   create_table "places", force: :cascade do |t|
@@ -217,5 +240,7 @@ ActiveRecord::Schema[7.0].define(version: 16) do
   add_foreign_key "diseases", "users"
   add_foreign_key "holidays", "users"
   add_foreign_key "hourly_holidays", "users"
+  add_foreign_key "permits", "permit_types"
+  add_foreign_key "permits", "users"
   add_foreign_key "refund_closures", "users"
 end
