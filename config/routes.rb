@@ -40,8 +40,12 @@ Rails.application.routes.draw do
       get :search
     end
   end
-
   resources :permits do
+    collection do
+      get :search
+    end
+  end
+  resources :hourly_permits do
     collection do
       get :search
     end

@@ -22,6 +22,7 @@ it:
       disease: Malattia
       permit: Permesso
       permit_type: Tipo Permesso
+      hourly_permit: Ore Permesso
     simple_calendar:
       previous: "<<"
       next: ">>"
@@ -212,6 +213,18 @@ it:
         position: Posizione
         created_at: Creato il
         updated_at: Aggiornato il
+      hourly_permit:
+        start_date: Data Inizio
+        end_date: Data Fine
+        note: Note
+        updater: Aggiornato da
+        update_date: Aggiornato il
+        created_at: Creato il
+        updated_at: Aggiornato il
+        user: Utente
+        user_id: Utente
+        permit_type: Tipo Permesso
+        permit_type_id: Tipo Permesso
     errors:
       messages:
         record_invalid: "Validazione fallita: %{errors}"

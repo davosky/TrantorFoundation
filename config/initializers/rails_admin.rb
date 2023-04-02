@@ -91,6 +91,12 @@ RailsAdmin.config do |config|
     label_plural "Tipi Permesso"
   end
 
+  config.model "HourlyType" do
+    visible true
+    label "Ore Permesso"
+    label_plural "Ore Permesso"
+  end
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory

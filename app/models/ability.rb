@@ -91,6 +91,20 @@ class Ability
       can :search, Disease do |disease|
         disease.user.province == user.province && disease.user.region == user.region
       end
+      # Can manage all owned records on HourlyPermit model
+      can :create, HourlyPermit
+      can :update, HourlyPermit do |hourly_permit|
+        hourly_permit.user.province == user.province && hourly_permit.user.region == user.region
+      end
+      can :destroy, HourlyPermit do |hourly_permit|
+        hourly_permit.user.province == user.province && hourly_permit.user.region == user.region
+      end
+      can :read, HourlyPermit do |hourly_permit|
+        hourly_permit.user.province == user.province && hourly_permit.user.region == user.region
+      end
+      can :search, HourlyPermit do |hourly_permit|
+        hourly_permit.user.province == user.province && hourly_permit.user.region == user.region
+      end
       # Can manage all owned records on Place model
       can :manage, Place, user_id: user.id
       # Can manage all owned records on Reason model
@@ -195,6 +209,20 @@ class Ability
       end
       can :search, Disease do |disease|
         disease.user_id == user.id
+      end
+      # Can manage all owned records on HourlyPermit model
+      can :read, HourlyPermit do |hourly_permit|
+        hourly_permit.user_id == user.id
+      end
+      can :create, HourlyPermit
+      can :update, HourlyPermit do |hourly_permit|
+        hourly_permit.user_id == user.id && hourly_permit.processed != true
+      end
+      can :destroy, HourlyPermit do |hourly_permit|
+        hourly_permit.user_id == user.id && hourly_permit.processed != true
+      end
+      can :search, HourlyPermit do |hourly_permit|
+        hourly_permit.user_id == user.id
       end
       # Can manage all owned records on Place model
       can :manage, Place, user_id: user.id

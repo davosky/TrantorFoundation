@@ -60,31 +60,6 @@
                     </small>
                   </span>
                   <br/>
-                  <span class="float-end">
-                    <% if payer? %>
-                      <%= link_to edit_disease_path(disease), "data-controller": "turbo" , "data-bs-toggle": "tooltip", "title": "Modifica il Record Corrente" do %>
-                        <i class="fa-solid fa-pen-to-square"></i>
-                      <% end %>
-                      &nbsp;
-                      &nbsp;
-                      <%= link_to disease_path(disease), "data-turbo-method": :delete, "data-turbo-confirm": "Sicuri di voler eliminare il record corrente?" , "data-bs-toggle": "tooltip", "title": "Elimina il Record Corrente" do %>
-                        <i class="fa-solid fa-trash"></i>
-                      <% end %>
-                    <% end %>
-                  </span>
-                  <br/>
-                  <span class="float-start">
-                    <small class="text-secondary">
-                      Creato da:
-                      &nbsp;
-                      <%= @disease.creator %>
-                      &emsp;
-                      Data Creazione:
-                      &nbsp;
-                      <%= l(@disease.created_at, format: "%A %d %B %Y") %>
-                    </small>
-                  </span>
-                  <br/>
                   <% if @disease.update_date.present? %>
                     <span class="float-start">
                       <small class="text-secondary">
@@ -98,6 +73,16 @@
                       </small>
                     </span>
                   <% end %>
+                  <br/>
+                  <span class="float-end">
+                    <small class="text-success">
+                      <% if processed_disease(disease) %>
+                        <i class="fa-solid fa-circle-check"></i>
+                        &nbsp;
+                        Presa Visione
+                      <% end %>
+                    </small>
+                  </span>
                 </div>
               </div>
             </div>

@@ -2,7 +2,7 @@ class Permit < ApplicationRecord
   belongs_to :user
   belongs_to :permit_type
 
-  validates :user_id, :start_time, :end_time, presence: true
+  validates :user_id, :start_time, :end_time, :permit_type_id, presence: true
 
   validate :congruent_date_range
 

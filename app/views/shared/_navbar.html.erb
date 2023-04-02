@@ -120,6 +120,21 @@
               &nbsp;
               Permessi - Resoconto
             <% end %>
+            <hr class="text-white" />
+            <%= link_to hourly_permits_path, class: "dropdown-item" do %>
+              <i class="fa-regular fa-clock"></i>
+              &nbsp;
+              <i class="fa-solid fa-graduation-cap"></i>
+              &nbsp;
+              Ore Permesso - Calendario
+            <% end %>
+            <%= link_to search_hourly_permits_path, class: "dropdown-item" do %>
+              <i class="fa-regular fa-clock"></i>
+              &nbsp;
+              <i class="fa-solid fa-graduation-cap"></i>
+              &nbsp;
+              Ore Permesso - Resoconto
+            <% end %>
           </div>
         </li>
         <% if can? :whatsup, :dashboard %>

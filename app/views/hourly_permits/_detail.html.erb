@@ -1,0 +1,98 @@
+<%= turbo_frame_tag :remote_modal, target: :_top do %>
+  <div class="modal fade" data-controller="modal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header mb-5">
+          <div class="modal-title">
+            <%= image_tag("hourly_permits_form_icon.svg", class: "img-fluid") %>
+          </div>
+          <a class="modal-header-link" data-bs-dismiss="modal" aria-label="Close">
+            <i class="fa-solid fa-xmark"></i>
+          </a>
+        </div>
+        <div class="modal-body mb-5">
+          <div class="col-8 offset-2">
+            <div id="<%= dom_id @hourly_permit %>" class="scaffold_record">
+              <div class="row">
+                <div class="col">
+                  <h3 class="text-primary">
+                    <%= hourly_permit_full_user(@hourly_permit) %>
+                  </h3>
+                  <hr class="bg-primary"/>
+                  <h5 class="text-primary">
+                    Il giorno:
+                    &emsp;
+                    <strong>
+                      <%= l(@hourly_permit.start_time, format: "%A %d %B %Y") %>
+                    </strong>
+                    &emsp;
+                    dalle ore:
+                    <strong>
+                      <%= l(@hourly_permit.start_time, format: "%H:%M") %>
+                    </strong>
+                    &emsp;
+                    alle ore:
+                    &emsp;
+                    <strong>
+                      <%= l(@hourly_permit.end_time, format: "%H:%M") %>
+                    </strong>
+                    <hr/>
+                    Tipo Permesso:
+                    &emsp;
+                    <%= @hourly_permit.permit_type.name %>
+                    <hr/>
+                    Note:
+                    <br/>
+                    <br/>
+                    <span class="text-dark">
+                      <%= @hourly_permit.note %>
+                    </span>
+                  </h5>
+                  <hr class="bg-primary"/>
+                  <br/>
+                  <br/>
+                  <span class="float-start">
+                    <small class="text-secondary">
+                      Creato da:
+                      &nbsp;
+                      <%= @hourly_permit.creator %>
+                      &emsp;
+                      Data Creazione:
+                      &nbsp;
+                      <%= l(@hourly_permit.created_at, format: "%A %d %B %Y") %>
+                    </small>
+                  </span>
+                  <br/>
+                  <% if @hourly_permit.update_date.present? %>
+                    <span class="float-start">
+                      <small class="text-secondary">
+                        Aggiornato da:
+                        &nbsp;
+                        <%= @hourly_permit.updater %>
+                        &emsp;
+                        Data Ultimo Aggiornamento:
+                        &nbsp;
+                        <%= l(@hourly_permit.update_date, format: "%A %d %B %Y") %>
+                      </small>
+                    </span>
+                  <% end %>
+                  <br/>
+                  <span class="float-end">
+                    <small class="text-success">
+                      <% if processed_hourly_permit(hourly_permit) %>
+                        <i class="fa-solid fa-circle-check"></i>
+                        &nbsp;
+                        Presa Visione
+                      <% end %>
+                    </small>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
