@@ -37,6 +37,7 @@ class HolidaysController < ApplicationController
     @holiday.creator = "#{current_user.last_name} #{current_user.first_name}"
 
     if @holiday.save
+      HolidayMailer.with(user: current_user, holiday: @holiday).holiday_email.deliver_later
       redirect_to holidays_path, notice: "holiday was successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -48,6 +49,7 @@ class HolidaysController < ApplicationController
     @holiday.update_date = Date.today
 
     if @holiday.update(holiday_params)
+      HolidayMailer.with(user: current_user, holiday: @holiday).holiday_email_update.deliver_later
       redirect_to holidays_path, notice: "holiday was successfully updated."
     else
       render :edit, status: :unprocessable_entity
@@ -55,6 +57,7 @@ class HolidaysController < ApplicationController
   end
 
   def destroy
+    HolidayMailer.with(user: current_user).holiday_email_destroy.deliver_later
     @holiday.destroy
     redirect_to holidays_url, notice: "holiday was successfully destroyed."
   end

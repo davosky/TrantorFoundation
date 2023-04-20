@@ -38,6 +38,7 @@ end
 
 group :development do
   gem "htmlbeautifier"
+  gem "letter_opener"
   gem "rubocop"
   gem "solargraph"
   gem "web-console"

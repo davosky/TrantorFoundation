@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <%= image_tag attachments['mail_logo_holidays.png'].url, alt: 'Trantor Logo' %>
+    <br/>
+    <br/>
+    <p>
+      L'Utente <br>
+      <h3>
+        <%= "#{@user.last_name} #{@user.first_name}" %>
+      </h3>
+      <br/>
+      ha eliminato un record sezione: <strong>Ferie</strong>
+    </p>
+    <br/>
+    <br/>
+    <p>
+      <%= image_tag attachments['mail_logo.png'].url, alt: 'Trantor Logo' %>
+    </p>
+  </body>
+</html>
