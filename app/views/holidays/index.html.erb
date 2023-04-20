@@ -39,9 +39,9 @@
                   &nbsp;
                   <%= "#{holiday.user.last_name} #{holiday.user.first_name.split.map { |i| i[0, 1].upcase }.join}" %>
                 <% end %>
-                <span class="text-dark">              
-                    <% if holiday.processed == true %>
-                    <% else %>
+                <span class="text-dark">
+                  <% if holiday.processed == true %>
+                  <% else %>
                     &emsp;
                     |
                     &emsp;
@@ -53,8 +53,8 @@
                     <%= link_to holiday_path(holiday), "data-turbo-method": :delete, "data-turbo-confirm": "Sicuri di voler eliminare il record corrente?", "data-bs-toggle": "tooltip", "title": "Elimina il Record Corrente" do %>
                       <i class="fa-solid fa-trash"></i>
                     <% end %>
+                  <% end %>
                 </span>
-                <% end %>
               </span>
               <br/>
             <% end %>
