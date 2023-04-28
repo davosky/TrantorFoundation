@@ -2,6 +2,6 @@ Variazione Inserimento - FERIE -
 ===============================================================================
 L'Utente:   <%= "#{@user.last_name} #{@user.first_name}" %>
 ha effettuato una variazione nella sezione FERIE
-periodo interessato:    <%= l(@holiday.start_time) %> - <%= l(@holiday.end_time) %>
+periodo interessato:    <%= l(@holiday.start_time, format: "%A %d %B %Y") %> - <%= l(@holiday.end_time, format: "%A %d %B %Y") %>
 ===============================================================================
 TrantorFoundation   -   CGIL FVG    -   gestione rimborsi spese ed assenze

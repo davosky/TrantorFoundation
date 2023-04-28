@@ -12,13 +12,21 @@
         <%= "#{@user.last_name} #{@user.first_name}" %>
       </h3>
       <br/>
-      ha effettuato una variazione nella sezione: <strong>Ferie</strong>
+      ha effettuato una variazione nella sezione: <strong>FERIE</strong>
     </p>
     <br/>
     Periodo interessato:
+    <br/>
+    dal giorno:
     &emsp;
     <strong>
-      <%= l(@holiday.start_time) %> - <%= l(@holiday.end_time) %>
+      <%= l(@holiday.start_time, format: "%A %d %B %Y") %>
+    </strong>
+    &emsp;
+    al giorno:
+    &emsp;
+    <strong>
+      <%= l(@holiday.end_time, format: "%A %d %B %Y") %>
     </strong>
     <br/>
     <br/>

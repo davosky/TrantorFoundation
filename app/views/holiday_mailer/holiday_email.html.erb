@@ -16,9 +16,17 @@
     </p>
     <br/>
     Periodo interessato:
+    <br/>
+    dal giorno:
     &emsp;
     <strong>
-      <%= l(@holiday.start_time) %> - <%= l(@holiday.end_time) %>
+      <%= l(@holiday.start_time, format: "%A %d %B %Y") %>
+    </strong>
+    &emsp;
+    al giorno:
+    &emsp;
+    <strong>
+      <%= l(@holiday.end_time, format: "%A %d %B %Y") %>
     </strong>
     <br/>
     <br/>

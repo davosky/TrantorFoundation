@@ -7,11 +7,14 @@ class HolidayMailer < ApplicationMailer
     @greeting = "TrantorFoundation"
     attachments["mail_logo.png"] = File.read("app/assets/images/mail_logo.png")
     attachments["mail_logo_holidays.png"] = File.read("app/assets/images/mail_logo_holidays.png")
-    mail(
-      from: "TrantorFoundation <trantorfoundation@cgil-fvg.net>",
-      to: email_address_with_name(User.first.email, User.first.email),
-      subject: "TrantorFoundation CGIL FVG  * Nuovo Inserimento FERIE *",
-    )
+    @managers = User.where(province: @user.province, region: @user.region, manager: true)
+    @managers.each do |manager|
+      mail(
+        from: "TrantorFoundation <trantorfoundation@cgil-fvg.net>",
+        to: manager.email,
+        subject: "TrantorFoundation CGIL FVG  * Nuovo Inserimento FERIE *",
+      )
+    end
   end
 
   def holiday_email_destroy
@@ -19,11 +22,14 @@ class HolidayMailer < ApplicationMailer
     @greeting = "TrantorFoundation"
     attachments["mail_logo.png"] = File.read("app/assets/images/mail_logo.png")
     attachments["mail_logo_holidays.png"] = File.read("app/assets/images/mail_logo_holidays.png")
-    mail(
-      from: "TrantorFoundation <trantorfoundation@cgil-fvg.net>",
-      to: email_address_with_name(User.first.email, User.first.email),
-      subject: "TrantorFoundation CGIL FVG  *** Eliminazione Inserimento FERIE ***",
-    )
+    @managers = User.where(province: @user.province, region: @user.region, manager: true)
+    @managers.each do |manager|
+      mail(
+        from: "TrantorFoundation <trantorfoundation@cgil-fvg.net>",
+        to: manager.email,
+        subject: "TrantorFoundation CGIL FVG  * Cancellazione FERIE *",
+      )
+    end
   end
 
   def holiday_email_update
@@ -32,10 +38,13 @@ class HolidayMailer < ApplicationMailer
     @greeting = "TrantorFoundation"
     attachments["mail_logo.png"] = File.read("app/assets/images/mail_logo.png")
     attachments["mail_logo_holidays.png"] = File.read("app/assets/images/mail_logo_holidays.png")
-    mail(
-      from: "TrantorFoundation <trantorfoundation@cgil-fvg.net>",
-      to: email_address_with_name(User.first.email, User.first.email),
-      subject: "TrantorFoundation CGIL FVG  ** Modifica Inserimento FERIE **",
-    )
+    @managers = User.where(province: @user.province, region: @user.region, manager: true)
+    @managers.each do |manager|
+      mail(
+        from: "TrantorFoundation <trantorfoundation@cgil-fvg.net>",
+        to: manager.email,
+        subject: "TrantorFoundation CGIL FVG  * Modifica FERIE *",
+      )
+    end
   end
 end
