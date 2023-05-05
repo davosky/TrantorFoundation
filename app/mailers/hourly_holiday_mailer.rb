@@ -6,7 +6,7 @@ class HourlyHolidayMailer < ApplicationMailer
     @hourly_holiday = params[:hourly_holiday]
     @greeting = "TrantorFoundation"
     attachments["mail_logo.png"] = File.read("app/assets/images/mail_logo.png")
-    attachments["mail_logo_holidays.png"] = File.read("app/assets/images/mail_logo_holidays.png")
+    attachments["mail_logo_hourly_holidays.png"] = File.read("app/assets/images/mail_logo_hourly_holidays.png")
     @managers = User.where(province: @user.province, region: @user.region, manager: true)
     emails = @managers.collect(&:email).join(",")
     mail(
@@ -20,7 +20,7 @@ class HourlyHolidayMailer < ApplicationMailer
     @user = params[:user]
     @greeting = "TrantorFoundation"
     attachments["mail_logo.png"] = File.read("app/assets/images/mail_logo.png")
-    attachments["mail_logo_holidays.png"] = File.read("app/assets/images/mail_logo_holidays.png")
+    attachments["mail_logo_hourly_holidays.png"] = File.read("app/assets/images/mail_logo_hourly_holidays.png")
     @managers = User.where(province: @user.province, region: @user.region, manager: true)
     emails = @managers.collect(&:email).join(",")
     mail(
@@ -35,7 +35,7 @@ class HourlyHolidayMailer < ApplicationMailer
     @hourly_holiday = params[:hourly_holiday]
     @greeting = "TrantorFoundation"
     attachments["mail_logo.png"] = File.read("app/assets/images/mail_logo.png")
-    attachments["mail_logo_holidays.png"] = File.read("app/assets/images/mail_logo_holidays.png")
+    attachments["mail_logo_hourly_holidays.png"] = File.read("app/assets/images/mail_logo_hourly_holidays.png")
     @managers = User.where(province: @user.province, region: @user.region, manager: true)
     emails = @managers.collect(&:email).join(",")
     mail(

@@ -37,6 +37,7 @@ class PermitsController < ApplicationController
     @permit.creator = "#{current_user.last_name} #{current_user.first_name}"
 
     if @permit.save
+      PermitMailer.with(user: current_user, permit: @permit).permit_email.deliver_later
       redirect_to permits_path, notice: "permit was successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -48,6 +49,7 @@ class PermitsController < ApplicationController
     @permit.update_date = Date.today
 
     if @permit.update(permit_params)
+      PermitMailer.with(user: current_user, permit: @permit).permit_email_update.deliver_later
       redirect_to permits_path, notice: "permit was successfully updated."
     else
       render :edit, status: :unprocessable_entity
@@ -56,6 +58,7 @@ class PermitsController < ApplicationController
 
   def destroy
     @permit.destroy
+    PermitMailer.with(user: current_user).permit_email_destroy.deliver_later
     redirect_to permits_url, notice: "permit was successfully destroyed."
   end
 
