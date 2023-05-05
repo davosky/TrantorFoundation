@@ -1,5 +1,6 @@
 class HolidayMailer < ApplicationMailer
-  default from: "trantorfoundation@cgil-fvg.net"
+  # default from: "trantorfoundation@cgil-fvg.net"
+  default from: "trantor@fvg.cgil.it"
 
   def holiday_email
     @user = params[:user]
@@ -10,7 +11,7 @@ class HolidayMailer < ApplicationMailer
     @managers = User.where(province: @user.province, region: @user.region, manager: true)
     emails = @managers.collect(&:email).join(",")
     mail(
-      from: "TrantorFoundation <trantorfoundation@cgil-fvg.net>",
+      from: "TrantorFoundation <trantor@fvg.cgil.it>",
       to: emails,
       subject: "TrantorFoundation CGIL FVG  * Inserimento FERIE *",
     )
@@ -24,7 +25,7 @@ class HolidayMailer < ApplicationMailer
     @managers = User.where(province: @user.province, region: @user.region, manager: true)
     emails = @managers.collect(&:email).join(",")
     mail(
-      from: "TrantorFoundation <trantorfoundation@cgil-fvg.net>",
+      from: "TrantorFoundation <trantor@fvg.cgil.it>",
       to: emails,
       subject: "TrantorFoundation CGIL FVG  * Cancellazione FERIE *",
     )
@@ -39,7 +40,7 @@ class HolidayMailer < ApplicationMailer
     @managers = User.where(province: @user.province, region: @user.region, manager: true)
     emails = @managers.collect(&:email).join(",")
     mail(
-      from: "TrantorFoundation <trantorfoundation@cgil-fvg.net>",
+      from: "TrantorFoundation <trantor@fvg.cgil.it>",
       to: emails,
       subject: "TrantorFoundation CGIL FVG  * Modifica FERIE *",
     )

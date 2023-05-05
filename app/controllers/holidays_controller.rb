@@ -57,8 +57,8 @@ class HolidaysController < ApplicationController
   end
 
   def destroy
-    HolidayMailer.with(user: current_user).holiday_email_destroy.deliver_later
     @holiday.destroy
+    HolidayMailer.with(user: current_user).holiday_email_destroy.deliver_later
     redirect_to holidays_url, notice: "holiday was successfully destroyed."
   end
 
