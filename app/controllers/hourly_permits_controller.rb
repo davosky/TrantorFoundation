@@ -37,6 +37,7 @@ class HourlyPermitsController < ApplicationController
     @hourly_permit.creator = "#{current_user.last_name} #{current_user.first_name}"
 
     if @hourly_permit.save
+      HourlyPermitMailer.with(user: current_user, hourly_permit: @hourly_permit).hourly_permit_email.deliver_later
       redirect_to hourly_permits_path, notice: "hourly_permit was successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -48,6 +49,7 @@ class HourlyPermitsController < ApplicationController
     @hourly_permit.update_date = Date.today
 
     if @hourly_permit.update(hourly_permit_params)
+      HourlyPermitMailer.with(user: current_user, hourly_permit: @hourly_permit).hourly_permit_email_update.deliver_later
       redirect_to hourly_permits_path, notice: "hourly_permit was successfully updated."
     else
       render :edit, status: :unprocessable_entity
@@ -56,6 +58,7 @@ class HourlyPermitsController < ApplicationController
 
   def destroy
     @hourly_permit.destroy
+    HourlyPermitMailer.with(user: current_user).hourly_permit_email_destroy.deliver_later
     redirect_to hourly_permits_url, notice: "hourly_permit was successfully destroyed."
   end
 

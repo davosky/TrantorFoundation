@@ -1,0 +1,14 @@
+Variazione Inserimento - ORE PERMESSO - 
+===============================================================================
+L'Utente:   <%= "#{@user.last_name} #{@user.first_name}" %>
+ha effettuato una variazione nella sezione ORE PERMESSO
+---
+tipo permesso:  <%= @hourly_permit.permit_type.name %>
+---
+il giorno:  <%= l(@hourly_permit.start_time, format: "%A %d %B %Y") %>
+dalle ore:  <%= l(@hourly_permit.start_time, format: "%H:%M") %>
+alle ore:   <%= l(@hourly_permit.end_time, format: "%H:%M") %>
+===============================================================================
+*******************************************************************************
+TrantorFoundation   -   CGIL FVG    -   gestione rimborsi spese ed assenze
+*******************************************************************************
