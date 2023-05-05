@@ -37,6 +37,7 @@ class DiseasesController < ApplicationController
     @disease.creator = "#{current_user.last_name} #{current_user.first_name}"
 
     if @disease.save
+      DiseaseMailer.with(user: current_user, disease: @disease).disease_email.deliver_later
       redirect_to diseases_path, notice: "disease was successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -48,6 +49,7 @@ class DiseasesController < ApplicationController
     @disease.update_date = Date.today
 
     if @disease.update(disease_params)
+      DiseaseMailer.with(user: current_user, disease: @disease).disease_email_update.deliver_later
       redirect_to diseases_path, notice: "disease was successfully updated."
     else
       render :edit, status: :unprocessable_entity
@@ -56,6 +58,7 @@ class DiseasesController < ApplicationController
 
   def destroy
     @disease.destroy
+    DiseaseMailer.with(user: current_user).disease_email_destroy.deliver_later
     redirect_to diseases_url, notice: "disease was successfully destroyed."
   end
 

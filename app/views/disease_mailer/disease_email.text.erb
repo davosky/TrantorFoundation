@@ -1,0 +1,12 @@
+Nuovo Inserimento - MALATTIA - 
+===============================================================================
+L'Utente:   <%= "#{@user.last_name} #{@user.first_name}" %>
+ha effettuato un nuovo inserimento nella sezione MALATTIA
+---
+numero certificato: <%= @disease.certificate %>
+---
+periodo interessato:    <%= l(@disease.start_time, format: "%A %d %B %Y") %> - <%= l(@disease.end_time, format: "%A %d %B %Y") %>
+===============================================================================
+*******************************************************************************
+TrantorFoundation   -   CGIL FVG    -   gestione rimborsi spese ed assenze
+*******************************************************************************
