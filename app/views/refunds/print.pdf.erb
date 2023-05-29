@@ -13,9 +13,9 @@
               <span class="span-right">
                 <%= inline_svg('pdf/refunds_logo_modulo.svg', preserve_aspect_ratio: 'xMaxYMax meet') %>
               </span>
-              <br/>
             </div>
             <h2>
+              <br/>
               <%= inline_svg('pdf/cgil_logo.svg', preserve_aspect_ratio: 'xMaxYMax meet') %>
               <strong>
                 &nbsp;&nbsp;&nbsp;<%= refund.user.institute %>
@@ -88,15 +88,12 @@
                   </tbody>
                 </table>
               </p>
-              <br/>
-              <br/>
               <p>
                 <hr class="hr-small"/>
                 <span class="span-right">
                   <%= inline_svg('pdf/file_refund.svg', preserve_aspect_ratio: 'xMaxYMax meet') %>
                 </span>
               </p>
-              <br/>
               <p>
                 Rimborso spese di:&emsp;
                 <strong>
@@ -225,10 +222,11 @@
               </p>
             </div>
             <p style='page-break-before: always'>
-            <% end %>
+              <p style='page-break-after: always'>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </body>
-</html>
+    </body>
+  </html>
