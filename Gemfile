@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.1.2"
+ruby "3.2.2"
 
 gem "bootsnap", "~> 1.15", require: false
 gem "cancancan", "~> 3.4"
@@ -16,7 +16,7 @@ gem "kaminari", "~> 1.2"
 gem "kaminari-i18n", "~> 0.5.0"
 gem "pg", "~> 1.4"
 gem "puma", "~> 6.0"
-gem "rails", "~> 7.0", ">= 7.0.4"
+gem "rails", "~> 7.0", ">= 7.0.6"
 gem "rails_admin", "~> 3.1"
 gem "rails_admin-i18n", "~> 1.18"
 gem "rails-i18n", "~> 7.0", ">= 7.0.6"
@@ -49,3 +49,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "rename", "~> 1.0"
