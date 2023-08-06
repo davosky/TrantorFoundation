@@ -35,7 +35,11 @@
           </div>
           <div class='card-body card-body-calendar'>
             <% hourly_permits.each do |hourly_permit| %>
-              <span class="badge">
+                <% if hourly_permit.user.color? %>
+                  <span class="badge" style="background-color: <%= "#{hourly_permit.user.color}" %>">
+                <% else %>
+                  <span class="badge">
+                <% end %>
                 <%= link_to hourly_permit_path(hourly_permit), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
                   <i class='fas fa-user'></i>
                   &nbsp;

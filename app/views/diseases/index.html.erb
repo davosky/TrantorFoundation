@@ -33,7 +33,11 @@
           </div>
           <div class='card-body card-body-calendar'>
             <% diseases.each do |disease| %>
-              <span class="badge">
+                <% if disease.user.color? %>
+                  <span class="badge" style="background-color: <%= "#{disease.user.color}" %>">
+                <% else %>
+                  <span class="badge">
+                <% end %>
                 <%= link_to disease_path(disease), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
                   <i class='fas fa-user'></i>
                   &nbsp;

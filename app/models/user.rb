@@ -21,6 +21,8 @@ class User < ApplicationRecord
   mount_uploader :signature, SignatureUploader
   mount_uploader :validator_signature, ValidatorSignatureUploader
   mount_uploader :organizational_signature, OrganizationalSignatureUploader
+  mount_uploader :avatar, AvatarUploader
+  mount_uploader :mini_avatar, MiniAvatarUploader
 
   before_create :set_id
 

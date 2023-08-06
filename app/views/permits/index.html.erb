@@ -33,7 +33,11 @@
           </div>
           <div class='card-body card-body-calendar'>
             <% permits.each do |permit| %>
-              <span class="badge">
+              <% if permit.user.color? %>
+                  <span class="badge" style="background-color: <%= "#{permit.user.color}" %>">
+                <% else %>
+                  <span class="badge">
+                <% end %>
                 <%= link_to permit_path(permit), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
                   <i class='fas fa-user'></i>
                   &nbsp;

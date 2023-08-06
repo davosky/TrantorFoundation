@@ -3,7 +3,7 @@
     <%= image_tag("diseases_logo.svg", class: "img-fluid") %>
   </div>
 </div>
-<%= search_form_for @q, id: 'search-form', url: search_diseases_path do |form| %>
+<%= search_form_for @q, id: "search-form", url: search_diseases_path do |form| %>
   <div class="row">
     <div class="col-4">
       <div class="input-group mb-2">
@@ -31,9 +31,9 @@
             &nbsp;<span>Utente</span>
           </div>
           <% if god? %>
-            <%= form.collection_select(:user_id_eq, User.order('last_name ASC'), :id, :user_name_full, {:include_blank => true}, {:class => 'form-control'}) %>
+            <%= form.collection_select(:user_id_eq, User.order("last_name ASC"), :id, :user_name_full, { :include_blank => true }, { :class => "form-control" }) %>
           <% elsif manager? %>
-            <%= form.collection_select :user_id_eq, User.order('last_name ASC').where(province: current_user.province, region: current_user.region), :id, :user_name_full, {:include_blank => true}, {:class => 'form-control'} %>
+            <%= form.collection_select :user_id_eq, User.order("last_name ASC").where(province: current_user.province, region: current_user.region), :id, :user_name_full, { :include_blank => true }, { :class => "form-control" } %>
           <% else %>
           <% end %>
         </div>
@@ -85,7 +85,11 @@
       <tbody>
         <% @total = 0 %>
         <% @diseases.each do |disease| %>
-          <tr>
+          <% if disease.user.color? %> 
+            <tr style="background-color: <%= "#{disease.user.color}" %>">
+          <% else %>
+            <tr>
+          <% end %>
             <td>
               <%= link_to disease_path(disease), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
                 <%= "#{disease.user.first_name} #{disease.user.last_name}" %>

@@ -102,7 +102,7 @@ hr {
 .btn-primary {
   &:hover {
     color: $primary;
-    background-color: $cyan-light;
+    background-color: $green-light;
     border-color: $primary;
   }
 }
@@ -227,14 +227,21 @@ tr {
   color: $danger !important;
 }
 
+.dropdown-item {
+  &:hover {
+    background-color: $white;
+    color: $primary;
+  }
+}
+
 // Card
 
 .card-calendar {
-  border: 1px solid $gray-600;
+  border: none;
 }
 
 .card-header-calendar {
-  background-color: $gray-200;
+  background-color: $gray-100;
   color: $gray-650;
 }
 
@@ -243,7 +250,7 @@ tr {
 
   a {
     &:hover {
-      color: $info;
+      color: $danger;
     }
   }
 }
@@ -254,7 +261,7 @@ tr {
   border: 1px solid $primary;
 
   &:hover {
-    background-color: $gray-200;
-    border: 1px solid $info;
+    background-color: $green-light;
+    border: 1px solid $danger;
   }
 }

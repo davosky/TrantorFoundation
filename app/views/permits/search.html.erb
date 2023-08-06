@@ -80,7 +80,11 @@
       <tbody>
         <% @total = 0 %>
         <% @permits.each do |permit| %>
-          <tr>
+          <% if permit.user.color? %> 
+            <tr style="background-color: <%= "#{permit.user.color}" %>">
+          <% else %>
+            <tr>
+          <% end %>
             <td>
               <%= link_to permit_path(permit), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
                 <%= "#{permit.user.first_name} #{permit.user.last_name}" %>
