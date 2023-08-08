@@ -1,14 +1,8 @@
 // Darkly 5.2.2
 // Bootswatch
 
-// Variables
-
-$web-font-path: "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" !default;
-@if $web-font-path {
-  @import url($web-font-path);
-}
-
 :root {
+  font-family: "RobotoCondensed-Regular";
   color-scheme: dark;
 }
 
@@ -17,6 +11,9 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0
 body {
   // overflow: hidden;
   padding-top: 4.2rem;
+  font-family: "RobotoCondensed-Regular";
+  font-weight: 300;
+  font-size: 13pt;
 
   a {
     text-decoration: none;

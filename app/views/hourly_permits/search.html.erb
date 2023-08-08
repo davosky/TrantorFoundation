@@ -80,50 +80,39 @@
       <tbody>
         <% @total = 0 %>
         <% @hourly_permits.each do |hourly_permit| %>
-          <% if hourly_permit.user.color? %> 
+          <% if hourly_permit.user.color? %>
             <tr style="background-color: <%= "#{hourly_permit.user.color}" %>">
-          <% else %>
-            <tr>
-          <% end %>
-            <td>
-              <%= link_to hourly_permit_path(hourly_permit), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
-                <%= "#{hourly_permit.user.first_name} #{hourly_permit.user.last_name}" %>
+            <% else %>
+              <tr>
               <% end %>
-            </td>
-            <td>
-              <%= l(hourly_permit.start_time, format: "%A %d %B %Y dalle ore: %H:%M") %>
-            </td>
-            <td>
-              <%= l(hourly_permit.end_time, format: "%A %d %B %Y alle ore: %H:%M") %>
-            </td>
-            <td>
-              <strong class='text-primary'>
-                <%= hourly_permit_duration(hourly_permit).round %>
-                &emsp;
-                <% unless hourly_permit_duration(hourly_permit) > 1 %>
-                  ore
-                <% else %>
-                  ore
+              <td>
+                <%= link_to hourly_permit_path(hourly_permit), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
+                  <%= "#{hourly_permit.user.first_name} #{hourly_permit.user.last_name}" %>
                 <% end %>
-              </strong>
-            </td>
-          </tr>
-          <% @total = @total + hourly_permit_duration(hourly_permit).round %>
-        <% end %>
-      </tbody>
-    </table>
+              </td>
+              <td>
+                <%= l(hourly_permit.start_time, format: "%A %d %B %Y dalle ore: %H:%M") %>
+              </td>
+              <td>
+                <%= l(hourly_permit.end_time, format: "%A %d %B %Y alle ore: %H:%M") %>
+              </td>
+              <td>
+                <strong class='text-primary'>
+                  <%= hourly_permit_duration(hourly_permit).round %>
+                  &emsp;
+                  <% unless hourly_permit_duration(hourly_permit) > 1 %>
+                    ore
+                  <% else %>
+                    ore
+                  <% end %>
+                </strong>
+              </td>
+            </tr>
+            <% @total = @total + hourly_permit_duration(hourly_permit).round %>
+          <% end %>
+        </tbody>
+      </table>
+      <br>
+      <%= paginate @hourly_permits %>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-12">
-    <h5>
-      <span class="float-end badge bg-primary text-white p-2">
-        <strong>
-          Totale ore ferie:
-          &emsp;
-          <%= @total %>
-        </strong>
-      </span>
-    </h5>
-  </div>
-</div>

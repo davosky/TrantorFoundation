@@ -5,7 +5,7 @@ RailsAdmin.config do |config|
     redirect_to main_app.root_path unless current_user.god == true
   end
 
-  config.main_app_name = ["Trantor Foundation"]
+  config.main_app_name = ["Trantor Empire"]
 
   config.model "User" do
     visible true

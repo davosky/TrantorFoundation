@@ -78,7 +78,6 @@
                           <%= wicked_pdf_image_tag(refund.user.validator_signature.url, :size => "140x54", :crop => :fill) %>
                         <% end %>
                         <br/>
-                        ------------------------------------------
                       </td>
                       <td>
                         <strong>
@@ -129,7 +128,6 @@
                   </strong>
                 <% end %>
               </p>
-              ---------------------------------------------------------------------------------------------------------
               <table>
                 <thead>
                   <th></th>
@@ -180,9 +178,6 @@
                   </tr>
                 </tbody>
               </table>
-              ---------------------------------------------------------------------------------------------------------
-              <br/>
-              <br/>
               <table>
                 <thead>
                   <tr>
@@ -200,7 +195,6 @@
                         <%= wicked_pdf_image_tag(refund.user.signature.url, :size => "140x54", :crop => :fill) %>
                       <% end %>
                       <br>
-                      ------------------------------------------
                     </td>
                     <td>
                       <strong>
@@ -210,15 +204,12 @@
                   </tr>
                 </tbody>
               </table>
-              <br/>
               <p>
                 Il Segretario Organizzativo autorizza il pagamento:
                 <br/>
                 <% if refund.user.organizational_signature? %>
                   <%= wicked_pdf_image_tag(refund.user.organizational_signature.url, :size => "140x54", :crop => :fill) %>
                 <% end %>
-                <br/>
-                ---------------------------------------------------------------------
               </p>
             </div>
             <p style='page-break-before: always'>

@@ -66,14 +66,14 @@ class PermitsController < ApplicationController
     if current_user.god == true
       @q = Permit.ransack(params[:q])
       @permits = @q.result(distinct: true).includes(:user).order("users.last_name ASC")
-      @permits = @permits.order("start_time DESC")
+      @permits = @permits.order("start_time DESC").page(params[:page])
     elsif current_user.manager == true
       @q = Permit.ransack(params[:q])
       @permits = @q.result(distinct: true).where(user_id: User.where(province: current_user.province, region: current_user.region)).includes(:user).order("users.last_name ASC")
-      @permits = @permits.order("start_time DESC")
+      @permits = @permits.order("start_time DESC").page(params[:page])
     else
       @q = Permit.ransack(params[:q])
-      @permits = @q.result(distinct: true).where(user_id: current_user).order("start_time DESC")
+      @permits = @q.result(distinct: true).where(user_id: current_user).order("start_time DESC").page(params[:page])
     end
   end
 

@@ -34,15 +34,15 @@
           <div class='card-body card-body-calendar'>
             <% holidays.each do |holiday| %>
               <% if holiday.user.color?%>
-              <span class="badge" style="background-color: <%= "#{holiday.user.color}" %>">
-              <% else %>
-              <span class="badge">
-              <% end %>
-                <%= link_to holiday_path(holiday), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
-                  <i class="fa-solid fa-circle-user"></i>
-                  &nbsp;
-                  <%= "#{holiday.user.last_name} #{holiday.user.first_name.split.map { |i| i[0, 1].upcase }.join}" %>
-                <% end %>
+                <span class="badge" style="background-color: <%= "#{holiday.user.color}" %>">
+                <% else %>
+                  <span class="badge">
+                  <% end %>
+                  <%= link_to holiday_path(holiday), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
+                    <i class="fa-solid fa-circle-user"></i>
+                    &nbsp;
+                    <%= "#{holiday.user.last_name} #{holiday.user.first_name.split.map { |i| i[0, 1].upcase }.join}" %>
+                  <% end %>
                   <% if holiday.processed == true %>
                   <% else %>
                     &emsp;
@@ -56,12 +56,12 @@
                       <i class="fa-solid fa-trash"></i>
                     <% end %>
                   <% end %>
-              </span>
-              <br/>
-            <% end %>
+                </span>
+                <br/>
+              <% end %>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
-</div>

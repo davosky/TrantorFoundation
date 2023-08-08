@@ -66,14 +66,14 @@ class HolidaysController < ApplicationController
     if current_user.god == true
       @q = Holiday.ransack(params[:q])
       @holidays = @q.result(distinct: true).includes(:user).order("users.last_name ASC")
-      @holidays = @holidays.order("start_time DESC")
+      @holidays = @holidays.order("start_time DESC").page(params[:page])
     elsif current_user.manager == true
       @q = Holiday.ransack(params[:q])
       @holidays = @q.result(distinct: true).where(user_id: User.where(province: current_user.province, region: current_user.region)).includes(:user).order("users.last_name ASC")
-      @holidays = @holidays.order("start_time DESC")
+      @holidays = @holidays.order("start_time DESC").page(params[:page])
     else
       @q = Holiday.ransack(params[:q])
-      @holidays = @q.result(distinct: true).where(user_id: current_user).order("start_time DESC")
+      @holidays = @q.result(distinct: true).where(user_id: current_user).order("start_time DESC").page(params[:page])
     end
   end
 

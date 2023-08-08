@@ -13,6 +13,7 @@ module TrantorFoundation
 
     config.i18n.default_locale = :it
     config.time_zone = "Europe/Rome"
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

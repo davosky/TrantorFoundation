@@ -80,50 +80,39 @@
       <tbody>
         <% @total = 0 %>
         <% @permits.each do |permit| %>
-          <% if permit.user.color? %> 
+          <% if permit.user.color? %>
             <tr style="background-color: <%= "#{permit.user.color}" %>">
-          <% else %>
-            <tr>
-          <% end %>
-            <td>
-              <%= link_to permit_path(permit), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
-                <%= "#{permit.user.first_name} #{permit.user.last_name}" %>
+            <% else %>
+              <tr>
               <% end %>
-            </td>
-            <td>
-              <%= l(permit.start_time, format: "%A %d %B %Y") %>
-            </td>
-            <td>
-              <%= l(permit.end_time, format: "%A %d %B %Y") %>
-            </td>
-            <td>
-              <strong class='text-primary'>
-                <%= permit_duration(permit).round %>
-                &emsp;
-                <% unless permit_duration(permit) > 1 %>
-                  giorno
-                <% else %>
-                  giorni
+              <td>
+                <%= link_to permit_path(permit), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
+                  <%= "#{permit.user.first_name} #{permit.user.last_name}" %>
                 <% end %>
-              </strong>
-            </td>
-          </tr>
-          <% @total = @total + permit_duration(permit).round %>
-        <% end %>
-      </tbody>
-    </table>
+              </td>
+              <td>
+                <%= l(permit.start_time, format: "%A %d %B %Y") %>
+              </td>
+              <td>
+                <%= l(permit.end_time, format: "%A %d %B %Y") %>
+              </td>
+              <td>
+                <strong class='text-primary'>
+                  <%= permit_duration(permit).round %>
+                  &emsp;
+                  <% unless permit_duration(permit) > 1 %>
+                    giorno
+                  <% else %>
+                    giorni
+                  <% end %>
+                </strong>
+              </td>
+            </tr>
+            <% @total = @total + permit_duration(permit).round %>
+          <% end %>
+        </tbody>
+      </table>
+      <br>
+      <%= paginate @permits %>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-12">
-    <h5>
-      <span class="float-end badge bg-primary text-white p-2">
-        <strong>
-          Totale giorni ferie:
-          &emsp;
-          <%= @total %>
-        </strong>
-      </span>
-    </h5>
-  </div>
-</div>

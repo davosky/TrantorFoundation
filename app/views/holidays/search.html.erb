@@ -80,50 +80,39 @@
       <tbody>
         <% @total = 0 %>
         <% @holidays.each do |holiday| %>
-          <% if holiday.user.color? %> 
+          <% if holiday.user.color? %>
             <tr style="background-color: <%= "#{holiday.user.color}" %>">
-          <% else %>
-            <tr>
-          <% end %>
-            <td>
-              <%= link_to holiday_path(holiday), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
-                <%= "#{holiday.user.first_name} #{holiday.user.last_name}" %>
+            <% else %>
+              <tr>
               <% end %>
-            </td>
-            <td>
-              <%= l(holiday.start_time, format: "%A %d %B %Y") %>
-            </td>
-            <td>
-              <%= l(holiday.end_time, format: "%A %d %B %Y") %>
-            </td>
-            <td>
-              <strong class='text-primary'>
-                <%= holiday_duration(holiday).round %>
-                &emsp;
-                <% unless holiday_duration(holiday) > 1 %>
-                  giorno
-                <% else %>
-                  giorni
+              <td>
+                <%= link_to holiday_path(holiday), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
+                  <%= "#{holiday.user.first_name} #{holiday.user.last_name}" %>
                 <% end %>
-              </strong>
-            </td>
-          </tr>
-          <% @total = @total + holiday_duration(holiday).round %>
-        <% end %>
-      </tbody>
-    </table>
+              </td>
+              <td>
+                <%= l(holiday.start_time, format: "%A %d %B %Y") %>
+              </td>
+              <td>
+                <%= l(holiday.end_time, format: "%A %d %B %Y") %>
+              </td>
+              <td>
+                <strong class='text-primary'>
+                  <%= holiday_duration(holiday).round %>
+                  &emsp;
+                  <% unless holiday_duration(holiday) > 1 %>
+                    giorno
+                  <% else %>
+                    giorni
+                  <% end %>
+                </strong>
+              </td>
+            </tr>
+            <% @total = @total + holiday_duration(holiday).round %>
+          <% end %>
+        </tbody>
+      </table>
+      <br>
+      <%= paginate @holidays %>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-12">
-    <h5>
-      <span class="float-end badge bg-primary text-white p-2">
-        <strong>
-          Totale giorni ferie:
-          &emsp;
-          <%= @total %>
-        </strong>
-      </span>
-    </h5>
-  </div>
-</div>

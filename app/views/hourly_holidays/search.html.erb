@@ -80,50 +80,39 @@
       <tbody>
         <% @total = 0 %>
         <% @hourly_holidays.each do |hourly_holiday| %>
-          <% if hourly_holiday.user.color? %> 
+          <% if hourly_holiday.user.color? %>
             <tr style="background-color: <%= "#{hourly_holiday.user.color}" %>">
-          <% else %>
-            <tr>
-          <% end %>
-            <td>
-              <%= link_to hourly_holiday_path(hourly_holiday), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
-                <%= "#{hourly_holiday.user.first_name} #{hourly_holiday.user.last_name}" %>
+            <% else %>
+              <tr>
               <% end %>
-            </td>
-            <td>
-              <%= l(hourly_holiday.start_time, format: "%A %d %B %Y dalle ore: %H:%M") %>
-            </td>
-            <td>
-              <%= l(hourly_holiday.end_time, format: "%A %d %B %Y alle ore: %H:%M") %>
-            </td>
-            <td>
-              <strong class='text-primary'>
-                <%= hourly_holiday_duration(hourly_holiday).round %>
-                &emsp;
-                <% unless hourly_holiday_duration(hourly_holiday) > 1 %>
-                  ore
-                <% else %>
-                  ore
+              <td>
+                <%= link_to hourly_holiday_path(hourly_holiday), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
+                  <%= "#{hourly_holiday.user.first_name} #{hourly_holiday.user.last_name}" %>
                 <% end %>
-              </strong>
-            </td>
-          </tr>
-          <% @total = @total + hourly_holiday_duration(hourly_holiday).round %>
-        <% end %>
-      </tbody>
-    </table>
+              </td>
+              <td>
+                <%= l(hourly_holiday.start_time, format: "%A %d %B %Y dalle ore: %H:%M") %>
+              </td>
+              <td>
+                <%= l(hourly_holiday.end_time, format: "%A %d %B %Y alle ore: %H:%M") %>
+              </td>
+              <td>
+                <strong class='text-primary'>
+                  <%= hourly_holiday_duration(hourly_holiday).round %>
+                  &emsp;
+                  <% unless hourly_holiday_duration(hourly_holiday) > 1 %>
+                    ore
+                  <% else %>
+                    ore
+                  <% end %>
+                </strong>
+              </td>
+            </tr>
+            <% @total = @total + hourly_holiday_duration(hourly_holiday).round %>
+          <% end %>
+        </tbody>
+      </table>
+      <br>
+      <%= paginate @hourly_holidays %>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-12">
-    <h5>
-      <span class="float-end badge bg-primary text-white p-2">
-        <strong>
-          Totale ore ferie:
-          &emsp;
-          <%= @total %>
-        </strong>
-      </span>
-    </h5>
-  </div>
-</div>
