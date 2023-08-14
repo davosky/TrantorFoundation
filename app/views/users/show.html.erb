@@ -1,0 +1,281 @@
+<h3 class="text-primary mb-4">
+  <%= image_tag(user_avatar(@user), class: "img-fluid") %>
+  <%= "#{@user.first_name} #{@user.last_name}" %>
+</h3>
+<div class="row mb-3">
+  <div class="col-6">
+    <div class="card border-primary bg-light shadow">
+      <div class="card-header bg-light">
+        <%= image_tag("holidays_logo.svg", class: "img-fluid") %>
+        <span class="float-end">
+          <small class="text-secondary">
+            Attenzione il conteggio delle giornate non tiene conto delle festivit&agrave;
+          </small>
+        </span>
+      </div>
+      <div class="card-body">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th class="text-primary text-center">
+                Periodo:
+              </th>
+              <th class="text-primary text-center">
+                Data Inizio:
+              </th>
+              <th class="text-primary text-center">
+                Data Fine:
+              </th>
+              <th class="text-primary text-center">
+                Durata(giorni)
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @holidays.each do |holiday| %>
+              <tr>
+                <td class="text-uppercase text-center">
+                  <%= same_month(holiday) %>
+                </td>
+                <td class="text-center">
+                  <%= l(holiday.start_time, format: "%d/%m/%y") %>
+                </td>
+                <td class="text-center">
+                  <%= l(holiday.end_time, format: "%d/%m/%y") %>
+                </td>
+                <td class="text-center">
+                  <%= holiday_duration(holiday).round %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <br/>
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="card border-primary bg-light shadow">
+      <div class="card-header bg-light">
+        <%= image_tag("hourly_holidays_logo.svg", class: "img-fluid") %>
+      </div>
+      <div class="card-body">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th class="text-primary text-center">
+                Mese:
+              </th>
+              <th class="text-primary text-center">
+                Giorno:
+              </th>
+              <th class="text-primary text-center">
+                Ora Inizio:
+              </th>
+              <th class="text-primary text-center">
+                Ora Fine:
+              </th>
+              <th class="text-primary text-center">
+                Durata(ore)
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @hourly_holidays.each do |hourly_holiday| %>
+              <tr>
+                <td class="text-uppercase text-center">
+                  <%= l(hourly_holiday.start_time, format: "%B") %>
+                </td>
+                <td class="text-center">
+                  <%= l(hourly_holiday.start_time, format: "%d/%m/%y") %>
+                </td>
+                <td class="text-center">
+                  <%= l(hourly_holiday.start_time, format: "%H:%M") %>
+                </td>
+                <td class="text-center">
+                  <%= l(hourly_holiday.end_time, format: "%H:%M") %>
+                </td>
+                <td class="text-center">
+                  <%= hourly_holiday_duration(hourly_holiday).round %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <br/>
+      </div>
+    </div>
+  </div>
+</div>
+<br/>
+<div class="row mb-3 mt-3">
+  <div class="col col-6">
+    <div class="card border-primary bg-light shadow">
+      <div class="card-header bg-light">
+        <%= image_tag("permits_logo.svg", class: "img-fluid") %>
+        <span class="float-end">
+          <small class="text-secondary">
+            Attenzione il conteggio delle giornate non tiene conto delle festivit&agrave;
+          </small>
+        </span>
+      </div>
+      <div class="card-body">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th class="text-primary text-center">
+                Periodo:
+              </th>
+              <th class="text-primary text-center">
+                Data Inizio:
+              </th>
+              <th class="text-primary text-center">
+                Data Fine:
+              </th>
+              <th class="text-primary text-center">
+                Tipo:
+              </th>
+              <th class="text-primary text-center">
+                Durata(giorni)
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @permits.each do |permit| %>
+              <tr>
+                <td class="text-uppercase text-center">
+                  <%= same_month(permit) %>
+                </td>
+                <td class="text-center">
+                  <%= l(permit.start_time, format: "%d/%m/%y") %>
+                </td>
+                <td class="text-center">
+                  <%= l(permit.end_time, format: "%d/%m/%y") %>
+                </td>
+                <td class="text-center">
+                  <%= permit.permit_type.name %>
+                </td>
+                <td class="text-center">
+                  <%= permit_duration(permit).round %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <br/>
+      </div>
+    </div>
+  </div>
+  <div class="col col-6">
+    <div class="card border-primary bg-light shadow">
+      <div class="card-header bg-light">
+        <%= image_tag("hourly_permits_logo.svg", class: "img-fluid") %>
+      </div>
+      <div class="card-body">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th class="text-primary text-center">
+                Mese:
+              </th>
+              <th class="text-primary text-center">
+                Giorno:
+              </th>
+              <th class="text-primary text-center">
+                Ora Inizio:
+              </th>
+              <th class="text-primary text-center">
+                Ora Fine:
+              </th>
+              <th class="text-primary text-center">
+                Tipo:
+              </th>
+              <th class="text-primary text-center">
+                Durata(ore)
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @hourly_permits.each do |hourly_permit| %>
+              <tr>
+                <td class="text-uppercase text-center">
+                  <%= l(hourly_permit.start_time, format: "%B") %>
+                </td>
+                <td class="text-center">
+                  <%= l(hourly_permit.start_time, format: "%d/%m/%y") %>
+                </td>
+                <td class="text-center">
+                  <%= l(hourly_permit.start_time, format: "%H:%M") %>
+                </td>
+                <td class="text-center">
+                  <%= l(hourly_permit.end_time, format: "%H:%M") %>
+                </td>
+                <td class="text-center">
+                  <%= hourly_permit.permit_type.name %>
+                </td>
+                <td class="text-center">
+                  <%= hourly_permit_duration(hourly_permit).round %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <br/>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row mt-3">
+  <div class="col-6">
+    <div class="card border-primary bg-light shadow">
+      <div class="card-header bg-light">
+        <%= image_tag("diseases_logo.svg", class: "img-fluid") %>
+        <span class="float-end">
+          <small class="text-secondary">
+            Attenzione il conteggio delle giornate non tiene conto delle festivit&agrave;
+          </small>
+        </span>
+      </div>
+      <div class="card-body">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th class="text-primary text-center">
+                Periodo:
+              </th>
+              <th class="text-primary text-center">
+                Data Inizio:
+              </th>
+              <th class="text-primary text-center">
+                Data Fine:
+              </th>
+              <th class="text-primary text-center">
+                Durata(giorni)
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @diseases.each do |disease| %>
+              <tr>
+                <td class="text-uppercase text-center">
+                  <%= same_month(disease) %>
+                </td>
+                <td class="text-center">
+                  <%= l(disease.start_time) %>
+                </td>
+                <td class="text-center">
+                  <%= l(disease.end_time) %>
+                </td>
+                <td class="text-center">
+                  <%= disease_duration(disease).round %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <br/>
+      </div>
+    </div>
+  </div>
+  <div class="col-6"></div>
+</div>

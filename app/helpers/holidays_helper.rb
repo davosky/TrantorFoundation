@@ -32,4 +32,12 @@ module HolidaysHelper
   def processed_holiday(holiday)
     holiday.processed == true
   end
+
+  def same_month(holiday)
+    if holiday.start_time.month == holiday.end_time.month
+      "#{l(holiday.start_time, format: "%B")}"
+    else
+      "#{l(holiday.start_time, format: "%B")} - #{l(holiday.end_time, format: "%B")}"
+    end
+  end
 end

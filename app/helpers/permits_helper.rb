@@ -32,4 +32,12 @@ module PermitsHelper
   def processed_permit(permit)
     permit.processed == true
   end
+
+  def same_month(permit)
+    if permit.start_time.month == permit.end_time.month
+      "#{l(permit.start_time, format: "%B")}"
+    else
+      "#{l(permit.start_time, format: "%B")} - #{l(permit.end_time, format: "%B")}"
+    end
+  end
 end

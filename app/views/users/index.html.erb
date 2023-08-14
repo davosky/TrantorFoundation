@@ -1,0 +1,30 @@
+<div class="col-12">
+  <span class="float-end">
+    <%= paginate @users %>
+  </span>
+  <%= image_tag("users_logo.svg", class: "img-fluid") %>
+  <hr class="bg-primary text-primary mt-3 mb-3"/>
+</div>
+<% @users.each_slice(3)  do |users| %>
+  <div class='row'>
+    <% users.each  do |user| %>
+      <div class='col-lg-4'>
+        <%= link_to user do %>
+          <div class='card bg-light border-primary shadow m-1 p-2'>
+            <div class="card-body">
+              <h5 class="text-primary">
+                <%= image_tag(user_avatar_gender(user), class: "img-fluid") %>
+                &nbsp;
+                <%= "#{user.last_name} #{user.first_name}" %>
+              </h5>
+              <hr/>
+              <p class="text-center text-primary">
+                <%= "#{user.region} - #{user.province} - #{user.office}" %>
+              </p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -32,4 +32,12 @@ module DiseasesHelper
   def processed_disease(disease)
     disease.processed == true
   end
+
+  def same_month(disease)
+    if disease.start_time.month == disease.end_time.month
+      "#{l(disease.start_time, format: "%B")}"
+    else
+      "#{l(disease.start_time, format: "%B")} - #{l(disease.end_time, format: "%B")}"
+    end
+  end
 end

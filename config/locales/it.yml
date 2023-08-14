@@ -64,6 +64,9 @@ it:
         veichles: Veicoli
         refunds: Rimborsi
         refund_closures: Chiusure Rimborsi
+        avatar: Avatar
+        mini_avatar: Mini Avatar
+        color: Colore
       road:
         name: Percorso
         road_lenght: Lunghezza
