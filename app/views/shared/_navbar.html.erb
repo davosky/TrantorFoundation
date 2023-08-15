@@ -137,6 +137,13 @@
             <% end %>
           </div>
         </li>
+        <li class="nav-item">
+          <%= link_to users_path, class: "nav-link" do %>
+            <i class="fa-solid fa-user-circle"></i>
+            &nbsp;
+            Utenti
+          <% end %>
+        </li>
         <% if can? :whatsup, :dashboard %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown nav-link-main-navbar" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
@@ -155,13 +162,6 @@
             </div>
           </li>
         <% end %>
-        <li class="nav-item">
-          <%= link_to users_path, class: "nav-link" do %>
-            <i class="fa-solid fa-user-circle"></i>
-            &nbsp;
-            Utenti
-          <% end %>
-        </li>
       </ul>
       <ul class="navbar-nav ms-auto">
         <li class="nav-item dropdown">

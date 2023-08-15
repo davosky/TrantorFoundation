@@ -4,8 +4,7 @@ class UsersController < ApplicationController
       @users = User.all.order(last_name: "ASC").page(params[:page])
     else current_user.manager == true
       @users = User.where(province: current_user.province, region: current_user.region).order("users.last_name ASC")
-      @users = @users.page(params[:page])
-    end
+      @users = @users.page(params[:page])     end
   end
 
   def show
@@ -16,6 +15,6 @@ class UsersController < ApplicationController
     @permits = Permit.where(user_id: @user.id).order(start_time: "DESC")
     @hourly_permits = HourlyPermit.where(user_id: @user.id).order(start_time: "DESC")
     @diseases = Disease.where(user_id: @user.id).order(start_time: "DESC")
-    @refund_closures = RefundClosure.where(user_id: @user.id).order(start_time: "DESC")
+    @refund_closures = RefundClosure.where(user_id: @user.id).order(created_at: "DESC")
   end
 end

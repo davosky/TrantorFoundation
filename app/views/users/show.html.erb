@@ -1,10 +1,17 @@
 <h3 class="text-primary mb-4">
   <%= image_tag(user_avatar(@user), class: "img-fluid") %>
   <%= "#{@user.first_name} #{@user.last_name}" %>
+  <span class="float-end">
+    <%= link_to :back, class: "btn btn-sm btn-primary"  do %>
+      <i class="fa-solid fa-arrow-left"></i>
+      &emsp;
+      Ritorna alla Lista
+    <% end %>
+  </span>
 </h3>
 <div class="row mb-3">
   <div class="col-6">
-    <div class="card border-primary bg-light shadow">
+    <div class="card border-primary bg-light w-100 h-100 d-inline-block shadow">
       <div class="card-header bg-light">
         <%= image_tag("holidays_logo.svg", class: "img-fluid") %>
         <span class="float-end">
@@ -55,7 +62,7 @@
     </div>
   </div>
   <div class="col-6">
-    <div class="card border-primary bg-light shadow">
+    <div class="card border-primary bg-light w-100 h-100 d-inline-block shadow">
       <div class="card-header bg-light">
         <%= image_tag("hourly_holidays_logo.svg", class: "img-fluid") %>
       </div>
@@ -110,7 +117,7 @@
 <br/>
 <div class="row mb-3 mt-3">
   <div class="col col-6">
-    <div class="card border-primary bg-light shadow">
+    <div class="card border-primary bg-light w-100 h-100 d-inline-block shadow">
       <div class="card-header bg-light">
         <%= image_tag("permits_logo.svg", class: "img-fluid") %>
         <span class="float-end">
@@ -167,7 +174,7 @@
     </div>
   </div>
   <div class="col col-6">
-    <div class="card border-primary bg-light shadow">
+    <div class="card border-primary bg-light w-100 h-100 d-inline-block shadow">
       <div class="card-header bg-light">
         <%= image_tag("hourly_permits_logo.svg", class: "img-fluid") %>
       </div>
@@ -227,7 +234,7 @@
 </div>
 <div class="row mt-3">
   <div class="col-6">
-    <div class="card border-primary bg-light shadow">
+    <div class="card border-primary bg-light w-100 h-100 d-inline-block shadow">
       <div class="card-header bg-light">
         <%= image_tag("diseases_logo.svg", class: "img-fluid") %>
         <span class="float-end">
@@ -277,5 +284,55 @@
       </div>
     </div>
   </div>
-  <div class="col-6"></div>
+  <div class="col-6">
+    <div class="card border-primary bg-light w-100 h-100 d-inline-block shadow">
+      <div class="card-header bg-light">
+        <%= image_tag("refund_closures_horizontal_logo.svg", class: "img-fluid") %>
+        <span class="float-end">
+          <small class="text-secondary">
+            Attenzione il conteggio delle giornate non tiene conto delle festivit&agrave;
+          </small>
+        </span>
+      </div>
+      <div class="card-body">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th class="text-primary text-center">
+                Anno:
+              </th>
+              <th class="text-primary text-center">
+                Mese:
+              </th>
+              <th class="text-primary text-center">
+                Periodo:
+              </th>
+              <th class="text-primary text-center">
+                Pagato:
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @refund_closures.each do |refund_closure| %>
+              <tr>
+                <td class="text-uppercase text-center">
+                  <%= refund_closure.year_reference %>
+                </td>
+                <td class="text-center">
+                  <%= refund_closure.month_reference %>
+                </td>
+                <td class="text-center">
+                  <%= refund_closure.period_reference %>
+                </td>
+                <td class="text-center">
+                  <%= image_tag(payed_icon?(refund_closure), class: "img-fluid") %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <br/>
+      </div>
+    </div>
+  </div>
 </div>
