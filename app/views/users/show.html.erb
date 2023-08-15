@@ -13,12 +13,12 @@
   <div class="col-6">
     <div class="card border-primary bg-light w-100 h-100 d-inline-block shadow">
       <div class="card-header bg-light">
-        <%= image_tag("holidays_logo.svg", class: "img-fluid") %>
         <span class="float-end">
           <small class="text-secondary">
             Attenzione il conteggio delle giornate non tiene conto delle festivit&agrave;
           </small>
         </span>
+        <%= image_tag("holidays_logo.svg", class: "img-fluid") %>
       </div>
       <div class="card-body">
         <table class="table table-hover">
@@ -119,12 +119,12 @@
   <div class="col col-6">
     <div class="card border-primary bg-light w-100 h-100 d-inline-block shadow">
       <div class="card-header bg-light">
-        <%= image_tag("permits_logo.svg", class: "img-fluid") %>
         <span class="float-end">
           <small class="text-secondary">
             Attenzione il conteggio delle giornate non tiene conto delle festivit&agrave;
           </small>
         </span>
+        <%= image_tag("permits_logo.svg", class: "img-fluid") %>
       </div>
       <div class="card-body">
         <table class="table table-hover">
@@ -236,12 +236,12 @@
   <div class="col-6">
     <div class="card border-primary bg-light w-100 h-100 d-inline-block shadow">
       <div class="card-header bg-light">
-        <%= image_tag("diseases_logo.svg", class: "img-fluid") %>
         <span class="float-end">
           <small class="text-secondary">
             Attenzione il conteggio delle giornate non tiene conto delle festivit&agrave;
           </small>
         </span>
+        <%= image_tag("diseases_logo.svg", class: "img-fluid") %>
       </div>
       <div class="card-body">
         <table class="table table-hover">
@@ -288,11 +288,6 @@
     <div class="card border-primary bg-light w-100 h-100 d-inline-block shadow">
       <div class="card-header bg-light">
         <%= image_tag("refund_closures_horizontal_logo.svg", class: "img-fluid") %>
-        <span class="float-end">
-          <small class="text-secondary">
-            Attenzione il conteggio delle giornate non tiene conto delle festivit&agrave;
-          </small>
-        </span>
       </div>
       <div class="card-body">
         <table class="table table-hover">
@@ -318,13 +313,13 @@
                 <td class="text-uppercase text-center">
                   <%= refund_closure.year_reference %>
                 </td>
-                <td class="text-center">
+                <td class="text-uppercase text-center">
                   <%= refund_closure.month_reference %>
                 </td>
-                <td class="text-center">
+                <td class="text-uppercase text-center">
                   <%= refund_closure.period_reference %>
                 </td>
-                <td class="text-center">
+                <td class="text-uppercase text-center">
                   <%= image_tag(payed_icon?(refund_closure), class: "img-fluid") %>
                 </td>
               </tr>
