@@ -5,6 +5,12 @@
     <%= link_to :back, class: "btn btn-sm btn-primary"  do %>
       <i class="fa-solid fa-arrow-left"></i>
       &emsp;
+      Indietro
+    <% end %>
+    &emsp;
+    <%= link_to users_path, class: "btn btn-sm btn-primary"  do %>
+      <i class="fa-solid fa-bars"></i>
+      &emsp;
       Ritorna alla Lista
     <% end %>
   </span>
@@ -17,6 +23,8 @@
           <small class="text-secondary">
             Attenzione il conteggio delle giornate non tiene conto delle festivit&agrave;
           </small>
+          <br/>
+          <%= paginate @holidays %>
         </span>
         <%= image_tag("holidays_logo.svg", class: "img-fluid") %>
       </div>

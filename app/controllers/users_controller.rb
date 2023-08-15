@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_id(params[:id])
 
-    @holidays = Holiday.where(user_id: @user.id).order(start_time: "DESC")
+    @holidays = Holiday.where(user_id: @user.id).order(start_time: "DESC").page(params[:page])
     @hourly_holidays = HourlyHoliday.where(user_id: @user.id).order(start_time: "DESC")
     @permits = Permit.where(user_id: @user.id).order(start_time: "DESC")
     @hourly_permits = HourlyPermit.where(user_id: @user.id).order(start_time: "DESC")

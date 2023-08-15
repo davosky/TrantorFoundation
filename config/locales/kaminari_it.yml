@@ -9,8 +9,8 @@ it:
           other: "<b>Tutti %{count}</b> %{entry_name}"
   views:
     pagination:
-      first: inizio
-      last: fine
-      next: Successiva
-      previous: precedente
+      first: "<<"
+      last: ">>"
+      next: ">"
+      previous: "<"
       truncate: "&hellip;"
