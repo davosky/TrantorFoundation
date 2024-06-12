@@ -61,6 +61,42 @@ RailsAdmin.config do |config|
     label_plural "Chiusura Rimborsi"
   end
 
+  config.model "Holiday" do
+    visible true
+    label "Ferie"
+    label_plural "Ferie"
+  end
+
+  config.model "HourlyHoliday" do
+    visible true
+    label "Ferie Orarie"
+    label_plural "Ferie Orarie"
+  end
+
+  config.model "Disease" do
+    visible true
+    label "Malattia"
+    label_plural "Malattia"
+  end
+
+  config.model "Permit" do
+    visible true
+    label "Permesso"
+    label_plural "Permessi"
+  end
+
+  config.model "PermitType" do
+    visible true
+    label "Tipo Permesso"
+    label_plural "Tipi Permesso"
+  end
+
+  config.model "HourlyType" do
+    visible true
+    label "Ore Permesso"
+    label_plural "Ore Permesso"
+  end
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory

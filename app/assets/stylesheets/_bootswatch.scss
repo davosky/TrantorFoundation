@@ -15,8 +15,8 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0
 // DOM
 
 body {
-  overflow: hidden;
-  padding-top: 8rem;
+  // overflow: hidden;
+  padding-top: 4.2rem;
 
   a {
     text-decoration: none;
@@ -39,27 +39,10 @@ hr {
   }
 }
 
-// Forms
-
-//.input-group-addon {
-//   color: $white;
-// }
-//
-// .form-floating > label {
-//   color: $gray-700;
-// }
-
-// .form-control {
-//   background-color: $gray-500;
-// }
-
-// .input-group-text {
-//   min-width: 8rem;
-// }
-
-// .form-check-input {
-//   border: solid 1px $primary;
-// }
+// Navbar
+.navbar {
+  height: 3rem !important;
+}
 
 // Navs
 .nav-tabs,
@@ -158,6 +141,13 @@ hr {
   color: $white !important;
 }
 
+.input-group-search {
+  padding: 0.3rem;
+  border: none;
+  background-color: $primary !important;
+  color: $white !important;
+}
+
 .form-check-input {
   border: solid 1px $primary;
 }
@@ -235,4 +225,36 @@ tr {
 
 .fg-unpayed {
   color: $danger !important;
+}
+
+// Card
+
+.card-calendar {
+  border: 1px solid $gray-600;
+}
+
+.card-header-calendar {
+  background-color: $gray-200;
+  color: $gray-650;
+}
+
+.card-body-calendar {
+  background-color: $gray-100;
+
+  a {
+    &:hover {
+      color: $info;
+    }
+  }
+}
+
+// Badges
+
+.badge {
+  border: 1px solid $primary;
+
+  &:hover {
+    background-color: $gray-200;
+    border: 1px solid $info;
+  }
 }

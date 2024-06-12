@@ -1,4 +1,6 @@
 class ReasonsController < ApplicationController
+  load_and_authorize_resource
+
   before_action :set_reason, only: %i[ show edit update destroy ]
 
   def index

@@ -62,6 +62,99 @@
             <% end %>
           </div>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown nav-link-main-navbar" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-calendar"></i>
+            &nbsp;
+            Assenze
+          </a>
+          <div class="dropdown-menu shadow">
+            <%= link_to holidays_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-umbrella-beach"></i>
+              &nbsp;
+              Ferie - Calendario
+            <% end %>
+            <%= link_to search_holidays_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-umbrella-beach"></i>
+              &nbsp;
+              Ferie - Resoconto
+            <% end %>
+            <hr class="text-white" />
+            <%= link_to hourly_holidays_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-bath"></i>
+              &nbsp;
+              Ore Ferie - Calendario
+            <% end %>
+            <%= link_to search_hourly_holidays_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-bath"></i>
+              &nbsp;
+              Ore Ferie - Resoconto
+            <% end %>
+            <hr class="text-white" />
+            <%= link_to diseases_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-thermometer"></i>
+              &nbsp;
+              Malattia - Calendario
+            <% end %>
+            <%= link_to search_diseases_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-thermometer"></i>
+              &nbsp;
+              Malattia - Resoconto
+            <% end %>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown nav-link-main-navbar" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-calendar"></i>
+            &nbsp;
+            Permessi
+          </a>
+          <div class="dropdown-menu shadow">
+            <%= link_to permits_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-graduation-cap"></i>
+              &nbsp;
+              Permessi - Calendario
+            <% end %>
+            <%= link_to search_permits_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-graduation-cap"></i>
+              &nbsp;
+              Permessi - Resoconto
+            <% end %>
+            <hr class="text-white" />
+            <%= link_to hourly_permits_path, class: "dropdown-item" do %>
+              <i class="fa-regular fa-clock"></i>
+              &nbsp;
+              <i class="fa-solid fa-graduation-cap"></i>
+              &nbsp;
+              Ore Permesso - Calendario
+            <% end %>
+            <%= link_to search_hourly_permits_path, class: "dropdown-item" do %>
+              <i class="fa-regular fa-clock"></i>
+              &nbsp;
+              <i class="fa-solid fa-graduation-cap"></i>
+              &nbsp;
+              Ore Permesso - Resoconto
+            <% end %>
+          </div>
+        </li>
+        <% if can? :whatsup, :dashboard %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown nav-link-main-navbar" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              <i class="fa-solid fa-gauge"></i>
+              &nbsp;
+              Cruscotto
+            </a>
+            <div class="dropdown-menu shadow">
+              <%= link_to dashboard_whatsup_path, class: "dropdown-item" do %>
+                <i class="fa-solid fa-gauge"></i>
+                &nbsp;
+                <i class="fa-solid fa-calendar-day"></i>
+                &nbsp;
+                Situazione Odierna
+              <% end %>
+            </div>
+          </li>
+        <% end %>
       </ul>
       <ul class="navbar-nav ms-auto">
         <li class="nav-item dropdown">
@@ -116,11 +209,17 @@
           </a>
           <div class="dropdown-menu">
             <% if god? %>
-              <%= link_to rails_admin_path, class: 'dropdown-item'  do %>
+              <%= link_to rails_admin_path, class: "dropdown-item" do %>
                 <i class="fa-solid fa-screwdriver-wrench"></i>
                 &nbsp;
                 Amministrazione
               <% end %>
+            <% end %>
+            <br/>
+            <%= link_to home_credits_path, method: :get, class: "dropdown-item" do %>
+              <i class="fa-solid fa-user-gear"></i>
+              &nbsp;
+              Crediti
             <% end %>
             <br/>
             <%= link_to destroy_user_session_path, method: :get, class: "dropdown-item" do %>

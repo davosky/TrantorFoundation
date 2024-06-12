@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   get "home/index"
   get "home/credits"
+  get "dashboard/index"
+  get "dashboard/search"
+  get "dashboard/whatsup"
+  get "dashboard/peruser"
 
   resources :roads
   resources :transports
@@ -17,6 +21,31 @@ Rails.application.routes.draw do
     end
   end
   resources :refund_closures do
+    collection do
+      get :search
+    end
+  end
+  resources :holidays do
+    collection do
+      get :search
+    end
+  end
+  resources :hourly_holidays do
+    collection do
+      get :search
+    end
+  end
+  resources :diseases do
+    collection do
+      get :search
+    end
+  end
+  resources :permits do
+    collection do
+      get :search
+    end
+  end
+  resources :hourly_permits do
     collection do
       get :search
     end

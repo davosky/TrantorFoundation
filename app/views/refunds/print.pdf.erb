@@ -13,9 +13,9 @@
               <span class="span-right">
                 <%= inline_svg('pdf/refunds_logo_modulo.svg', preserve_aspect_ratio: 'xMaxYMax meet') %>
               </span>
-              <br/>
             </div>
             <h2>
+              <br/>
               <%= inline_svg('pdf/cgil_logo.svg', preserve_aspect_ratio: 'xMaxYMax meet') %>
               <strong>
                 &nbsp;&nbsp;&nbsp;<%= refund.user.institute %>
@@ -74,9 +74,9 @@
                   <tbody>
                     <tr>
                       <td>
-                        <%# if refund.user.validator_signature? %>
-                        <%# wicked_pdf_image_tag(refund.user.validator_signature.url, :size => "140x54", :crop => :fill) %>
-                        <%# end %>
+                        <% if refund.user.validator_signature? %>
+                          <%= wicked_pdf_image_tag(refund.user.validator_signature.url, :size => "140x54", :crop => :fill) %>
+                        <% end %>
                         <br/>
                         ------------------------------------------
                       </td>
@@ -88,15 +88,12 @@
                   </tbody>
                 </table>
               </p>
-              <br/>
-              <br/>
               <p>
                 <hr class="hr-small"/>
                 <span class="span-right">
                   <%= inline_svg('pdf/file_refund.svg', preserve_aspect_ratio: 'xMaxYMax meet') %>
                 </span>
               </p>
-              <br/>
               <p>
                 Rimborso spese di:&emsp;
                 <strong>
@@ -119,7 +116,7 @@
                 </strong>
                 <% if refund.transport_fr == "Veicolo Privato" %>
                   &nbsp;
-                  Tabella ACI:
+                  Costo al Km:
                   &nbsp;
                   <strong>
                     <%= number_to_currency(refund.user.cost_per_km) %>
@@ -163,7 +160,7 @@
                     <td>&emsp;<strong><%= number_to_currency(refund.parking_cost) unless refund.parking_cost == 0.0 %></strong></td>
                   </tr>
                   <tr>
-                    <td>Costo ACI:</td>
+                    <td>Costo Km Totali:</td>
                     <td>&emsp;<strong>
                         <% if refund.transport_fr == "Veicolo Privato" %>
                           <%= "#{number_to_currency(refund.user.cost_per_km * refund.road_lenght_fr)}"%>
@@ -213,12 +210,23 @@
                   </tr>
                 </tbody>
               </table>
+              <br/>
+              <p>
+                Il Segretario Organizzativo autorizza il pagamento:
+                <br/>
+                <% if refund.user.organizational_signature? %>
+                  <%= wicked_pdf_image_tag(refund.user.organizational_signature.url, :size => "140x54", :crop => :fill) %>
+                <% end %>
+                <br/>
+                ---------------------------------------------------------------------
+              </p>
             </div>
             <p style='page-break-before: always'>
-            <% end %>
+              <p style='page-break-after: always'>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </body>
-</html>
+    </body>
+  </html>

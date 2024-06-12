@@ -1,0 +1,12 @@
+Nuovo Inserimento - FERIE - 
+===============================================================================
+L'Utente:   <%= "#{@user.last_name} #{@user.first_name}" %>
+ha effettuato un nuovo inserimento nella sezione PERMESSI
+---
+tipo permesso:  <%= @permit.permit_type.name %>
+---
+periodo interessato:    <%= l(@permit.start_time, format: "%A %d %B %Y") %> - <%= l(@permit.end_time, format: "%A %d %B %Y") %>
+===============================================================================
+*******************************************************************************
+TrantorFoundation   -   CGIL FVG    -   gestione rimborsi spese ed assenze
+*******************************************************************************

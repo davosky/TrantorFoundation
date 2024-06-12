@@ -23,15 +23,26 @@
 !/storage/.keep
 
 /public/assets
+/public/uploads
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/config/credentials.yml.enc
+/config/database.yml
+/tmp/cache
+/tmp/storage
+/tmp/sockets
 
 /public/packs
 /public/packs-test
 /public/uploads
 /node_modules
+/node_modules/.yarn-integrity
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+/config/credentials/development.key
+
+# Ignore production environment
+/config/environments/production.rb

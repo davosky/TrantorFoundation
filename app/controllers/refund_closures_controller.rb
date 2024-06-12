@@ -13,8 +13,13 @@ class RefundClosuresController < ApplicationController
   end
 
   def search
-    @q = RefundClosure.ransack(params[:q])
-    @refund_closures = @q.result(distinct: true).order(created_at: "DESC").where(user_id: User.where(province: current_user.province, region: current_user.region))
+    if current_user.god == true
+      @q = RefundClosure.ransack(params[:q])
+      @refund_closures = @q.result(distinct: true).order(created_at: "DESC")
+    else
+      @q = RefundClosure.ransack(params[:q])
+      @refund_closures = @q.result(distinct: true).order(created_at: "DESC").where(user_id: User.where(province: current_user.province, region: current_user.region))
+    end
   end
 
   def show
@@ -32,6 +37,7 @@ class RefundClosuresController < ApplicationController
     @refund_closure = current_user.refund_closures.build(refund_closure_params)
 
     if @refund_closure.save
+      RefundClosureMailer.with(user: current_user, refund_closure: @refund_closure).refund_closure_email.deliver_later
       redirect_to refund_closures_path, notice: "refund_closure was successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -40,6 +46,7 @@ class RefundClosuresController < ApplicationController
 
   def update
     if @refund_closure.update(refund_closure_params)
+      RefundClosureMailer.with(user: current_user, refund_closure: @refund_closure).refund_closure_email_update.deliver_later
       redirect_to search_refund_closures_path, notice: "refund_closure was successfully updated."
     else
       render :edit, status: :unprocessable_entity
@@ -48,6 +55,7 @@ class RefundClosuresController < ApplicationController
 
   def destroy
     @refund_closure.destroy
+    RefundClosureMailer.with(user: current_user).refund_closure_email_destroy.deliver_later
     redirect_to refund_closures_url, notice: "refund_closure was successfully destroyed."
   end
 

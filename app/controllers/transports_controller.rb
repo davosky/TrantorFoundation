@@ -1,4 +1,6 @@
 class TransportsController < ApplicationController
+  load_and_authorize_resource
+
   before_action :set_transport, only: %i[ show edit update destroy ]
 
   def index

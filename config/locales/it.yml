@@ -17,6 +17,21 @@ it:
       veichle: Veicolo
       refund: Rimborso
       refund_closure: Chiusura Rimborsi
+      holiday: Ferie
+      hourly_holiday: Ferie Orarie
+      disease: Malattia
+      permit: Permesso
+      permit_type: Tipo Permesso
+      hourly_permit: Ore Permesso
+    simple_calendar:
+      previous: "<<"
+      next: ">>"
+      first: Inizio
+      last: Fine
+      day: Giorno
+      week: Settimana
+      mouth: Mese
+      year: Anno
     attributes:
       user:
         username: Nome Utente
@@ -33,6 +48,7 @@ it:
         validator: Firmatario
         validator_presentation: Titolo Firmatario
         validator_signature: Firma Firmatario
+        organizational_signature: Firma Organizzativo
         god: Divinità
         admin: Amministratore
         manager: Direttore
@@ -149,6 +165,66 @@ it:
         payed: Pagato
         created_at: Creato il
         updated_at: Aggiornato il
+      holiday:
+        start_date: Data Inizio
+        end_date: Data Fine
+        note: Note
+        updater: Aggiornato da
+        update_date: Aggiornato il
+        created_at: Creato il
+        updated_at: Aggiornato il
+        user: Utente
+        user_id: Utente
+      hourly_holiday:
+        start_date: Data-Ora Inizio
+        end_date: Data-Ora Fine
+        note: Note
+        updater: Aggiornato da
+        update_date: Aggiornato il
+        created_at: Creato il
+        updated_at: Aggiornato il
+        user: Utente
+        user_id: Utente
+      disease:
+        start_date: Data Inizio
+        end_date: Data Fine
+        certificate: Certificato
+        note: Note
+        updater: Aggiornato da
+        update_date: Aggiornato il
+        created_at: Creato il
+        updated_at: Aggiornato il
+        user: Utente
+        user_id: Utente
+      permit:
+        start_date: Data Inizio
+        end_date: Data Fine
+        note: Note
+        updater: Aggiornato da
+        update_date: Aggiornato il
+        created_at: Creato il
+        updated_at: Aggiornato il
+        user: Utente
+        user_id: Utente
+        permit_type: Tipo Permesso
+        permit_type_id: Tipo Permesso
+      permit_type:
+        name: Permesso
+        position: Posizione
+        created_at: Creato il
+        updated_at: Aggiornato il
+      hourly_permit:
+        start_date: Data Inizio
+        end_date: Data Fine
+        note: Note
+        updater: Aggiornato da
+        update_date: Aggiornato il
+        created_at: Creato il
+        updated_at: Aggiornato il
+        user: Utente
+        user_id: Utente
+        permit_type: Tipo Permesso
+        permit_type_id: Tipo Permesso
     errors:
       messages:
         record_invalid: "Validazione fallita: %{errors}"

@@ -12,6 +12,8 @@ gem "devise-i18n", "~> 1.10", ">= 1.10.2"
 gem "image_processing", ">= 1.2"
 gem "inline_svg", "~> 1.8"
 gem "jsbundling-rails", "~> 1.0", ">= 1.0.3"
+gem "kaminari", "~> 1.2"
+gem "kaminari-i18n", "~> 0.5.0"
 gem "pg", "~> 1.4"
 gem "puma", "~> 6.0"
 gem "rails", "~> 7.0", ">= 7.0.4"
@@ -21,8 +23,10 @@ gem "rails-i18n", "~> 7.0", ">= 7.0.6"
 gem "ransack", "~> 3.2"
 gem "redis", "~> 5.0", ">= 5.0.5"
 gem "sassc-rails", "~> 2.1", ">= 2.1.2"
+gem "simple_calendar", "~> 2.4", ">= 2.4.3"
 gem "sprockets-rails", "~> 3.4", ">= 3.4.2"
 gem "stimulus-rails", "~> 1.2", ">= 1.2.1"
+gem "time_difference"
 gem "turbo-rails", "~> 1.3", ">= 1.3.2"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "wicked_pdf", ">= 1.1", "<= 1.4"
@@ -33,6 +37,10 @@ group :development, :test do
 end
 
 group :development do
+  gem "htmlbeautifier"
+  gem "letter_opener"
+  gem "rubocop"
+  gem "solargraph"
   gem "web-console"
 end
 
