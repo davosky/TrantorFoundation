@@ -1,0 +1,233 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow">
+  <div class="container">
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag("navbar_logo.svg", class: "img-fluid") %>
+    <% end %>
+    &emsp;
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-wallet"></i>
+            &nbsp;
+            Rimborsi
+          </a>
+          <div class="dropdown-menu shadow">
+            <%= link_to refunds_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-wallet"></i>
+              &nbsp;
+              <i class="fa-solid fa-file"></i>
+              &nbsp;
+              <i class="fa-solid fa-list"></i>
+              &nbsp;
+              Elenco Rimborsi
+            <% end %>
+            <%= link_to print_refunds_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-wallet"></i>
+              &nbsp;
+              <i class="fa-solid fa-print"></i>
+              &nbsp;
+              <i class="fa-solid fa-file"></i>
+              &nbsp;
+              Stampa Rimborsi
+            <% end %>
+            <%= link_to print_list_refunds_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-wallet"></i>
+              &nbsp;
+              <i class="fa-solid fa-print"></i>
+              &nbsp;
+              <i class="fa-solid fa-list"></i>
+              &nbsp;
+              Stampa Riepiloghi
+            <% end %>
+            <%= link_to refund_closures_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-wallet"></i>
+              &nbsp;
+              <i class="fa-solid fa-print"></i>
+              &nbsp;
+              <i class="fa-solid fa-file-pen"></i>
+              &nbsp;
+              Chiusure Rimborsi
+            <% end %>
+            <% if can? :search, RefundClosure %>
+              <%= link_to search_refund_closures_path, class: "dropdown-item" do %>
+                <i class="fa-solid fa-wallet"></i>
+                &nbsp;
+                <i class="fa-solid fa-print"></i>
+                &nbsp;
+                <i class="fa-solid fa-gear"></i>
+                &nbsp;
+                Gestione Chiusure Rimborsi
+              <% end %>
+            <% end %>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown nav-link-main-navbar" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-calendar"></i>
+            &nbsp;
+            Assenze
+          </a>
+          <div class="dropdown-menu shadow">
+            <%= link_to holidays_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-umbrella-beach"></i>
+              &nbsp;
+              Ferie - Calendario
+            <% end %>
+            <%= link_to search_holidays_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-umbrella-beach"></i>
+              &nbsp;
+              Ferie - Resoconto
+            <% end %>
+            <hr class="text-white" />
+            <%= link_to hourly_holidays_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-bath"></i>
+              &nbsp;
+              Ore Ferie - Calendario
+            <% end %>
+            <%= link_to search_hourly_holidays_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-bath"></i>
+              &nbsp;
+              Ore Ferie - Resoconto
+            <% end %>
+            <hr class="text-white" />
+            <%= link_to diseases_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-thermometer"></i>
+              &nbsp;
+              Malattia - Calendario
+            <% end %>
+            <%= link_to search_diseases_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-thermometer"></i>
+              &nbsp;
+              Malattia - Resoconto
+            <% end %>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown nav-link-main-navbar" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-calendar"></i>
+            &nbsp;
+            Permessi
+          </a>
+          <div class="dropdown-menu shadow">
+            <%= link_to permits_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-graduation-cap"></i>
+              &nbsp;
+              Permessi - Calendario
+            <% end %>
+            <%= link_to search_permits_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-graduation-cap"></i>
+              &nbsp;
+              Permessi - Resoconto
+            <% end %>
+            <hr class="text-white" />
+            <%= link_to hourly_permits_path, class: "dropdown-item" do %>
+              <i class="fa-regular fa-clock"></i>
+              &nbsp;
+              <i class="fa-solid fa-graduation-cap"></i>
+              &nbsp;
+              Ore Permesso - Calendario
+            <% end %>
+            <%= link_to search_hourly_permits_path, class: "dropdown-item" do %>
+              <i class="fa-regular fa-clock"></i>
+              &nbsp;
+              <i class="fa-solid fa-graduation-cap"></i>
+              &nbsp;
+              Ore Permesso - Resoconto
+            <% end %>
+          </div>
+        </li>
+        <% if can? :whatsup, :dashboard %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown nav-link-main-navbar" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              <i class="fa-solid fa-gauge"></i>
+              &nbsp;
+              Cruscotto
+            </a>
+            <div class="dropdown-menu shadow">
+              <%= link_to dashboard_whatsup_path, class: "dropdown-item" do %>
+                <i class="fa-solid fa-gauge"></i>
+                &nbsp;
+                <i class="fa-solid fa-calendar-day"></i>
+                &nbsp;
+                Situazione Odierna
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown nav-link-main-navbar" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-gear"></i>
+            &nbsp;
+            Moduli
+          </a>
+          <div class="dropdown-menu shadow">
+            <%= link_to roads_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-route"></i>
+              &nbsp;
+              Percorsi
+            <% end %>
+            <%= link_to transports_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-train"></i>
+              &nbsp;
+              Trasporti
+            <% end %>
+            <%= link_to places_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-city"></i>
+              &nbsp;
+              Luoghi
+            <% end %>
+            <%= link_to structures_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-building"></i>
+              &nbsp;
+              Strutture
+            <% end %>
+            <%= link_to reasons_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-file-pen"></i>
+              &nbsp;
+              Motivi Missione
+            <% end %>
+            <%= link_to veichles_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-car"></i>
+              &nbsp;
+              Veicoli
+            <% end %>
+          </div>
+        </li>
+        <li>&emsp;&emsp;</li>
+        <li class="nav-item">
+          <%= link_to edit_user_registration_path, class: "nav-link" do %>
+            <%= full_user %>
+            &emsp;
+          <% end %>
+        </li>
+        <li class="nav-item dropstart">
+          <a class="nav-link dropdown nav-link-main-navbar" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+          </a>
+          <div class="dropdown-menu">
+            <% if god? %>
+              <%= link_to rails_admin_path, class: "dropdown-item" do %>
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                &nbsp;
+                Amministrazione
+              <% end %>
+            <% end %>
+            <%= link_to home_credits_path, method: :get, class: "dropdown-item" do %>
+              <i class="fa-solid fa-user-gear"></i>
+              &nbsp;
+              Crediti
+            <% end %>
+            <%= link_to destroy_user_session_path, method: :get, class: "dropdown-item" do %>
+              <i class="fa-solid fa-door-open"></i>
+              &nbsp;
+              Esci
+            <% end %>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

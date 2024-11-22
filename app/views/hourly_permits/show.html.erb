@@ -1,0 +1,8 @@
+<%= render @hourly_permit %>
+<div>
+  <%= link_to "Edit", edit_hourly_permit_path(@hourly_permit) %> |
+  <%= link_to "Destroy", hourly_permit_path(@hourly_permit),
+    "data-turbo-method": :delete,
+    "data-turbo-confirm": "Are you sure?" %> |
+  <%= link_to "Back to hourly_permits", hourly_permits_path %>
+</div>

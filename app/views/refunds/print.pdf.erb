@@ -1,0 +1,232 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8'/>
+    <%= stylesheet_link_tag wicked_pdf_asset_base64('print.scss') %>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <% @refunds.each do |refund| %>
+            <div class="pdf-header">
+              <span class="span-right">
+                <%= inline_svg('pdf/refunds_logo_modulo.svg', preserve_aspect_ratio: 'xMaxYMax meet') %>
+              </span>
+            </div>
+            <h2>
+              <br/>
+              <%= inline_svg('pdf/cgil_logo.svg', preserve_aspect_ratio: 'xMaxYMax meet') %>
+              <strong>
+                &nbsp;&nbsp;&nbsp;<%= refund.user.institute %>
+              </strong>
+            </h2>
+            <hr class="hr-small"/>
+            <span class="span-right">
+              <%= inline_svg('pdf/file_mission.svg', preserve_aspect_ratio: 'xMaxYMax meet') %>
+            </span>
+            <br/>
+            <p>
+              <%= refund.user.validator_presentation %> di 
+              <strong>
+                <%= refund.user.institute %>
+                <%= refund.user.validator %>
+              </strong>
+              autorizza:
+              <br>
+              <strong>
+                <%= "#{refund.user.first_name} #{refund.user.last_name}" %>
+              </strong>
+              alla missione con il seguente mezzo di trasporto:
+              <br/>
+              <br/>
+              <strong>
+                <%= refund.transport_fr %>
+              </strong>
+            </p>
+            <% if refund.transport_fr == "Veicolo Aziendale" || refund.transport_fr == "Veicolo Privato" %>
+              <p>
+                <%= refund.veichle_fr %>
+              </p>
+            <% end %>
+            <p>
+              <p>
+                Luogo della Missione:&nbsp;&nbsp;<strong><%= refund.place_fr %></strong>
+                &nbsp;&nbsp;
+                Motivo del viaggio:&nbsp;&nbsp;<strong><%= refund.reason_fr %></strong>
+              </p>
+              <p>
+                Partenza il:&nbsp;&nbsp;<strong><%= l(refund.departure_date) %></strong>
+                &nbsp;&nbsp;
+                Rientro il:&nbsp;&nbsp;<strong><%= l(refund.return_date) %></strong>
+              </p>
+              <p>
+                <table>
+                  <thead>
+                    <tr>
+                      <td>Firma de 
+                        <br/>
+                        <%= refund.user.validator_presentation %>:
+                      </td>
+                      <td>Data:</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <% if refund.user.validator_signature? %>
+                          <%= wicked_pdf_image_tag(refund.user.validator_signature.url, :size => "140x54", :crop => :fill) %>
+                        <% end %>
+                        <br/>
+                        ------------------------------------------
+                      </td>
+                      <td>
+                        <strong>
+                          <%= l(refund.request_date) %></td>
+                      </strong>
+                    </tr>
+                  </tbody>
+                </table>
+              </p>
+              <p>
+                <hr class="hr-small"/>
+                <span class="span-right">
+                  <%= inline_svg('pdf/file_refund.svg', preserve_aspect_ratio: 'xMaxYMax meet') %>
+                </span>
+              </p>
+              <p>
+                Rimborso spese di:&emsp;
+                <strong>
+                  <%= "#{refund.user.first_name} #{refund.user.last_name}" %>
+                </strong>
+              </p>
+              <p>
+                Percorso:&nbsp;
+                <strong>
+                  <%= refund.road_fr %>
+                </strong>
+                <br/>
+                <br/>
+                Lunghezza:
+                &nbsp;
+                <strong>
+                  <%= refund.road_lenght_fr %>
+                  &nbsp;
+                  Km
+                </strong>
+                <% if refund.transport_fr == "Veicolo Privato" %>
+                  &nbsp;
+                  Costo al Km:
+                  &nbsp;
+                  <strong>
+                    <%= number_to_currency(refund.veichle.cost_per_km) %>
+                  </strong>
+                  &nbsp;
+                  Totale:
+                  &nbsp;
+                  <strong>
+                    <%= "#{number_to_currency(refund.veichle.cost_per_km * refund.road_lenght_fr)}"%>
+                  </strong>
+                <% end %>
+              </p>
+              ---------------------------------------------------------------------------------------------------------
+              <table>
+                <thead>
+                  <th></th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Vitto:</td>
+                    <td>&emsp;<strong><%= number_to_currency(refund.food_cost) unless refund.food_cost == 0.0 %></strong></td>
+                  </tr>
+                  <tr>
+                    <td>Alloggio:</td>
+                    <td>&emsp;<strong><%= number_to_currency(refund.room_cost) unless refund.room_cost == 0.0 %></strong></td>
+                  </tr>
+                  <tr>
+                    <td>Ticket:</td>
+                    <td>&emsp;<strong><%= number_to_currency(refund.ticket_cost) unless refund.ticket_cost == 0.0 %></strong></td>
+                  </tr>
+                  <tr>
+                    <td>Varie:</td>
+                    <td>&emsp;<strong><%= number_to_currency(refund.generic_cost) unless refund.generic_cost == 0.0 %></strong></td>
+                  </tr>
+                  <tr>
+                    <td>Autostrada:</td>
+                    <td>&emsp;<strong><%= number_to_currency(refund.highway_cost_fr) unless refund.highway_cost_fr == 0.0 %></strong></td>
+                  </tr>
+                  <tr>
+                    <td>Parcheggio:</td>
+                    <td>&emsp;<strong><%= number_to_currency(refund.parking_cost) unless refund.parking_cost == 0.0 %></strong></td>
+                  </tr>
+                  <tr>
+                    <td>Costo Km Totali:</td>
+                    <td>&emsp;<strong>
+                        <% if refund.transport_fr == "Veicolo Privato" %>
+                          <%= "#{number_to_currency(refund.veichle.cost_per_km * refund.road_lenght_fr)}"%>
+                        <% end %>
+                      </strong></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h3>
+                        Totale:
+                      </h3>
+                    </td>
+                    <td>
+                      <h3>
+                        &emsp;<strong><%= number_to_currency(refund.total_amount) %></strong></td>
+                    </h3>
+                  </tr>
+                </tbody>
+              </table>
+              ---------------------------------------------------------------------------------------------------------
+              <br/>
+              <br/>
+              <table>
+                <thead>
+                  <tr>
+                    <td>Firma del Richiedente:</td>
+                    <td>Data:</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                  </tr>
+                  <tr></tr>
+                  <tr>
+                    <td>
+                      <% if refund.user.signature? %>
+                        <%= wicked_pdf_image_tag(refund.user.signature.url, :size => "140x54", :crop => :fill) %>
+                      <% end %>
+                      <br>
+                      ------------------------------------------
+                    </td>
+                    <td>
+                      <strong>
+                        <%= l(refund.refund_date) %>
+                      </strong>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <br/>
+              <p>
+                Il Segretario Organizzativo autorizza il pagamento:
+                <br/>
+                <% if refund.user.organizational_signature? %>
+                  <%= wicked_pdf_image_tag(refund.user.organizational_signature.url, :size => "140x54", :crop => :fill) %>
+                <% end %>
+                <br/>
+                ---------------------------------------------------------------------
+              </p>
+            </div>
+            <p style='page-break-before: always'>
+              <p style='page-break-after: always'>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+  </html>

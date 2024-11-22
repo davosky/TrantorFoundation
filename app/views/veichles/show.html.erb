@@ -1,0 +1,8 @@
+<%= render @veichle %>
+<div>
+  <%= link_to "Edit", edit_veichle_path(@veichle) %> |
+  <%= link_to "Destroy", veichle_path(@veichle),
+    "data-turbo-method": :delete,
+    "data-turbo-confirm": "Are you sure?" %> |
+  <%= link_to "Back to veichles", veichles_path %>
+</div>

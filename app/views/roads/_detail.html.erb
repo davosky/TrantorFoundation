@@ -1,0 +1,59 @@
+<%= turbo_frame_tag :remote_modal, target: :_top do %>
+  <div class="modal fade" data-controller="modal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header mb-5">
+          <div class="modal-title">
+            <%= image_tag("roads_form_icon.svg", class: "img-fluid") %>
+          </div>
+          <a class="modal-header-link" data-bs-dismiss="modal" aria-label="Close">
+            <i class="fa-solid fa-xmark"></i>
+          </a>
+        </div>
+        <div class="modal-body mb-5">
+          <div class="col-8 offset-2">
+            <div id="<%= dom_id @road %>" class="scaffold_record">
+              <div class="row">
+                <div class="col">
+                  <span class="text-primary">
+                    <i class="fa-solid fa-road"></i>
+                    &emsp;
+                    Perorso:
+                  </span>
+                  &emsp;
+                  <%= @road.name %>
+                  <hr class="bg-primary"/>
+                  <span class="text-primary">
+                    <i class="fa-solid fa-route"></i>
+                    &emsp;
+                    Lunghezza:
+                  </span>
+                  &emsp;
+                  <%= "#{@road.road_lenght} Km" %>
+                  <hr class="bg-primary"/>
+                  <span class="text-primary">
+                    <i class="fa-solid fa-credit-card"></i>
+                    &emsp;
+                    Costo Pedaggio Autostradale
+                  </span>
+                  &emsp;
+                  <%= number_to_currency(@road.highway_cost) %>
+                  <hr class="bg-primary"/>
+                  <span class="text-primary">
+                    <i class="fa-solid fa-location-dot"></i>
+                    &emsp;
+                    Posizione in Scaletta:
+                  </span>
+                  &emsp;
+                  <%= @road.position %>
+                </div>
+              </div>
+            </div>
+            <hr class="bg-primary"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

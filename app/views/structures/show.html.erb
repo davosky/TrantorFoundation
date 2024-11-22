@@ -1,0 +1,8 @@
+<%= render @structure %>
+<div>
+  <%= link_to "Edit", edit_structure_path(@structure) %> |
+  <%= link_to "Destroy", structure_path(@structure),
+    "data-turbo-method": :delete,
+    "data-turbo-confirm": "Are you sure?" %> |
+  <%= link_to "Back to structures", structures_path %>
+</div>

@@ -1,0 +1,8 @@
+<%= render @reason %>
+<div>
+  <%= link_to "Edit", edit_reason_path(@reason) %> |
+  <%= link_to "Destroy", reason_path(@reason),
+    "data-turbo-method": :delete,
+    "data-turbo-confirm": "Are you sure?" %> |
+  <%= link_to "Back to reasons", reasons_path %>
+</div>

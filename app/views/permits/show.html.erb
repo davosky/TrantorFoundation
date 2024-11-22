@@ -1,0 +1,8 @@
+<%= render @permit %>
+<div>
+  <%= link_to "Edit", edit_permit_path(@permit) %> |
+  <%= link_to "Destroy", permit_path(@permit),
+        "data-turbo-method": :delete,
+        "data-turbo-confirm": "Are you sure?" %> |
+  <%= link_to "Back to permits", permits_path %>
+</div>

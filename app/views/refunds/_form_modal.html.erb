@@ -1,0 +1,25 @@
+<%= turbo_frame_tag :remote_modal, target: :_top do %>
+  <div class="modal fade" data-controller="modal">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header mb-2">
+          <div class="modal-title">
+            <% if current_page?(controller: :refunds, action: :new) %>
+              <%= image_tag("refunds_form_icon_new.svg", class: "img-fluid") %>
+            <% else %>
+              <%= image_tag("refunds_form_icon_edit.svg", class: "img-fluid") %>
+            <% end %>
+          </div>
+          <a class="modal-header-link" data-bs-dismiss="modal" aria-label="Close">
+            <i class="fa-solid fa-xmark"></i>
+          </a>
+        </div>
+        <div class="modal-body mb-1">
+          <div class="col">
+            <%= render "refunds/form", refund: refund %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
