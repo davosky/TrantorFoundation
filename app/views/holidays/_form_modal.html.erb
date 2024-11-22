@@ -4,7 +4,13 @@
       <div class="modal-content">
         <div class="modal-header mb-5">
           <div class="modal-title">
-            <%= image_tag("holidays_form_icon.svg", class: "img-fluid") %>
+            <% if current_page?(controller: :holidays, action: :new) %>
+              <%= image_tag("holidays_form_icon_new.svg", class: "img-fluid") %>
+            <% elsif current_page?(controller: :holidays, action: :edit) %>
+              <%= image_tag("holidays_form_icon_edit.svg", class: "img-fluid") %>
+            <% else %>
+              <%= image_tag("holidays_form_icon.svg", class: "img-fluid") %>
+            <% end %>
           </div>
           <a class="modal-header-link" data-bs-dismiss="modal" aria-label="Close">
             <i class="fa-solid fa-xmark"></i>
