@@ -1,66 +1,68 @@
 <div class="row">
-  <div class="col-8">
-    <h3 class='text-primary'>
-      <%= image_tag("permits_logo.svg", class: "img-fluid") %>
-    </h3>
-  </div>
-  <div class="col-4">
-    <div class="d-grid">
-      <%= link_to new_permit_path, "data-controller": "turbo", class: "btn btn-primary btn-sm shadow" do %>
-        <i class="fa-solid fa-plus"></i>
-        &nbsp;
-        <i class="fa-solid fa-graduation-cap"></i>
-        &nbsp;
-        Aggiungi Permesso
-      <% end %>
-    </div>
-  </div>
-</div>
-<div class="row">
   <div class="col-12">
-    <%= month_calendar(events: @permits) do |date, permits| %>
-      <% if date.wday == 0 || date.wday == 6 %>
-      <% else %>
-        <div class='card card-calendar bg-light mb-1 shadow'>
-          <div class='card-header card-header-calendar text-center'>
-            <i class='fas fa-calendar-day'></i>
-            &nbsp;
-            <%= l(date, format: "%a %d") %>
-            &emsp;
-            <span class='text-secondary'>
-              <%= l(date, format: "%b") %>
+    <div class="card shadow">
+      <div class="card-body bg-light rounded shadow">
+        <div class="row">
+          <div class="col">
+            <span class="float-start">
+              <%= image_tag("permits_logo.svg", class: "img-fluid") %>
+            </span>
+            <span class="float-end">
+              <%= link_to new_permit_path, "data-controller": "turbo", class: "btn btn-outline-primary" do %>
+                <i class="fa-solid fa-plus"></i>
+                &nbsp;
+                <i class="fa-solid fa-graduation-cap"></i>
+                &nbsp;
+                Aggiungi Permesso
+              <% end %>
             </span>
           </div>
-          <div class='card-body card-body-calendar'>
-            <% permits.each do |permit| %>
-              <span class="badge">
-                <%= link_to permit_path(permit), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
-                  <i class='fas fa-user'></i>
-                  &nbsp;
-                  <%= "#{permit.user.last_name} #{permit.user.first_name.split.map { |i| i[0, 1].upcase }.join}" %>
-                <% end %>
-                <span class="text-dark">
-                  <% if permit.processed == true %>
-                  <% else %>
-                    &emsp;
-                    |
-                    &emsp;
-                    <%= link_to edit_permit_path(permit), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Modifica il Record Corrente" do %>
-                      <i class="fa-solid fa-pen-to-square"></i>
-                    <% end %>
-                    &nbsp;
-                    &nbsp;
-                    <%= link_to permit_path(permit), "data-turbo-method": :delete, "data-turbo-confirm": "Sicuri di voler eliminare il record corrente?", "data-bs-toggle": "tooltip", "title": "Elimina il Record Corrente" do %>
-                      <i class="fa-solid fa-trash"></i>
-                    <% end %>
-                  <% end %>
-                </span>
-              </span>
-              <br/>
-            <% end %>
-          </div>
         </div>
-      <% end %>
-    <% end %>
+        <%= month_calendar(events: @permits) do |date, permits| %>
+          <% if date.wday == 0 || date.wday == 6 %>
+          <% else %>
+            <div class='card border-primary'>
+              <div class='card-header bg-primary text-white text-center'>
+                <i class='fas fa-calendar-day'></i>
+                &nbsp;
+                <%= l(date, format: "%a %d") %>
+                &emsp;
+                <span class='text-secondary'>
+                  <%= l(date, format: "%b") %>
+                </span>
+              </div>
+              <div class='card-body card-body-calendar'>
+                <% permits.each do |permit| %>
+                  <span class="badge">
+                    <%= link_to permit_path(permit), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio", class: "text-info" do %>
+                      <i class='fas fa-user'></i>
+                      &nbsp;
+                      <%= "#{permit.user.last_name} #{permit.user.first_name.split.map { |i| i[0, 1].upcase }.join}" %>
+                    <% end %>
+                    <span class="text-dark">
+                      <% if permit.processed == true %>
+                      <% else %>
+                        &emsp;
+                        |
+                        &emsp;
+                        <%= link_to edit_permit_path(permit), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Modifica il Record Corrente", class: "text-warning" do %>
+                          <i class="fa-solid fa-pen-to-square"></i>
+                        <% end %>
+                        &nbsp;
+                        &nbsp;
+                        <%= link_to permit_path(permit), "data-turbo-method": :delete, "data-turbo-confirm": "Sicuri di voler eliminare il record corrente?", "data-bs-toggle": "tooltip", "title": "Elimina il Record Corrente", class: "text-danger" do %>
+                          <i class="fa-solid fa-trash"></i>
+                        <% end %>
+                      <% end %>
+                    </span>
+                  </span>
+                  <br/>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

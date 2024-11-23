@@ -13,7 +13,7 @@
   <% end %>
   <% unless current_user.regular == true %>
     <div class="input-group mb-1">
-      <span class="input-group-text">
+      <span class="input-group-text input-group-text-fixed bg-primary text-white">
         <i class="fa-solid fa-user"></i>
         &nbsp;&nbsp;
         <%= form.label :user %>
@@ -26,7 +26,7 @@
     </div>
   <% end %>
   <div class="input-group mb-1">
-    <span class="input-group-text">
+    <span class="input-group-text input-group-text-fixed bg-primary text-white">
       <i class="fa-solid fa-calendar-day"></i>
       &nbsp;&nbsp;
       <%= form.label :permit_type %>
@@ -34,7 +34,7 @@
     <%= form.collection_select :permit_type_id, PermitType.order("position ASC"), :id, :name, { :include_blank => false }, { :class => "form-control" } %>
   </div>
   <div class="input-group mb-1">
-    <span class="input-group-text">
+    <span class="input-group-text input-group-text-fixed bg-primary text-white">
       <i class="fa-solid fa-calendar-day"></i>
       &nbsp;&nbsp;
       <%= form.label :start_date %>
@@ -42,7 +42,7 @@
     <%= form.date_field :start_time, class: "form-control" %>
   </div>
   <div class="input-group mb-1">
-    <span class="input-group-text">
+    <span class="input-group-text input-group-text-fixed bg-primary text-white">
       <i class="fa-solid fa-calendar-day"></i>
       &nbsp;&nbsp;
       <%= form.label :end_date %>
@@ -50,7 +50,7 @@
     <%= form.date_field :end_time, class: "form-control" %>
   </div>
   <div class="input-group mb-2">
-    <span class="input-group-text">
+    <span class="input-group-text input-group-text-fixed bg-primary text-white">
       <i class="fa-solid fa-pencil"></i>
       &nbsp;&nbsp;
       <%= form.label :note %>
@@ -71,6 +71,6 @@
     <br/>
   <% end %>
   <div class="d-grid">
-    <%= form.submit class: "btn btn-primary" %>
+    <%= form.submit class: "btn btn-outline-primary" %>
   </div>
 <% end %>
