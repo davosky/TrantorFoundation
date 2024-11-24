@@ -1,57 +1,69 @@
-<div class="col-3">
-  <div class="d-grid mx-3">
-    <%= image_tag("veichles_logo.svg", class: "img-fluid") %>
-    <br/>
-    &emsp;
-    <br/>
-    <%= link_to new_veichle_path, "data-controller": "turbo", class: "btn btn-primary btn-sm shadow" do %>
-      <i class="fa-solid fa-plus"></i>
-      &nbsp;
-      <i class="fa-solid fa-car"></i>
-      &nbsp;
-      Nuovo Veicolo
-    <% end %>
-  </div>
-</div>
-<div class="col-9">
-  <table class="table table-hover">
-    <thead>
-      <th><i class="fa-solid fa-car"></i></th>
-      <th><i class="fa-solid fa-industry"></i></th>
-      <th><i class="fa-solid fa-credit-card"></i></th>
-      <th><i class="fa-solid fa-arrow-up-9-1"></i></th>
-      <th colspan=2></th>
-    </thead>
-    <tbody>
-      <% @veichles.each do |veichle| %>
-        <tr>
-          <td>
-            <%= link_to veichle_path(veichle), "data-controller": "turbo" do %>
-              <%= veichle.name %>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <div class="card shadow">
+        <div class="card-body bg-white rounded shadow">
+          <p class="text-center">
+            <%= image_tag("veichles_logo.svg", class: "img-fluid mb-3") %>
+          </p>
+          <div class="d-grid">
+            <%= link_to new_veichle_path, "data-controller": "turbo", class: "btn btn-outline-primary" do %>
+              <i class="fa-solid fa-plus"></i>
+              &nbsp;
+              <i class="fa-solid fa-car"></i>
+              &nbsp;
+              Nuovo Veicolo
             <% end %>
-          </td>
-          <td><%= veichle.producer %></td>
-          <td><%= veichle.license_plate %></td>
-          <td><%= veichle.position %></td>
-          <td>
-            <%= link_to edit_veichle_path(veichle), "data-controller": "turbo", 
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-8">
+      <div class="card shadow">
+        <div class="card-body bg-white rounded shadow">
+          <table class="table table-hover">
+            <thead>
+              <th><i class="fa-solid fa-car"></i></th>
+              <th><i class="fa-solid fa-industry"></i></th>
+              <th><i class="fa-solid fa-credit-card"></i></th>
+              <th><i class="fa-solid fa-money-bill"></i></th>
+              <th><i class="fa-solid fa-arrow-up-9-1"></i></th>
+              <th colspan=2></th>
+            </thead>
+            <tbody>
+              <% @veichles.each do |veichle| %>
+                <tr>
+                  <td>
+                    <%= link_to veichle_path(veichle), "data-controller": "turbo" do %>
+                      <%= veichle.name %>
+                    <% end %>
+                  </td>
+                  <td><%= veichle.producer %></td>
+                  <td><%= veichle.license_plate %></td>
+                  <td><%= number_to_currency(veichle.cost_per_km) %></td>
+                  <td><%= veichle.position %></td>
+                  <td>
+                    <%= link_to edit_veichle_path(veichle), "data-controller": "turbo", 
             "data-bs-toggle": "tooltip", 
-            "title": "Modifica il Record Corrente", class: "edit-link" do %>
-              <i class="fa-solid fa-pen-to-square"></i>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to veichle_path(veichle),
+            "title": "Modifica il Record Corrente", class: "text-warning" do %>
+                      <i class="fa-solid fa-pen-to-square"></i>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= link_to veichle_path(veichle),
             "data-turbo-method": :delete,
             "data-turbo-confirm": "Sicuri di voler eliminare il record corrente?" , 
             "data-bs-toggle": "tooltip", 
-            "title": "Elimina il Record Corrente", class: "delete-link" do %>
-              <i class="fa-solid fa-trash"></i>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <br>
+            "title": "Elimina il Record Corrente", class: "text-danger" do %>
+                      <i class="fa-solid fa-trash"></i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -44,7 +44,6 @@ it:
         province: Provincia
         institute: Istituto
         office: Ufficio
-        cost_per_km: Costo al Chilometro
         validator: Firmatario
         validator_presentation: Titolo Firmatario
         validator_signature: Firma Firmatario
@@ -105,6 +104,7 @@ it:
         name: Modello
         producer: Produttore
         license_plate: Targa
+        cost_per_km: Costo al Chilometro
         position: Posizione
         created_at: Creato il
         updated_at: Aggiornato il

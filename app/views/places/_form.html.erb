@@ -12,7 +12,7 @@
     </div>
   <% end %>
   <div class="input-group mb-1">
-    <span class="input-group-text">
+    <span class="input-group-text input-group-text-fixed bg-primary text-white">
       <i class="fa-solid fa-city"></i>
       &nbsp;&nbsp;
       <%= form.label :name %>
@@ -20,7 +20,7 @@
     <%= form.text_field :name, class: 'form-control' %>
   </div>
   <div class="input-group mb-2">
-    <span class="input-group-text">
+    <span class="input-group-text input-group-text-fixed bg-primary text-white">
       <i class="fa-solid fa-arrow-up-9-1"></i>
       &nbsp;&nbsp;
       <%= form.label :position %>
@@ -28,6 +28,6 @@
     <%= form.number_field :position, class: 'form-control' %>
   </div>
   <div class="d-grid">
-    <%= form.submit class: 'btn btn-primary' %>
+    <%= form.submit class: 'btn btn-outline-primary' %>
   </div>
 <% end %>

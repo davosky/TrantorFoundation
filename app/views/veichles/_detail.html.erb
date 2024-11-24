@@ -1,6 +1,6 @@
 <%= turbo_frame_tag :remote_modal, target: :_top do %>
   <div class="modal fade" data-controller="modal">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header mb-5">
           <div class="modal-title">
@@ -38,6 +38,14 @@
                   </span>
                   &emsp;
                   <%= @veichle.license_plate %>
+                  <hr class="bg-primary"/>
+                  <span class="text-primary">
+                    <i class="fa-solid fa-money-bill"></i>
+                    &emsp;
+                    Costo al Chilometro:
+                  </span>
+                  &emsp;
+                  <%= number_to_currency(@veichle.cost_per_km) %>
                   <hr class="bg-primary"/>
                   <span class="text-primary">
                     <i class="fa-solid fa-arrow-up-9-1"></i>
