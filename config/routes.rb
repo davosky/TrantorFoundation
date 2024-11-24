@@ -3,10 +3,10 @@ Rails.application.routes.draw do
 
   get "home/index"
   get "home/credits"
-  get "dashboard/index"
-  get "dashboard/search"
-  get "dashboard/whatsup"
-  get "dashboard/peruser"
+  get "dashboard/this_week"
+  get "dashboard/previous_week"
+  get "dashboard/this_month"
+  get "dashboard/previous_month"
 
   resources :roads
   resources :transports

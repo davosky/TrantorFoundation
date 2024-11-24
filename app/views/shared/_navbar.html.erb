@@ -145,12 +145,33 @@
               Cruscotto
             </a>
             <div class="dropdown-menu shadow">
-              <%= link_to dashboard_whatsup_path, class: "dropdown-item" do %>
+              <%= link_to dashboard_this_week_path, class: "dropdown-item" do %>
                 <i class="fa-solid fa-gauge"></i>
                 &nbsp;
-                <i class="fa-solid fa-calendar-day"></i>
+                <i class="fa-solid fa-calendar-week"></i>
                 &nbsp;
-                Situazione Odierna
+                Questa Settimana
+              <% end %>
+              <%= link_to dashboard_previous_week_path, class: "dropdown-item" do %>
+                <i class="fa-solid fa-gauge"></i>
+                &nbsp;
+                <i class="fa-solid fa-calendar-week"></i>
+                &nbsp;
+                La Scorsa Settimana
+              <% end %>
+              <%= link_to dashboard_this_month_path, class: "dropdown-item" do %>
+                <i class="fa-solid fa-gauge"></i>
+                &nbsp;
+                <i class="fa-solid fa-calendar-days"></i>
+                &nbsp;
+                Questo Mese
+              <% end %>
+              <%= link_to dashboard_previous_month_path, class: "dropdown-item" do %>
+                <i class="fa-solid fa-gauge"></i>
+                &nbsp;
+                <i class="fa-solid fa-calendar-days"></i>
+                &nbsp;
+                Il Mese Scorso
               <% end %>
             </div>
           </li>

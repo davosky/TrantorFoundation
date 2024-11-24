@@ -1,0 +1,153 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <span class="text-primary fw-bold fs-3">
+        Questa Settimana
+      </span>
+      &emsp;
+      <span class="fw-bold fs-5 fst-italic text-warning">
+        <%= l(Date.today.prev_week.beginning_of_week, format: "%A %d %B %Y") %>
+        &nbsp;
+        -
+        &nbsp;
+        <%= l(Date.today.prev_week.end_of_week, format: "%A %d %B %Y") %>
+      </span>
+    </div>
+  </div>
+  <hr class="text-primary"/>
+  <div class="row mb-3">
+    <div class="col-12">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+          <span class="fw-bolder fs-5">
+            <i class="fa-solid fa-umbrella-beach"></i>
+            &nbsp;
+            FERIE
+          </span>
+        </div>
+        <div class="card-body bg-white border-primary rounded shadow">
+          <% @holidays.each do |holiday| %>
+            <%= link_to holiday_path(holiday), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
+              <%= "#{holiday.user.last_name} #{holiday.user.first_name}" %>
+            <% end %>
+            &nbsp;
+            <span class="text-warning">
+              <%= ("#{l(holiday.start_time, format: "%A %d")} <i class='fa-solid fa-arrows-left-right'></i> #{l(holiday.end_time, format: "%A %d")}").html_safe %>
+            </span>
+            <span class="text-primary">
+              &nbsp;|&nbsp;
+            </span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-12">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+          <span class="fw-bolder fs-5">
+            <i class="fa-solid fa-bath"></i>
+            &nbsp;
+            FERIE ORARIE 
+          </span>
+        </div>
+        <div class="card-body bg-white border-primary rounded shadow">
+          <% @hourly_holidays.each do |hourly_holiday| %>
+            <%= link_to hourly_holiday_path(hourly_holiday), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
+              <%= "#{hourly_holiday.user.last_name} #{hourly_holiday.user.first_name}" %>
+              &nbsp;
+              <span class="text-warning">
+                <%= ("#{l(hourly_holiday.start_time, format: "%A %d - %H:%M")} <i class='fa-solid fa-arrows-left-right'></i> #{l(hourly_holiday.end_time, format: "%A %d - %H:%M")}").html_safe %>
+              </span>
+            <% end %>
+            <span class="text-primary">
+              &nbsp;|&nbsp;
+            </span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-12">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+          <span class="fw-bolder fs-5">
+            <i class="fa-solid fa-graduation-cap"></i>
+            &nbsp;
+            PERMESSI
+          </span>
+        </div>
+        <div class="card-body bg-white border-primary rounded shadow">
+          <% @permits.each do |permit| %>
+            <%= link_to permit_path(permit), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
+              <%= "#{permit.user.last_name} #{permit.user.first_name}" %>
+              &nbsp;
+              <span class="text-warning">
+                <%= ("#{l(permit.start_time, format: "%A %d")} <i class='fa-solid fa-arrows-left-right'></i> #{l(permit.end_time, format: "%A %d")}").html_safe %>
+              </span>
+            <% end %>
+            <span class="text-primary">
+              &nbsp;|&nbsp;
+            </span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-12">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+          <span class="fw-bolder fs-5">
+            <i class="fa-solid fa-graduation-cap"></i>
+            &nbsp;
+            PERMESSI ORARI
+          </span>
+        </div>
+        <div class="card-body bg-white border-primary rounded shadow">
+          <% @hourly_permits.each do |hourly_permit| %>
+            <%= link_to hourly_permit_path(hourly_permit), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
+              <%= "#{hourly_permit.user.last_name} #{hourly_permit.user.first_name}" %>
+              &nbsp;
+              <span class="text-warning">
+                <%= ("#{l(hourly_permit.start_time, format: "%A %d - %H:%M")} <i class='fa-solid fa-arrows-left-right'></i> #{l(hourly_permit.end_time, format: "%A %d - %H:%M")}").html_safe %>
+              </span>
+            <% end %>
+            <span class="text-primary">
+              &nbsp;|&nbsp;
+            </span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-12">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+          <span class="fw-bolder fs-5">
+            <i class="fa-solid fa-thermometer"></i>
+            &nbsp;
+            MALATTIA
+          </span>
+        </div>
+        <div class="card-body bg-white border-primary rounded shadow">
+          <% @diseases.each do |disease| %>
+            <%= link_to disease_path(disease), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
+              <%= "#{disease.user.last_name} #{disease.user.first_name}" %>
+              &nbsp;
+              <span class="text-warning">
+                <%= ("#{l(disease.start_time, format: "%A %d")} <i class='fa-solid fa-arrows-left-right'></i> #{l(disease.end_time, format: "%A %d")}").html_safe %>
+              </span>
+            <% end %>
+            <span class="text-primary">
+              &nbsp;|&nbsp;
+            </span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
