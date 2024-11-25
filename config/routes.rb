@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "dashboard/previous_week"
   get "dashboard/this_month"
   get "dashboard/previous_month"
+  get "users/index"
 
   resources :roads
   resources :transports

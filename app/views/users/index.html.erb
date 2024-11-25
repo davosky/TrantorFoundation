@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1>Search for a User</h1>
+      <%= search_form_for @q, url: users_index_path, method: :get do |f| %>
+        <div>
+          <%= f.label :last_name_cont, "Search by User Name" %>
+          <%= f.text_field :last_name_cont %>
+        </div>
+        <div>
+          <%= f.submit "Search" %>
+        </div>
+      <% end %>
+      <% if @user %>
+        <h2>Holidays</h2>
+        <h3><%= @user.last_name %></h3>
+        <ul>
+          <% @user.holidays.each do |holiday| %>
+            <li><%= holiday.start_time %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No user found matching the search criteria.</p>
+      <% end %>
+      <% if @multiple_matches %>
+        <p>Multiple users match your search. Showing the first result:</p>
+      <% end %>
+      <hr/>
+      <% if @user %>
+        <h2>Hourly Holidays</h2>
+        <h3><%= @user.last_name %></h3>
+        <ul>
+          <% @user.hourly_holidays.each do |hourly_holiday| %>
+            <li><%= hourly_holiday.start_time %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No user found matching the search criteria.</p>
+      <% end %>
+      <% if @multiple_matches %>
+        <p>Multiple users match your search. Showing the first result:</p>
+      <% end %>
+    </div>
+  </div>
+</div>
