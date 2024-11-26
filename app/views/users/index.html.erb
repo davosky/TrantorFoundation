@@ -11,6 +11,10 @@
           <%= f.submit "Search" %>
         </div>
       <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
       <% if @user %>
         <h2>Holidays</h2>
         <h3><%= @user.last_name %></h3>
@@ -25,13 +29,30 @@
       <% if @multiple_matches %>
         <p>Multiple users match your search. Showing the first result:</p>
       <% end %>
-      <hr/>
+    </div>
+    <div class="col-4">
       <% if @user %>
         <h2>Hourly Holidays</h2>
         <h3><%= @user.last_name %></h3>
         <ul>
           <% @user.hourly_holidays.each do |hourly_holiday| %>
             <li><%= hourly_holiday.start_time %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No user found matching the search criteria.</p>
+      <% end %>
+      <% if @multiple_matches %>
+        <p>Multiple users match your search. Showing the first result:</p>
+      <% end %>
+    </div>
+    <div class="col-4">
+      <% if @user %>
+        <h2>Permits</h2>
+        <h3><%= @user.last_name %></h3>
+        <ul>
+          <% @user.permits.each do |permit| %>
+            <li><%= permit.start_time %></li>
           <% end %>
         </ul>
       <% else %>

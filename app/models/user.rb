@@ -12,7 +12,8 @@ class User < ApplicationRecord
   has_many :veichles
   has_many :refunds
   has_many :refund_closures
-  has_many :holidays
+  # has_many :holidays
+  has_many :holidays, -> { order("start_time desc") }
   has_many :hourly_holidays
   has_many :diseases
   has_many :permits
