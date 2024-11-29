@@ -7,7 +7,18 @@ Rails.application.routes.draw do
   get "dashboard/previous_week"
   get "dashboard/this_month"
   get "dashboard/previous_month"
-  get "users/index"
+  get "users/january"
+  get "users/february"
+  get "users/march"
+  get "users/april"
+  get "users/may"
+  get "users/june"
+  get "users/july"
+  get "users/august"
+  get "users/september"
+  get "users/october"
+  get "users/november"
+  get "users/december"
 
   resources :roads
   resources :transports

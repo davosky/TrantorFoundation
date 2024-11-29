@@ -176,6 +176,101 @@
             </div>
           </li>
         <% end %>
+        <% if can? :whatsup, :dashboard %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown nav-link-main-navbar" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              <i class="fa-solid fa-users"></i>
+              &nbsp;
+              Utenza
+            </a>
+            <div class="dropdown-menu shadow">
+              <%= link_to users_january_path, class: "dropdown-item" do %>
+                <i class="fa-solid fa-users"></i>
+                &nbsp;
+                <i class="fa-solid fa-calendar-days"></i>
+                &nbsp;
+                Gennaio
+              <% end %>
+              <%= link_to users_february_path, class: "dropdown-item" do %>
+                <i class="fa-solid fa-users"></i>
+                &nbsp;
+                <i class="fa-solid fa-calendar-days"></i>
+                &nbsp;
+                Febbraio
+              <% end %>
+              <%= link_to users_march_path, class: "dropdown-item" do %>
+                <i class="fa-solid fa-users"></i>
+                &nbsp;
+                <i class="fa-solid fa-calendar-days"></i>
+                &nbsp;
+                Marzo
+              <% end %>
+              <%= link_to users_april_path, class: "dropdown-item" do %>
+                <i class="fa-solid fa-users"></i>
+                &nbsp;
+                <i class="fa-solid fa-calendar-days"></i>
+                &nbsp;
+                Aprile
+              <% end %>
+              <%= link_to users_may_path, class: "dropdown-item" do %>
+                <i class="fa-solid fa-users"></i>
+                &nbsp;
+                <i class="fa-solid fa-calendar-days"></i>
+                &nbsp;
+                Maggio
+              <% end %>
+              <%= link_to users_june_path, class: "dropdown-item" do %>
+                <i class="fa-solid fa-users"></i>
+                &nbsp;
+                <i class="fa-solid fa-calendar-days"></i>
+                &nbsp;
+                Giugno
+              <% end %>
+              <%= link_to users_july_path, class: "dropdown-item" do %>
+                <i class="fa-solid fa-users"></i>
+                &nbsp;
+                <i class="fa-solid fa-calendar-days"></i>
+                &nbsp;
+                Luglio
+              <% end %>
+              <%= link_to users_august_path, class: "dropdown-item" do %>
+                <i class="fa-solid fa-users"></i>
+                &nbsp;
+                <i class="fa-solid fa-calendar-days"></i>
+                &nbsp;
+                Agosto
+              <% end %>
+              <%= link_to users_september_path, class: "dropdown-item" do %>
+                <i class="fa-solid fa-users"></i>
+                &nbsp;
+                <i class="fa-solid fa-calendar-days"></i>
+                &nbsp;
+                Settembre
+              <% end %>
+              <%= link_to users_october_path, class: "dropdown-item" do %>
+                <i class="fa-solid fa-users"></i>
+                &nbsp;
+                <i class="fa-solid fa-calendar-days"></i>
+                &nbsp;
+                Ottobre
+              <% end %>
+              <%= link_to users_november_path, class: "dropdown-item" do %>
+                <i class="fa-solid fa-users"></i>
+                &nbsp;
+                <i class="fa-solid fa-calendar-days"></i>
+                &nbsp;
+                Novembre
+              <% end %>
+              <%= link_to users_december_path, class: "dropdown-item" do %>
+                <i class="fa-solid fa-users"></i>
+                &nbsp;
+                <i class="fa-solid fa-calendar-days"></i>
+                &nbsp;
+                Dicembre
+              <% end %>
+            </div>
+          </li>
+        <% end %>
       </ul>
       <ul class="navbar-nav ms-auto">
         <li class="nav-item dropdown">

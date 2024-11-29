@@ -1,0 +1,165 @@
+<div class="container">
+  <div class="card shadow">
+    <div class="card-body bg-white rounded shadow">
+      <div class="row">
+        <div class="col-6">
+          <span class="float-start fw-bold fs-3 text-primary">
+            <i class="fa-solid fa-calendar-days"></i>
+            &nbsp;
+            Riepilogo di Dicembre <%= Date.today.year %>
+          </span>
+        </div>
+        <div class="col-6">
+          <%= search_form_for @q, url: users_december_path, method: :get do |form| %>
+            <div class="input-group mb-2">
+              <div class="input-group-text input-group-text-fixed bg-primary text-white">
+                <i class="fa-solid fa-user"></i>
+                &emsp;<span>Seleziona l'Utente</span>
+              </div>
+              <% if god? %>
+                <%= form.collection_select(:id_eq, User.order('last_name ASC'), :id, :user_name_full, {:include_blank => true}, {:class => 'form-control'}) %>
+              <% elsif manager? %>
+                <%= form.collection_select :id_eq, User.order('last_name ASC').where(province: current_user.province, region: current_user.region), :id, :user_name_full, {:include_blank => true}, {:class => 'form-control'} %>
+              <% else %>
+              <% end %>
+              <%= button_tag(type: "submit", class: "btn btn-primary") do %>
+                <i class="fa-solid fa-magnifying-glass"></i>
+                &emsp;
+                <strong>
+                  Cerca
+                </strong>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <hr class="text-primary"/>
+      <div class="row m-3">
+        <div class="col-6">
+          <span class="fw-bolder fs-3 text-primary">
+            <%= image_tag(gender_avatar(@user), class: "img-fluid") %>
+            &nbsp;
+            <%= "#{@user.last_name} #{@user.first_name}" %>
+          </span>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-6">
+          <div class="card border-white">
+            <div class="card-header bg-white text-primary">
+              <%= image_tag("user_holidays_logo.svg", class: "img-fluid") %>
+            </div>
+            <div class="card-body bg-light rounded">
+              <% @holidays.each do |holiday| %>
+                <ol class="list-group">
+                  <li class="list-group-item">
+                    <div class="ms-2 me-auto">
+                      <span class="fs-5 fs-bold">
+                        <%= "#{l(holiday.start_time, format: "%A %d")}&emsp;<i class='fa-solid fa-arrows-left-right text-primary'></i>&emsp; #{l(holiday.end_time, format: "%A %d")}".html_safe %>
+                      </span>
+                    </div>
+                  </li>
+                </ol>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="card border-white">
+            <div class="card-header bg-white text-primary">
+              <%= image_tag("user_hourly_holidays_logo.svg", class: "img-fluid") %>
+            </div>
+            <div class="card-body bg-light rounded">
+              <% @hourly_holidays.each do |hourly_holiday| %>
+                <ol class="list-group">
+                  <li class="list-group-item ">
+                    <div class="ms-2 me-auto">
+                      <span class="fs-5 fs-bold">
+                        <%= "#{l(hourly_holiday.start_time, format: "%A %d - %H:%M")}&emsp;<i class='fa-solid fa-arrows-left-right text-primary'></i>&emsp; #{l(hourly_holiday.end_time, format: "%H:%M")}".html_safe %>
+                      </span>
+                    </div>
+                  </li>
+                </ol>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="text-primary m-4"/>
+      <div class="row mt-3">
+        <div class="col-6">
+          <div class="card border-white">
+            <div class="card-header bg-white text-primary">
+              <%= image_tag("user_permits_logo.svg", class: "img-fluid") %>
+            </div>
+            <div class="card-body bg-light rounded">
+              <% @permits.each do |permit| %>
+                <ol class="list-group">
+                  <li class="list-group-item">
+                    <div class="ms-2 me-auto">
+                      <span class="float-start fs-5 fs-bold">
+                        <%= "#{l(permit.start_time, format: "%A %d")}&emsp;<i class='fa-solid fa-arrows-left-right text-primary'></i>&emsp; #{l(permit.end_time, format: "%A %d")}".html_safe %>
+                      </span>
+                      <span class="float-end fs-6 fs-normal fst-italic text-secondary">
+                        <%= "#{permit.permit_type.name}".html_safe %>
+                      </span>
+                    </div>
+                  </li>
+                </ol>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="card border-white">
+            <div class="card-header bg-white text-primary">
+              <%= image_tag("user_hourly_permits_logo.svg", class: "img-fluid") %>
+            </div>
+            <div class="card-body bg-light rounded">
+              <% @hourly_permits.each do |hourly_permit| %>
+                <ol class="list-group">
+                  <li class="list-group-item">
+                    <div class="ms-2 me-auto">
+                      <span class="float-start fs-5 fs-bold">
+                        <%= "#{l(hourly_permit.start_time, format: "%A %d - %H:%M")}&emsp;<i class='fa-solid fa-arrows-left-right text-primary'></i>&emsp; #{l(hourly_permit.end_time, format: "%H:%M")}".html_safe %>
+                      </span>
+                      <span class="float-end fs-6 fs-normal fst-italic text-secondary">
+                        <%= "#{hourly_permit.permit_type.name}".html_safe %>
+                      </span>
+                    </div>
+                  </li>
+                </ol>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="text-primary m-4"/>
+      <div class="row mt-3">
+        <div class="col-6">
+          <div class="card border-white">
+            <div class="card-header bg-white text-primary">
+              <%= image_tag("user_diseases_logo.svg", class: "img-fluid") %>
+            </div>
+            <div class="card-body bg-light rounded">
+              <% @diseases.each do |disease| %>
+                <ol class="list-group">
+                  <li class="list-group-item">
+                    <div class="ms-2 me-auto">
+                      <span class="float-start fs-5 fs-bold">
+                        <%= "#{l(disease.start_time, format: "%A %d")}&emsp;<i class='fa-solid fa-arrows-left-right text-primary'></i>&emsp; #{l(disease.end_time, format: "%A %d")}".html_safe %>
+                      </span>
+                      <span class="float-end fs-6 fs-normal fst-italic text-secondary">
+                        <%= "cert:&emsp;#{disease.certificate}".html_safe %>
+                      </span>
+                    </div>
+                  </li>
+                </ol>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
