@@ -30,12 +30,13 @@
               <%= "#{holiday.user.last_name} #{holiday.user.first_name}" %>
             <% end %>
             &nbsp;
-            <span class="text-warning">
+            <span class="text-dark">
               <%= ("#{l(holiday.start_time, format: "%a %d")} <i class='fa-solid fa-arrows-left-right'></i> #{l(holiday.end_time, format: "%a %d")}").html_safe %>
             </span>
             <span class="text-primary">
               <br/>
             </span>
+            <hr class="text-secondary m-1"/>
           <% end %>
         </div>
       </div>
@@ -53,13 +54,14 @@
             <%= link_to hourly_holiday_path(hourly_holiday), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
               <%= "#{hourly_holiday.user.last_name} #{hourly_holiday.user.first_name}" %>
               &nbsp;
-              <span class="text-warning">
-                <%= ("#{l(hourly_holiday.start_time, format: "%a %d - %H:%M")} <i class='fa-solid fa-arrows-left-right'></i> #{l(hourly_holiday.end_time, format: "%a %d - %H:%M")}").html_safe %>
+              <span class="text-dark">
+                <%= ("#{l(hourly_holiday.start_time, format: "%a %d - %H:%M")} <i class='fa-solid fa-arrows-left-right'></i> #{l(hourly_holiday.end_time, format: "%H:%M")}").html_safe %>
               </span>
             <% end %>
             <span class="text-primary">
               <br/>
             </span>
+            <hr class="text-secondary m-1"/>
           <% end %>
         </div>
       </div>
@@ -77,18 +79,20 @@
             <%= link_to disease_path(disease), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
               <%= "#{disease.user.last_name} #{disease.user.first_name}" %>
               &nbsp;
-              <span class="text-warning">
+              <span class="text-dark">
                 <%= ("#{l(disease.start_time, format: "%A %d")} <i class='fa-solid fa-arrows-left-right'></i> #{l(disease.end_time, format: "%A %d")}").html_safe %>
               </span>
             <% end %>
             <span class="text-primary">
               <br/>
             </span>
+            <hr class="text-secondary m-1"/>
           <% end %>
         </div>
       </div>
     </div>
   </div>
+  <hr class="text-primary mt-5"/>
   <div class="row mt-5">
     <div class="col-4">
       <div class="card">
@@ -103,13 +107,14 @@
             <%= link_to permit_path(permit), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
               <%= "#{permit.user.last_name} #{permit.user.first_name}" %>
               &nbsp;
-              <span class="text-warning">
+              <span class="text-dark">
                 <%= ("#{l(permit.start_time, format: "%A %d")} <i class='fa-solid fa-arrows-left-right'></i> #{l(permit.end_time, format: "%A %d")}").html_safe %>
               </span>
             <% end %>
             <span class="text-primary">
               <br/>
             </span>
+            <hr class="text-secondary m-1"/>
           <% end %>
         </div>
       </div>
@@ -122,18 +127,19 @@
             &nbsp;
             PERMESSI ORARI
           </span>
-          <hr class="text-primary"/>
+          <hr class="text-dark"/>
           <% @hourly_permits.each do |hourly_permit| %>
             <%= link_to hourly_permit_path(hourly_permit), "data-controller": "turbo", "data-bs-toggle": "tooltip", "title": "Visualizza Dettaglio" do %>
               <%= "#{hourly_permit.user.last_name} #{hourly_permit.user.first_name}" %>
               &nbsp;
-              <span class="text-warning">
-                <%= ("#{l(hourly_permit.start_time, format: "%a %d - %H:%M")} <i class='fa-solid fa-arrows-left-right'></i> #{l(hourly_permit.end_time, format: "%a %d - %H:%M")}").html_safe %>
+              <span class="text-dark">
+                <%= ("#{l(hourly_permit.start_time, format: "%a %d - %H:%M")} <i class='fa-solid fa-arrows-left-right'></i> #{l(hourly_permit.end_time, format: "%H:%M")}").html_safe %>
               </span>
             <% end %>
             <span class="text-primary">
               <br/>
             </span>
+            <hr class="text-secondary m-1"/>
           <% end %>
         </div>
       </div>
