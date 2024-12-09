@@ -133,6 +133,10 @@ class Ability
       can :manage, Veichle, user_id: user.id
       # Can view Dashboard Whatsup
       can :whatsup, :dashboard
+      can :this_week, :dashboard
+      can :previous_week, :dashboard
+      can :this_month, :dashboard
+      can :previous_month, :dashboard
     end
     # ==================================================================
     # *** Manager ***

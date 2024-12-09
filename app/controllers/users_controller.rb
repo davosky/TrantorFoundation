@@ -1,8 +1,14 @@
 class UsersController < ApplicationController
   def january
-    @q = User.ransack(params[:q])
-    results = @q.result(distinct: true)
-    @user = results.first
+    if current_user.god == true
+      @q = User.ransack(params[:q])
+      results = @q.result(distinct: true)
+      @user = results.first
+    else
+      @q = User.ransack(params[:q])
+      results = @q.result(distinct: true).where(province: current_user.province, region: current_user.region)
+      @user = results.first
+    end
     # Related Holidays
     # Filter records within the specified month
     currentyear = Date.today.year
@@ -57,9 +63,15 @@ class UsersController < ApplicationController
   end
 
   def february
-    @q = User.ransack(params[:q])
-    results = @q.result(distinct: true)
-    @user = results.first
+    if current_user.god == true
+      @q = User.ransack(params[:q])
+      results = @q.result(distinct: true)
+      @user = results.first
+    else
+      @q = User.ransack(params[:q])
+      results = @q.result(distinct: true).where(province: current_user.province, region: current_user.region)
+      @user = results.first
+    end
     # Related Holidays
     # Filter records within the specified month
     currentyear = Date.today.year
@@ -114,9 +126,15 @@ class UsersController < ApplicationController
   end
 
   def march
-    @q = User.ransack(params[:q])
-    results = @q.result(distinct: true)
-    @user = results.first
+    if current_user.god == true
+      @q = User.ransack(params[:q])
+      results = @q.result(distinct: true)
+      @user = results.first
+    else
+      @q = User.ransack(params[:q])
+      results = @q.result(distinct: true).where(province: current_user.province, region: current_user.region)
+      @user = results.first
+    end
     # Related Holidays
     # Filter records within the specified month
     currentyear = Date.today.year
@@ -171,9 +189,15 @@ class UsersController < ApplicationController
   end
 
   def april
-    @q = User.ransack(params[:q])
-    results = @q.result(distinct: true)
-    @user = results.first
+    if current_user.god == true
+      @q = User.ransack(params[:q])
+      results = @q.result(distinct: true)
+      @user = results.first
+    else
+      @q = User.ransack(params[:q])
+      results = @q.result(distinct: true).where(province: current_user.province, region: current_user.region)
+      @user = results.first
+    end
     # Related Holidays
     # Filter records within the specified month
     currentyear = Date.today.year
@@ -228,9 +252,15 @@ class UsersController < ApplicationController
   end
 
   def may
-    @q = User.ransack(params[:q])
-    results = @q.result(distinct: true)
-    @user = results.first
+    if current_user.god == true
+      @q = User.ransack(params[:q])
+      results = @q.result(distinct: true)
+      @user = results.first
+    else
+      @q = User.ransack(params[:q])
+      results = @q.result(distinct: true).where(province: current_user.province, region: current_user.region)
+      @user = results.first
+    end
     # Related Holidays
     # Filter records within the specified month
     currentyear = Date.today.year
@@ -285,9 +315,15 @@ class UsersController < ApplicationController
   end
 
   def june
-    @q = User.ransack(params[:q])
-    results = @q.result(distinct: true)
-    @user = results.first
+    if current_user.god == true
+      @q = User.ransack(params[:q])
+      results = @q.result(distinct: true)
+      @user = results.first
+    else
+      @q = User.ransack(params[:q])
+      results = @q.result(distinct: true).where(province: current_user.province, region: current_user.region)
+      @user = results.first
+    end
     # Related Holidays
     # Filter records within the specified month
     currentyear = Date.today.year
@@ -342,9 +378,15 @@ class UsersController < ApplicationController
   end
 
   def july
-    @q = User.ransack(params[:q])
-    results = @q.result(distinct: true)
-    @user = results.first
+    if current_user.god == true
+      @q = User.ransack(params[:q])
+      results = @q.result(distinct: true)
+      @user = results.first
+    else
+      @q = User.ransack(params[:q])
+      results = @q.result(distinct: true).where(province: current_user.province, region: current_user.region)
+      @user = results.first
+    end
     # Related Holidays
     # Filter records within the specified month
     currentyear = Date.today.year
@@ -399,9 +441,15 @@ class UsersController < ApplicationController
   end
 
   def august
-    @q = User.ransack(params[:q])
-    results = @q.result(distinct: true)
-    @user = results.first
+    if current_user.god == true
+      @q = User.ransack(params[:q])
+      results = @q.result(distinct: true)
+      @user = results.first
+    else
+      @q = User.ransack(params[:q])
+      results = @q.result(distinct: true).where(province: current_user.province, region: current_user.region)
+      @user = results.first
+    end
     # Related Holidays
     # Filter records within the specified month
     currentyear = Date.today.year
@@ -456,9 +504,15 @@ class UsersController < ApplicationController
   end
 
   def september
-    @q = User.ransack(params[:q])
-    results = @q.result(distinct: true)
-    @user = results.first
+    if current_user.god == true
+      @q = User.ransack(params[:q])
+      results = @q.result(distinct: true)
+      @user = results.first
+    else
+      @q = User.ransack(params[:q])
+      results = @q.result(distinct: true).where(province: current_user.province, region: current_user.region)
+      @user = results.first
+    end
     # Related Holidays
     # Filter records within the specified month
     currentyear = Date.today.year
@@ -513,9 +567,15 @@ class UsersController < ApplicationController
   end
 
   def october
-    @q = User.ransack(params[:q])
-    results = @q.result(distinct: true)
-    @user = results.first
+    if current_user.god == true
+      @q = User.ransack(params[:q])
+      results = @q.result(distinct: true)
+      @user = results.first
+    else
+      @q = User.ransack(params[:q])
+      results = @q.result(distinct: true).where(province: current_user.province, region: current_user.region)
+      @user = results.first
+    end
     # Related Holidays
     # Filter records within the specified month
     currentyear = Date.today.year
@@ -570,9 +630,15 @@ class UsersController < ApplicationController
   end
 
   def november
-    @q = User.ransack(params[:q])
-    results = @q.result(distinct: true)
-    @user = results.first
+    if current_user.god == true
+      @q = User.ransack(params[:q])
+      results = @q.result(distinct: true)
+      @user = results.first
+    else
+      @q = User.ransack(params[:q])
+      results = @q.result(distinct: true).where(province: current_user.province, region: current_user.region)
+      @user = results.first
+    end
     # Related Holidays
     # Filter records within the specified month
     currentyear = Date.today.year
@@ -627,9 +693,15 @@ class UsersController < ApplicationController
   end
 
   def december
-    @q = User.ransack(params[:q])
-    results = @q.result(distinct: true)
-    @user = results.first
+    if current_user.god == true
+      @q = User.ransack(params[:q])
+      results = @q.result(distinct: true)
+      @user = results.first
+    else
+      @q = User.ransack(params[:q])
+      results = @q.result(distinct: true).where(province: current_user.province, region: current_user.region)
+      @user = results.first
+    end
     # Related Holidays
     # Filter records within the specified month
     currentyear = Date.today.year
