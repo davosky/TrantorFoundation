@@ -22,6 +22,11 @@ span.span-left {
   float: left;
 }
 
+p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .list-table {
   table tbody tr td {
     min-width: 38mm;
@@ -39,8 +44,8 @@ span.span-left {
 
 .blue-header {
   vertical-align: middle;
-  color: #2c5aa0;
-  border: 2px solid #2c5aa0;
+  color: #0d7474;
+  border: 2px solid #0d7474;
   border-radius: 5px;
   padding: 6px;
 }
@@ -55,17 +60,17 @@ span.span-left {
 .hr-big {
   height: 2px;
   background-color: none;
-  border-top: 2px dotted #2c5aa0;
+  border-top: 2px dotted #0d7474;
 }
 
 .hr-small {
   height: 1px;
   background-color: none;
-  border-top: 1px solid #2c5aa0;
+  border-top: 1px solid #0d7474;
 }
 
 .pdf-header {
-  margin-bottom: 50mm;
+  margin-bottom: 10mm;
 }
 
 .logo {
