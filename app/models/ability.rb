@@ -45,8 +45,13 @@ class Ability
       can :read, RefundClosure do |refund_closure|
         refund_closure.user.province == user.province && refund_closure.user.region == user.region
       end
-
       can :search, RefundClosure do |refund_closure|
+        refund_closure.user.province == user.province && refund_closure.user.region == user.region
+      end
+      can :searcharchive, RefundClosure do |refund_closure|
+        refund_closure.user.province == user.province && refund_closure.user.region == user.region
+      end
+      can :archive, RefundClosure do |refund_closure|
         refund_closure.user.province == user.province && refund_closure.user.region == user.region
       end
       # Can manage all owned records on Holiday model
@@ -178,6 +183,9 @@ class Ability
         refund_closure.user_id == user.id && refund_closure.payed != true
       end
       can :read, RefundClosure do |refund_closure|
+        refund_closure.user_id == user.id
+      end
+      can :archive, RefundClosure do |refund_closure|
         refund_closure.user_id == user.id
       end
       # Can manage all owned records on Holiday model

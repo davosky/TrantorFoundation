@@ -12,7 +12,22 @@ class RefundClosuresController < ApplicationController
     @refund_closures = @q.result(distinct: true).order(created_at: "DESC").where(user_id: current_user.id)
   end
 
+  def archive
+    @q = RefundClosure.ransack(params[:q])
+    @refund_closures = @q.result(distinct: true).order(created_at: "DESC").where(user_id: current_user.id)
+  end
+
   def search
+    if current_user.god == true
+      @q = RefundClosure.ransack(params[:q])
+      @refund_closures = @q.result(distinct: true).order(created_at: "DESC")
+    else
+      @q = RefundClosure.ransack(params[:q])
+      @refund_closures = @q.result(distinct: true).order(created_at: "DESC").where(user_id: User.where(province: current_user.province, region: current_user.region))
+    end
+  end
+
+  def searcharcive
     if current_user.god == true
       @q = RefundClosure.ransack(params[:q])
       @refund_closures = @q.result(distinct: true).order(created_at: "DESC")
@@ -67,9 +82,9 @@ class RefundClosuresController < ApplicationController
 
   def refund_closure_params
     if current_user.god == true || current_user.admin == true || current_user.manager == true
-      params.require(:refund_closure).permit(:year_reference, :month_reference, :period_reference, :user_id, :refund_print, :refund_summary, :highway_movements, :refund_receipt_1, :refund_receipt_2, :refund_receipt_3, :refund_receipt_4, :refund_receipt_5, :refund_receipt_6, :payed)
+      params.require(:refund_closure).permit(:year_reference, :month_reference, :period_reference, :user_id, :refund_print, :refund_summary, :highway_movements, :refund_receipt_1, :refund_receipt_2, :refund_receipt_3, :refund_receipt_4, :refund_receipt_5, :refund_receipt_6, :payed, :print_refund, :summary_refund, :highway_movement_refund, :receipt_one_refund, :receipt_two_refund, :receipt_three_refund, :receipt_four_refund, :receipt_five_refund, :receipt_six_refund)
     else
-      params.require(:refund_closure).permit(:year_reference, :month_reference, :period_reference, :user_id, :refund_print, :refund_summary, :highway_movements, :refund_receipt_1, :refund_receipt_2, :refund_receipt_3, :refund_receipt_4, :refund_receipt_5, :refund_receipt_6)
+      params.require(:refund_closure).permit(:year_reference, :month_reference, :period_reference, :user_id, :refund_print, :refund_summary, :highway_movements, :refund_receipt_1, :refund_receipt_2, :refund_receipt_3, :refund_receipt_4, :refund_receipt_5, :refund_receipt_6, :prin_refund, :summary_refund, :highway_movement_refund, :receipt_one_refund, :receipt_two_refund, :receipt_three_refund, :receipt_four_refund, :receipt_five_refund, :receipt_six_refund)
     end
   end
 end

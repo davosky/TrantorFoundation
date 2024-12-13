@@ -162,6 +162,15 @@ it:
         refund_receipt_4: Allegato Ricevute (4)
         refund_receipt_5: Allegato Ricevute (5)
         refund_receipt_6: Allegato Ricevute (6)
+        print_refund: Allegato Rimborsi
+        summary_refund: Allegato Riepiloghi
+        highway_movement_refund: Alegato Telepass
+        receipt_one_refund: Allegato Ricevute 1
+        receipt_two_refund: Allegato Ricevute 2
+        receipt_three_refund: Allegato Ricevute 3
+        receipt_four_refund: Allegato Rivevute 4
+        receipt_five_refund: Allegato Ricevute 5
+        receipt_six_refund: Allegato Ricevute 6
         payed: Pagato
         created_at: Creato il
         updated_at: Aggiornato il

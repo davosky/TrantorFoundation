@@ -35,6 +35,8 @@ Rails.application.routes.draw do
   resources :refund_closures do
     collection do
       get :search
+      get :searcharchive
+      get :archive
     end
   end
   resources :holidays do

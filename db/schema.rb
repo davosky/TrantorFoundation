@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 21) do
+ActiveRecord::Schema[7.0].define(version: 30) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -148,6 +148,15 @@ ActiveRecord::Schema[7.0].define(version: 21) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "print_refund"
+    t.string "summary_refund"
+    t.string "highway_movement_refund"
+    t.string "receipt_one_refund"
+    t.string "receipt_two_refund"
+    t.string "receipt_three_refund"
+    t.string "receipt_four_refund"
+    t.string "receipt_five_refund"
+    t.string "receipt_six_refund"
     t.index ["user_id"], name: "index_refund_closures_on_user_id"
   end
 
