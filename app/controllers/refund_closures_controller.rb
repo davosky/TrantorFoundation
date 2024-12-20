@@ -84,7 +84,7 @@ class RefundClosuresController < ApplicationController
     if current_user.god == true || current_user.admin == true || current_user.manager == true
       params.require(:refund_closure).permit(:year_reference, :month_reference, :period_reference, :user_id, :refund_print, :refund_summary, :highway_movements, :refund_receipt_1, :refund_receipt_2, :refund_receipt_3, :refund_receipt_4, :refund_receipt_5, :refund_receipt_6, :payed, :print_refund, :summary_refund, :highway_movement_refund, :receipt_one_refund, :receipt_two_refund, :receipt_three_refund, :receipt_four_refund, :receipt_five_refund, :receipt_six_refund)
     else
-      params.require(:refund_closure).permit(:year_reference, :month_reference, :period_reference, :user_id, :refund_print, :refund_summary, :highway_movements, :refund_receipt_1, :refund_receipt_2, :refund_receipt_3, :refund_receipt_4, :refund_receipt_5, :refund_receipt_6, :prin_refund, :summary_refund, :highway_movement_refund, :receipt_one_refund, :receipt_two_refund, :receipt_three_refund, :receipt_four_refund, :receipt_five_refund, :receipt_six_refund)
+      params.require(:refund_closure).permit(:year_reference, :month_reference, :period_reference, :user_id, :refund_print, :refund_summary, :highway_movements, :refund_receipt_1, :refund_receipt_2, :refund_receipt_3, :refund_receipt_4, :refund_receipt_5, :refund_receipt_6, :print_refund, :summary_refund, :highway_movement_refund, :receipt_one_refund, :receipt_two_refund, :receipt_three_refund, :receipt_four_refund, :receipt_five_refund, :receipt_six_refund)
     end
   end
 end

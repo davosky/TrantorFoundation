@@ -20,6 +20,26 @@
       </div>
     </div>
   <% end %>
+  <% if current_user.god == true || current_user.admin == true || current_user.manager == true %>
+    <div class="row">
+      <div class="col">
+        <div class="card border-primary mb-3">
+          <div class="card-body border-primary">
+            <span class="float-end">
+              <strong>
+                <%= form.check_box :payed, class: "form-check-input text-primary" %>
+                &nbsp;
+                <%= form.label :payed, class: "form-check-label text-primary" %>
+                <i class="fa-solid fa-receipt text-primary"></i>
+                <i class="fa-solid fa-cash-register text-primary"></i>
+                &nbsp;
+              </strong>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
   <div class="row">
     <div class="col-6">
       <div class="input-group mb-1">

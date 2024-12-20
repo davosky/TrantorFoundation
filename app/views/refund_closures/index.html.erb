@@ -69,20 +69,28 @@
                     <%= "#{refund_closure.user.first_name} #{refund_closure.user.last_name}" %>
                   </td>
                   <td>
-                    <%= link_to edit_refund_closure_path(refund_closure), 
+                    <% if refund_closure.payed != true %>
+                      <%= link_to edit_refund_closure_path(refund_closure), 
             "data-controller": "turbo", 
             "data-bs-toggle": "tooltip", 
             "title": "Modifica il Record Corrente", class: "edit-link" do %>
-                      <i class="fa-solid fa-pen-to-square"></i>
-                    <% end %>
-                  </td>
-                  <td>
-                    <%= link_to refund_closure_path(refund_closure),
+                        <i class="fa-solid fa-pen-to-square"></i>
+                      <% end %>
+                    </td>
+                    <td>
+                      <%= link_to refund_closure_path(refund_closure),
             "data-turbo-method": :delete,
             "data-turbo-confirm": "Sicuri di voler eliminare il record corrente?", 
             "data-bs-toggle": "tooltip", 
             "title": "Elimina il Record Corrente", class: "delete-link" do %>
-                      <i class="fa-solid fa-trash"></i>
+                        <i class="fa-solid fa-trash"></i>
+                      <% end %>
+                    <% else %>
+                      <span class="text-success">
+                        <i class="fa-solid fa-cash-register"></i>
+                        &nbsp;
+                        Pagato
+                      </span>
                     <% end %>
                   </td>
                 </tr>
