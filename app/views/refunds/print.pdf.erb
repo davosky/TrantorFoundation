@@ -16,7 +16,7 @@
             </div>
             <h2>
               <br/>
-              <%= inline_svg('pdf/cgil_logo.svg', preserve_aspect_ratio: 'xMaxYMax meet') %>
+              <%= inline_svg('pdf/caaf_logo.svg', preserve_aspect_ratio: 'xMaxYMax meet') %>
               <strong>
                 &nbsp;&nbsp;&nbsp;<%= refund.user.institute %>
               </strong>
@@ -211,10 +211,10 @@
                 </tbody>
               </table>
               <p>
-                Il Segretario Organizzativo autorizza il pagamento:
+                <%= refund.user.validator_presentation %> autorizza il pagamento:
                 <br/>
-                <% if refund.user.organizational_signature? %>
-                  <%= wicked_pdf_image_tag(refund.user.organizational_signature.url, :size => "140x54", :crop => :fill) %>
+                <% if refund.user.validator_signature? %>
+                  <%= wicked_pdf_image_tag(refund.user.validator_signature.url, :size => "140x54", :crop => :fill) %>
                 <% end %>
                 <br/>
                 ---------------------------------------------------------------------

@@ -1,24 +1,19 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: rotnart
-  password: Dfr368qESC27
+  username: trantorcaaf
+  password: Dfr368qE
   host: localhost
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
-  database: trantor_development
+  database: trantorcaaf_development
 
 test:
   <<: *default
-  database: trantor_test
+  database: trantorcaaf_test
 
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: trantorfoundation
-  username: rotnart
-  password: Dfr368qESC27
-  host: localhost
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  <<: *default
+  database: trantorcaaf_test
